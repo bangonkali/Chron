@@ -1,5 +1,5 @@
-*Chron is a Hardware CRON-LIKE Scheduler*
-
+Chron is a Hardware CRON-LIKE Scheduler
+================================
 Purpose  
 * Scheduling of AC Sockets using a modified CRON syntax.
 * Input of Schedule can be from the Removable Serially connected LCD Keypad Module or through the PC Interface via USB.
