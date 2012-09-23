@@ -1,11 +1,16 @@
-Chron is a Hardware CRON-LIKE Scheduler
+Chron 
 ================================
+
 Purpose  
+-------------------------
+It is a Hardware CRON-LIKE Scheduler
 * Scheduling of AC Sockets using a modified CRON syntax.
 * Input of Schedule can be from the Removable Serially connected LCD Keypad Module or through the PC Interface via USB.
 * Schedule will be stored on the PIC18F4550 EEPROM if the size fits. Others will be stored on a memory card.
 * An SD Card Slot can be added using via SPI to the PIC18F4550.
 
+Basic Syntax  
+-------------------------
 <pre>
 # .------------------------------- minute (0 - 59)
 # |   .--------------------------- hour (0 - 23)
@@ -21,29 +26,37 @@ Purpose
 </pre>
 
 Examples
+-------------------------
 <table>
   <tr>
-    <td>Every 1 minute turn off device switch 2</td>
     <td><pre>* * * * * * 0 2</pre></td>
+    <td>Every 1 minute turn off device switch 2</td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
     <td><pre>*/1 * * * * * 0 2</pre></td>
-  </tr>
-  <tr>
     <td>&nbsp;</td>
+  </tr>
+  <tr>
     <td><pre>0-59 * * * * * 0 2</pre></td>
+    <td>&nbsp;</td>
   </tr>
   <tr>
-    <td>Every Friday 12 PM Turn off switch 3</td>
     <td><pre>0 12 * * 6 * 0 3</pre></td>
+    <td>Every Friday 12 PM Turn off switch 3</td>
   </tr>
   <tr>
-    <td>Every Day 6 AM Turn off switch 1</td>
     <td><pre>0 6 * * * * 0 1</pre></td>
+    <td>Every Day 6 AM Turn off switch 1</td>
   </tr>
   <tr>
-    <td>Every Day 6 AM Turn on switch 1</td>
     <td><pre>0 6 * * * * 1 1</pre></td>
+    <td>Every Day 6 AM Turn on switch 1</td>
   </tr>
 </table>
+
+Proponents
+-------------------------
+This project is developed for compliance of a school requirement.
+* Abestano, Johannah Mae D.
+* Enanor, Caryl
+* Regalado, Gil Michael E.
