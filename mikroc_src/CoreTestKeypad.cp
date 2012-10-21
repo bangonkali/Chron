@@ -1,12 +1,12 @@
-#line 1 "D:/ACADS/EE188/time/CoreTestKeypad.c"
-#line 1 "d:/acads/ee188/time/coretestkeypad.h"
+#line 1 "D:/Chron/mikroc_src/CoreTestKeypad.c"
+#line 1 "d:/chron/mikroc_src/coretestkeypad.h"
 
 
 
 void KeypadTest_Begin();
 unsigned char Keypad_Get_Key();
 void Keypad_Decode(unsigned char *kp);
-#line 3 "D:/ACADS/EE188/time/CoreTestKeypad.c"
+#line 3 "D:/Chron/mikroc_src/CoreTestKeypad.c"
 void Keypad_Decode(unsigned char *kp) {
  switch (*kp) {
  case 1: *kp = 49; break;

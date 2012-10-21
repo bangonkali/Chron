@@ -1,0 +1,11 @@
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\bin\Release\TestHarness.exe.config
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\bin\Release\TestHarness.exe
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\bin\Release\TestHarness.pdb
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\bin\Release\HidLibrary.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\bin\Release\HidLibrary.pdb
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\obj\x86\Release\TestHarness.csprojResolveAssemblyReference.cache
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\obj\x86\Release\TestHarness.Main.resources
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\obj\x86\Release\TestHarness.Properties.Resources.resources
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\obj\x86\Release\TestHarness.csproj.GenerateResource.Cache
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\obj\x86\Release\TestHarness.exe
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\TestHarness\obj\x86\Release\TestHarness.pdb

@@ -1,12 +1,12 @@
-#line 1 "D:/ACADS/EE188/time/CoreMultimediaCard.c"
-#line 1 "d:/acads/ee188/time/configmultimediacard.h"
+#line 1 "D:/Chron/mikroc_src/CoreMultimediaCard.c"
+#line 1 "d:/chron/mikroc_src/configmultimediacard.h"
 
 
 
 
 sbit Mmc_Chip_Select at LATA5_bit;
 sbit Mmc_Chip_Select_Direction at TRISA5_bit;
-#line 1 "d:/acads/ee188/time/coremultimediacard.h"
+#line 1 "d:/chron/mikroc_src/coremultimediacard.h"
 
 
 
@@ -23,7 +23,7 @@ void M_Test_Begin();
 void M_Test_Routine();
 int M_Test_Verify();
 void LCD_Write_Line(char *uart_text);
-#line 4 "D:/ACADS/EE188/time/CoreMultimediaCard.c"
+#line 4 "D:/Chron/mikroc_src/CoreMultimediaCard.c"
 const MMC_LINE_LEN = 43;
 char mmc_err_txt[20] = "FAT16 not found";
 char file_contents[MMC_LINE_LEN] = "XX MMC/SD FAT16 library by Anton Rieckertn";
@@ -194,7 +194,7 @@ void M_Test_Routine() {
  LCD_Write_Line("Test Start.");
 
  M_Create_New_File();
-#line 183 "D:/ACADS/EE188/time/CoreMultimediaCard.c"
+#line 183 "D:/Chron/mikroc_src/CoreMultimediaCard.c"
  LCD_Write_Line("Test End.");
  }
 }

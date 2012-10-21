@@ -1,0 +1,28 @@
+GetState (PC)
+1, 0
+1, 0
+
+ReturnState (MikroC)
+1, 0
+1, 0
+1, ss (use decimal)
+1, mm (use decimal)
+1, hh (use decimal)
+1, md (use decimal)
+1, wd (use decimal)
+1, mo (use decimal)
+1, yy (use decimal)
+
+WriteTime (PC)
+1, 0 
+1, 1 
+1, ss (use hex)
+1, mm (use hex)
+1, hh (use hex)
+1, md (use hex)
+1, wd (use hex)
+1, mo (use hex)
+1, yy (use hex)
+
+
+

@@ -18,90 +18,66 @@ _Display_Time_Core:
 	MOVLW       1
 	MOVWF       R1 
 	CALL        ___CC2DW+0, 0
-;CoreTime.c,18 :: 		WordToHex(*sec, txtSec);
+;CoreTime.c,18 :: 		ShortToStr(*sec, txtSec);
 	MOVFF       FARG_Display_Time_Core_sec+0, FSR0
 	MOVFF       FARG_Display_Time_Core_sec+1, FSR0H
 	MOVF        POSTINC0+0, 0 
-	MOVWF       FARG_WordToHex_input+0 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
+	MOVWF       FARG_ShortToStr_input+0 
 	MOVLW       Display_Time_Core_txtSec_L0+0
-	MOVWF       FARG_WordToHex_output+0 
+	MOVWF       FARG_ShortToStr_output+0 
 	MOVLW       hi_addr(Display_Time_Core_txtSec_L0+0)
-	MOVWF       FARG_WordToHex_output+1 
-	CALL        _WordToHex+0, 0
-;CoreTime.c,19 :: 		WordToHex(*min, txtMin);
+	MOVWF       FARG_ShortToStr_output+1 
+	CALL        _ShortToStr+0, 0
+;CoreTime.c,19 :: 		ShortToStr(*min, txtMin);
 	MOVFF       FARG_Display_Time_Core_min+0, FSR0
 	MOVFF       FARG_Display_Time_Core_min+1, FSR0H
 	MOVF        POSTINC0+0, 0 
-	MOVWF       FARG_WordToHex_input+0 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
+	MOVWF       FARG_ShortToStr_input+0 
 	MOVLW       Display_Time_Core_txtMin_L0+0
-	MOVWF       FARG_WordToHex_output+0 
+	MOVWF       FARG_ShortToStr_output+0 
 	MOVLW       hi_addr(Display_Time_Core_txtMin_L0+0)
-	MOVWF       FARG_WordToHex_output+1 
-	CALL        _WordToHex+0, 0
-;CoreTime.c,20 :: 		WordToHex(*hr, txtHour);
+	MOVWF       FARG_ShortToStr_output+1 
+	CALL        _ShortToStr+0, 0
+;CoreTime.c,20 :: 		ShortToStr(*hr, txtHour);
 	MOVFF       FARG_Display_Time_Core_hr+0, FSR0
 	MOVFF       FARG_Display_Time_Core_hr+1, FSR0H
 	MOVF        POSTINC0+0, 0 
-	MOVWF       FARG_WordToHex_input+0 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
+	MOVWF       FARG_ShortToStr_input+0 
 	MOVLW       Display_Time_Core_txtHour_L0+0
-	MOVWF       FARG_WordToHex_output+0 
+	MOVWF       FARG_ShortToStr_output+0 
 	MOVLW       hi_addr(Display_Time_Core_txtHour_L0+0)
-	MOVWF       FARG_WordToHex_output+1 
-	CALL        _WordToHex+0, 0
-;CoreTime.c,21 :: 		WordToHex(*day, txtDay);
+	MOVWF       FARG_ShortToStr_output+1 
+	CALL        _ShortToStr+0, 0
+;CoreTime.c,21 :: 		ShortToStr(*day, txtDay);
 	MOVFF       FARG_Display_Time_Core_day+0, FSR0
 	MOVFF       FARG_Display_Time_Core_day+1, FSR0H
 	MOVF        POSTINC0+0, 0 
-	MOVWF       FARG_WordToHex_input+0 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
+	MOVWF       FARG_ShortToStr_input+0 
 	MOVLW       Display_Time_Core_txtDay_L0+0
-	MOVWF       FARG_WordToHex_output+0 
+	MOVWF       FARG_ShortToStr_output+0 
 	MOVLW       hi_addr(Display_Time_Core_txtDay_L0+0)
-	MOVWF       FARG_WordToHex_output+1 
-	CALL        _WordToHex+0, 0
-;CoreTime.c,22 :: 		WordToHex(*mn, txtMn);
+	MOVWF       FARG_ShortToStr_output+1 
+	CALL        _ShortToStr+0, 0
+;CoreTime.c,22 :: 		ShortToStr(*mn, txtMn);
 	MOVFF       FARG_Display_Time_Core_mn+0, FSR0
 	MOVFF       FARG_Display_Time_Core_mn+1, FSR0H
 	MOVF        POSTINC0+0, 0 
-	MOVWF       FARG_WordToHex_input+0 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
+	MOVWF       FARG_ShortToStr_input+0 
 	MOVLW       Display_Time_Core_txtMn_L0+0
-	MOVWF       FARG_WordToHex_output+0 
+	MOVWF       FARG_ShortToStr_output+0 
 	MOVLW       hi_addr(Display_Time_Core_txtMn_L0+0)
-	MOVWF       FARG_WordToHex_output+1 
-	CALL        _WordToHex+0, 0
-;CoreTime.c,23 :: 		WordToHex(*year, txtYear);
+	MOVWF       FARG_ShortToStr_output+1 
+	CALL        _ShortToStr+0, 0
+;CoreTime.c,23 :: 		ShortToStr(*year, txtYear);
 	MOVFF       FARG_Display_Time_Core_year+0, FSR0
 	MOVFF       FARG_Display_Time_Core_year+1, FSR0H
 	MOVF        POSTINC0+0, 0 
-	MOVWF       FARG_WordToHex_input+0 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
-	MOVLW       0
-	MOVWF       FARG_WordToHex_input+1 
+	MOVWF       FARG_ShortToStr_input+0 
 	MOVLW       Display_Time_Core_txtYear_L0+0
-	MOVWF       FARG_WordToHex_output+0 
+	MOVWF       FARG_ShortToStr_output+0 
 	MOVLW       hi_addr(Display_Time_Core_txtYear_L0+0)
-	MOVWF       FARG_WordToHex_output+1 
-	CALL        _WordToHex+0, 0
+	MOVWF       FARG_ShortToStr_output+1 
+	CALL        _ShortToStr+0, 0
 ;CoreTime.c,25 :: 		MakeLastTwoChars(txtSec);
 	MOVLW       Display_Time_Core_txtSec_L0+0
 	MOVWF       FARG_MakeLastTwoChars_txt+0 
@@ -868,54 +844,91 @@ _Write_Time:
 	MOVLW       128
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,114 :: 		I2C1_Wr(0);            // write 0 to minutes word to (REG1)
-	CLRF        FARG_I2C1_Wr_data_+0 
-	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,115 :: 		I2C1_Wr(0x17);         // write 17 to hours word (24-hours mode)(REG2)
-	MOVLW       23
+;CoreTime.c,114 :: 		I2C1_Wr(0x06);            // write 0 to minutes word to (REG1)
+	MOVLW       6
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,116 :: 		I2C1_Wr(0x02);         // write 2 - Monday (REG3)
-	MOVLW       2
-	MOVWF       FARG_I2C1_Wr_data_+0 
-	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,117 :: 		I2C1_Wr(0x04);         // write 4 to date word (REG4)
+;CoreTime.c,115 :: 		I2C1_Wr(0x04);         // write 17 to hours word (24-hours mode)(REG2)
 	MOVLW       4
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,118 :: 		I2C1_Wr(0x05);         // write 5 (May) to month word (REG5)
+;CoreTime.c,117 :: 		I2C1_Wr(0x05);         // write 5 - Tuesday (REG3)
 	MOVLW       5
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,119 :: 		I2C1_Wr(0x01);         // write 01 to year word (REG6)
-	MOVLW       1
+;CoreTime.c,118 :: 		I2C1_Wr(0x18);         // write 18 to date word (REG4)
+	MOVLW       24
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,120 :: 		I2C1_Stop();           // issue stop signal
+;CoreTime.c,119 :: 		I2C1_Wr(0x10);         // write 10 (Oct) to month word (REG5)
+	MOVLW       16
+	MOVWF       FARG_I2C1_Wr_data_+0 
+	CALL        _I2C1_Wr+0, 0
+;CoreTime.c,120 :: 		I2C1_Wr(0x12);         // write 12 to year word (REG6)
+	MOVLW       18
+	MOVWF       FARG_I2C1_Wr_data_+0 
+	CALL        _I2C1_Wr+0, 0
+;CoreTime.c,121 :: 		I2C1_Stop();           // issue stop signal
 	CALL        _I2C1_Stop+0, 0
-;CoreTime.c,122 :: 		I2C1_Start();          // issue start signal
+;CoreTime.c,123 :: 		I2C1_Start();          // issue start signal
 	CALL        _I2C1_Start+0, 0
-;CoreTime.c,123 :: 		I2C1_Wr(0xD0);       // address DS1307 which is 0xD0
+;CoreTime.c,124 :: 		I2C1_Wr(0xD0);       // address DS1307 which is 0xD0
 	MOVLW       208
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,124 :: 		I2C1_Wr(0);            // start from word at address 0
+;CoreTime.c,125 :: 		I2C1_Wr(0);            // start from word at address 0
 	CLRF        FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,125 :: 		I2C1_Wr(0);            // write 0 to REG0 (enable counting + 0 sec)
+;CoreTime.c,126 :: 		I2C1_Wr(0);            // write 0 to REG0 (enable counting + 0 sec)
 	CLRF        FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,126 :: 		I2C1_Stop();           // issue stop signal
+;CoreTime.c,127 :: 		I2C1_Stop();           // issue stop signal
 	CALL        _I2C1_Stop+0, 0
-;CoreTime.c,127 :: 		}
+;CoreTime.c,128 :: 		}
 L_end_Write_Time:
 	RETURN      0
 ; end of _Write_Time
 
 _GetTimeStruct:
 
-;CoreTime.c,129 :: 		void GetTimeStruct(TimeStruct *time) {
-;CoreTime.c,131 :: 		Read_Time(&local_sec,&local_min1,&local_hr,&local_week_day,&local_day,&local_mn,&local_year);
+;CoreTime.c,130 :: 		void GetTimeStruct(TimeStruct *time) {
+;CoreTime.c,132 :: 		char txtSec[5] = "";
+	CLRF        GetTimeStruct_txtSec_L0+0 
+	CLRF        GetTimeStruct_txtSec_L0+1 
+	CLRF        GetTimeStruct_txtSec_L0+2 
+	CLRF        GetTimeStruct_txtSec_L0+3 
+	CLRF        GetTimeStruct_txtSec_L0+4 
+	CLRF        GetTimeStruct_txtMin_L0+0 
+	CLRF        GetTimeStruct_txtMin_L0+1 
+	CLRF        GetTimeStruct_txtMin_L0+2 
+	CLRF        GetTimeStruct_txtMin_L0+3 
+	CLRF        GetTimeStruct_txtMin_L0+4 
+	CLRF        GetTimeStruct_txtHour_L0+0 
+	CLRF        GetTimeStruct_txtHour_L0+1 
+	CLRF        GetTimeStruct_txtHour_L0+2 
+	CLRF        GetTimeStruct_txtHour_L0+3 
+	CLRF        GetTimeStruct_txtHour_L0+4 
+	CLRF        GetTimeStruct_txtDay_L0+0 
+	CLRF        GetTimeStruct_txtDay_L0+1 
+	CLRF        GetTimeStruct_txtDay_L0+2 
+	CLRF        GetTimeStruct_txtDay_L0+3 
+	CLRF        GetTimeStruct_txtDay_L0+4 
+	CLRF        GetTimeStruct_txtMn_L0+0 
+	CLRF        GetTimeStruct_txtMn_L0+1 
+	CLRF        GetTimeStruct_txtMn_L0+2 
+	CLRF        GetTimeStruct_txtMn_L0+3 
+	CLRF        GetTimeStruct_txtMn_L0+4 
+	CLRF        GetTimeStruct_txtYear_L0+0 
+	CLRF        GetTimeStruct_txtYear_L0+1 
+	CLRF        GetTimeStruct_txtYear_L0+2 
+	CLRF        GetTimeStruct_txtYear_L0+3 
+	CLRF        GetTimeStruct_txtYear_L0+4 
+	CLRF        GetTimeStruct_txtWeekDay_L0+0 
+	CLRF        GetTimeStruct_txtWeekDay_L0+1 
+	CLRF        GetTimeStruct_txtWeekDay_L0+2 
+	CLRF        GetTimeStruct_txtWeekDay_L0+3 
+	CLRF        GetTimeStruct_txtWeekDay_L0+4 
+;CoreTime.c,140 :: 		Read_Time(&local_sec,&local_min1,&local_hr,&local_week_day,&local_day,&local_mn,&local_year);
 	MOVLW       GetTimeStruct_local_sec_L0+0
 	MOVWF       FARG_Read_Time_sec+0 
 	MOVLW       hi_addr(GetTimeStruct_local_sec_L0+0)
@@ -945,12 +958,180 @@ _GetTimeStruct:
 	MOVLW       hi_addr(GetTimeStruct_local_year_L0+0)
 	MOVWF       FARG_Read_Time_year+1 
 	CALL        _Read_Time+0, 0
-;CoreTime.c,132 :: 		time->ss = local_sec;
+;CoreTime.c,142 :: 		WordToHex(local_sec, txtSec);
+	MOVF        GetTimeStruct_local_sec_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtSec_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtSec_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,143 :: 		WordToHex(local_min1, txtMin);
+	MOVF        GetTimeStruct_local_min1_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtMin_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtMin_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,144 :: 		WordToHex(local_hr, txtHour);
+	MOVF        GetTimeStruct_local_hr_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtHour_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtHour_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,145 :: 		WordToHex(local_day, txtDay);
+	MOVF        GetTimeStruct_local_day_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtDay_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtDay_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,146 :: 		WordToHex(local_mn, txtMn);
+	MOVF        GetTimeStruct_local_mn_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtMn_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtMn_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,147 :: 		WordToHex(local_year, txtYear);
+	MOVF        GetTimeStruct_local_year_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtYear_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtYear_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,148 :: 		WordToHex(local_week_day, txtWeekDay);
+	MOVF        GetTimeStruct_local_week_day_L0+0, 0 
+	MOVWF       FARG_WordToHex_input+0 
+	MOVLW       0
+	MOVWF       FARG_WordToHex_input+1 
+	MOVLW       GetTimeStruct_txtWeekDay_L0+0
+	MOVWF       FARG_WordToHex_output+0 
+	MOVLW       hi_addr(GetTimeStruct_txtWeekDay_L0+0)
+	MOVWF       FARG_WordToHex_output+1 
+	CALL        _WordToHex+0, 0
+;CoreTime.c,150 :: 		MakeLastTwoChars(txtSec);
+	MOVLW       GetTimeStruct_txtSec_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtSec_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,151 :: 		MakeLastTwoChars(txtMin);
+	MOVLW       GetTimeStruct_txtMin_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtMin_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,152 :: 		MakeLastTwoChars(txtHour);
+	MOVLW       GetTimeStruct_txtHour_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtHour_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,153 :: 		MakeLastTwoChars(txtDay);
+	MOVLW       GetTimeStruct_txtDay_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtDay_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,154 :: 		MakeLastTwoChars(txtMn);
+	MOVLW       GetTimeStruct_txtMn_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtMn_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,155 :: 		MakeLastTwoChars(txtYear);
+	MOVLW       GetTimeStruct_txtYear_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtYear_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,156 :: 		MakeLastTwoChars(txtWeekDay);
+	MOVLW       GetTimeStruct_txtWeekDay_L0+0
+	MOVWF       FARG_MakeLastTwoChars_txt+0 
+	MOVLW       hi_addr(GetTimeStruct_txtWeekDay_L0+0)
+	MOVWF       FARG_MakeLastTwoChars_txt+1 
+	CALL        _MakeLastTwoChars+0, 0
+;CoreTime.c,158 :: 		local_sec = atoi(txtSec);
+	MOVLW       GetTimeStruct_txtSec_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtSec_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_sec_L0+0 
+;CoreTime.c,159 :: 		local_min1 = atoi(txtMin);
+	MOVLW       GetTimeStruct_txtMin_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtMin_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_min1_L0+0 
+;CoreTime.c,160 :: 		local_hr = atoi(txtHour);
+	MOVLW       GetTimeStruct_txtHour_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtHour_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_hr_L0+0 
+;CoreTime.c,161 :: 		local_day = atoi(txtDay);
+	MOVLW       GetTimeStruct_txtDay_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtDay_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_day_L0+0 
+;CoreTime.c,162 :: 		local_mn = atoi(txtMn);
+	MOVLW       GetTimeStruct_txtMn_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtMn_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_mn_L0+0 
+;CoreTime.c,163 :: 		local_year = atoi(txtYear);
+	MOVLW       GetTimeStruct_txtYear_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtYear_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_year_L0+0 
+;CoreTime.c,164 :: 		local_week_day = atoi(txtWeekDay);
+	MOVLW       GetTimeStruct_txtWeekDay_L0+0
+	MOVWF       FARG_atoi_s+0 
+	MOVLW       hi_addr(GetTimeStruct_txtWeekDay_L0+0)
+	MOVWF       FARG_atoi_s+1 
+	CALL        _atoi+0, 0
+	MOVF        R0, 0 
+	MOVWF       GetTimeStruct_local_week_day_L0+0 
+;CoreTime.c,166 :: 		time->ss = local_sec;
 	MOVFF       FARG_GetTimeStruct_time+0, FSR1
 	MOVFF       FARG_GetTimeStruct_time+1, FSR1H
 	MOVF        GetTimeStruct_local_sec_L0+0, 0 
 	MOVWF       POSTINC1+0 
-;CoreTime.c,133 :: 		time->mn = local_min1;
+;CoreTime.c,167 :: 		time->mn = local_min1;
 	MOVLW       1
 	ADDWF       FARG_GetTimeStruct_time+0, 0 
 	MOVWF       FSR1 
@@ -959,7 +1140,7 @@ _GetTimeStruct:
 	MOVWF       FSR1H 
 	MOVF        GetTimeStruct_local_min1_L0+0, 0 
 	MOVWF       POSTINC1+0 
-;CoreTime.c,134 :: 		time->hh = local_hr;
+;CoreTime.c,168 :: 		time->hh = local_hr;
 	MOVLW       2
 	ADDWF       FARG_GetTimeStruct_time+0, 0 
 	MOVWF       FSR1 
@@ -968,7 +1149,7 @@ _GetTimeStruct:
 	MOVWF       FSR1H 
 	MOVF        GetTimeStruct_local_hr_L0+0, 0 
 	MOVWF       POSTINC1+0 
-;CoreTime.c,135 :: 		time->md = local_day;
+;CoreTime.c,169 :: 		time->md = local_day;
 	MOVLW       3
 	ADDWF       FARG_GetTimeStruct_time+0, 0 
 	MOVWF       FSR1 
@@ -977,7 +1158,7 @@ _GetTimeStruct:
 	MOVWF       FSR1H 
 	MOVF        GetTimeStruct_local_day_L0+0, 0 
 	MOVWF       POSTINC1+0 
-;CoreTime.c,136 :: 		time->mo = local_mn;
+;CoreTime.c,170 :: 		time->mo = local_mn;
 	MOVLW       5
 	ADDWF       FARG_GetTimeStruct_time+0, 0 
 	MOVWF       FSR1 
@@ -986,7 +1167,7 @@ _GetTimeStruct:
 	MOVWF       FSR1H 
 	MOVF        GetTimeStruct_local_mn_L0+0, 0 
 	MOVWF       POSTINC1+0 
-;CoreTime.c,137 :: 		time->yy = local_year;
+;CoreTime.c,171 :: 		time->yy = local_year;
 	MOVLW       6
 	ADDWF       FARG_GetTimeStruct_time+0, 0 
 	MOVWF       FSR1 
@@ -997,15 +1178,24 @@ _GetTimeStruct:
 	MOVWF       POSTINC1+0 
 	MOVLW       0
 	MOVWF       POSTINC1+0 
-;CoreTime.c,138 :: 		}
+;CoreTime.c,172 :: 		time->wd = local_week_day;
+	MOVLW       4
+	ADDWF       FARG_GetTimeStruct_time+0, 0 
+	MOVWF       FSR1 
+	MOVLW       0
+	ADDWFC      FARG_GetTimeStruct_time+1, 0 
+	MOVWF       FSR1H 
+	MOVF        GetTimeStruct_local_week_day_L0+0, 0 
+	MOVWF       POSTINC1+0 
+;CoreTime.c,173 :: 		}
 L_end_GetTimeStruct:
 	RETURN      0
 ; end of _GetTimeStruct
 
 _MakeLastTwoChars:
 
-;CoreTime.c,140 :: 		void MakeLastTwoChars(char *txt){
-;CoreTime.c,142 :: 		strcpy(txtSec, txt);
+;CoreTime.c,175 :: 		void MakeLastTwoChars(char *txt){
+;CoreTime.c,177 :: 		strcpy(txtSec, txt);
 	MOVLW       MakeLastTwoChars_txtSec_L0+0
 	MOVWF       FARG_strcpy_to+0 
 	MOVLW       hi_addr(MakeLastTwoChars_txtSec_L0+0)
@@ -1015,15 +1205,15 @@ _MakeLastTwoChars:
 	MOVF        FARG_MakeLastTwoChars_txt+1, 0 
 	MOVWF       FARG_strcpy_from+1 
 	CALL        _strcpy+0, 0
-;CoreTime.c,143 :: 		txtSec[0] = txtSec[2];
+;CoreTime.c,178 :: 		txtSec[0] = txtSec[2];
 	MOVF        MakeLastTwoChars_txtSec_L0+2, 0 
 	MOVWF       MakeLastTwoChars_txtSec_L0+0 
-;CoreTime.c,144 :: 		txtSec[1] = txtSec[3];
+;CoreTime.c,179 :: 		txtSec[1] = txtSec[3];
 	MOVF        MakeLastTwoChars_txtSec_L0+3, 0 
 	MOVWF       MakeLastTwoChars_txtSec_L0+1 
-;CoreTime.c,145 :: 		txtSec[2] = '\0';
+;CoreTime.c,180 :: 		txtSec[2] = '\0';
 	CLRF        MakeLastTwoChars_txtSec_L0+2 
-;CoreTime.c,146 :: 		strcpy(txt, txtSec);
+;CoreTime.c,181 :: 		strcpy(txt, txtSec);
 	MOVF        FARG_MakeLastTwoChars_txt+0, 0 
 	MOVWF       FARG_strcpy_to+0 
 	MOVF        FARG_MakeLastTwoChars_txt+1, 0 
@@ -1033,15 +1223,15 @@ _MakeLastTwoChars:
 	MOVLW       hi_addr(MakeLastTwoChars_txtSec_L0+0)
 	MOVWF       FARG_strcpy_from+1 
 	CALL        _strcpy+0, 0
-;CoreTime.c,147 :: 		}
+;CoreTime.c,182 :: 		}
 L_end_MakeLastTwoChars:
 	RETURN      0
 ; end of _MakeLastTwoChars
 
 _DisplayTimeStruct:
 
-;CoreTime.c,149 :: 		void DisplayTimeStruct(TimeStruct *time) {
-;CoreTime.c,150 :: 		Display_Time_Core(&(time->ss), &(time->mn), &(time->hh), &(time->md), &(time->mo), &(time->yy));
+;CoreTime.c,184 :: 		void DisplayTimeStruct(TimeStruct *time) {
+;CoreTime.c,185 :: 		Display_Time_Core(&(time->ss), &(time->mn), &(time->hh), &(time->md), &(time->mo), &(time->yy));
 	MOVF        FARG_DisplayTimeStruct_time+0, 0 
 	MOVWF       FARG_Display_Time_Core_sec+0 
 	MOVF        FARG_DisplayTimeStruct_time+1, 0 
@@ -1077,7 +1267,7 @@ _DisplayTimeStruct:
 	ADDWFC      FARG_DisplayTimeStruct_time+1, 0 
 	MOVWF       FARG_Display_Time_Core_year+1 
 	CALL        _Display_Time_Core+0, 0
-;CoreTime.c,151 :: 		}
+;CoreTime.c,186 :: 		}
 L_end_DisplayTimeStruct:
 	RETURN      0
 ; end of _DisplayTimeStruct

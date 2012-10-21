@@ -6,7 +6,7 @@ Value=-1
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=CoreLCD.c
+Value=lcddisplay.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -30,15 +30,11 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=8
+Count=4
 File0=lcddisplay.c
-File1=coretime.h
-File2=CoreMultimediaCard.c
-File3=CoreMultimediaCard.h
-File4=CoreLCD.c
-File5=CoreTestKeypad.c
-File6=CoreTime.c
-File7=timelib.h
+File1=CoreTest.c
+File2=CoreTest.h
+File3=GlobalConst.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -46,21 +42,25 @@ Count=0
 [OTHER_FILES]
 Count=0
 [SEARCH_PATH]
-Count=7
+Count=9
 Path0=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\defs\
 Path1=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\
-Path2=D:\ACADS\EE188\time\
-Path3=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy - Copy\
-Path4=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy\
-Path5=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY\
-Path6=C:\Users\Bangonkali\Desktop\source_code_a\
+Path2=D:\Chron\mikroc_src\
+Path3=D:\ACADS\EE188\Chron\mikroc_src\
+Path4=D:\ACADS\EE188\time\
+Path5=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy - Copy\
+Path6=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy\
+Path7=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY\
+Path8=C:\Users\Bangonkali\Desktop\source_code_a\
 [HEADER_PATH]
-Count=3
+Count=5
 Path0=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy\
 Path1=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy - Copy\
 Path2=D:\ACADS\EE188\time\
+Path3=D:\ACADS\EE188\Chron\mikroc_src\
+Path4=D:\Chron\mikroc_src\
 [HEADERS]
-Count=8
+Count=10
 File0=ConfigLCD.h
 File1=CoreTest.h
 File2=CoreTime.h
@@ -69,24 +69,27 @@ File4=CoreMultimediaCard.h
 File5=CoreTestKeypad.h
 File6=GlobalConst.h
 File7=ConfigMultimediaCard.h
+File8=CoreUSB.h
+File9=CoreLCD.h
 [PLDS]
 Count=0
 [Useses]
-Count=14
+Count=15
 File0=Lcd
 File1=Lcd_Constants
 File2=I2C
 File3=Conversions
-File4=C_String
-File5=USB
-File6=Time
-File7=Keypad4x4
-File8=UART
-File9=C_Type
-File10=Spi
-File11=Mmc_Fat16_Config
-File12=Mmc_FAT16
-File13=Mmc
+File4=USB
+File5=Time
+File6=Keypad4x4
+File7=UART
+File8=C_Type
+File9=Spi
+File10=Mmc_Fat16_Config
+File11=Mmc_FAT16
+File12=Mmc
+File13=C_Stdlib
+File14=C_String
 [EXPANDED NODES]
 Node1=Sources
 Node2=Header Files

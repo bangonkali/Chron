@@ -20,36 +20,7 @@ main
 					Delay_5500us
 					Delay_50us
 	TestInitializeAllPins
-	GetOperationMode
-		LCD_2Row_Write
-			LCD_1Row_Write
-				Lcd_Cmd
-					Delay_1us
-					Delay_5500us
-					Delay_50us
-				Lcd_Out_CP
-					Lcd_Chr_CP
-						Lcd_Cmd
-							Delay_1us
-							Delay_5500us
-							Delay_50us
-			Lcd_Cmd
-				Delay_1us
-				Delay_5500us
-				Delay_50us
-			Lcd_Out_CP
-				Lcd_Chr_CP
-					Lcd_Cmd
-						Delay_1us
-						Delay_5500us
-						Delay_50us
-		Keypad_Get_Key
-			Keypad_Init
-			Keypad_Key_Click
-				Keypad_Key_Press
-					Delay_1us
-				Delay_10us
-			Keypad_Decode
+	GetOpMode
 	LCD_1Row_Write
 		Lcd_Cmd
 			Delay_1us
@@ -61,6 +32,33 @@ main
 					Delay_1us
 					Delay_5500us
 					Delay_50us
+	I2C_Test_EEPROM
+		init_core
+		I2C1_Init
+		I2C1_Start
+			I2C1_Is_Idle
+		I2C1_Wr
+		I2C1_Stop
+		Delay_100ms
+		LCD_1Row_Write
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+			Lcd_Out_CP
+				Lcd_Chr_CP
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
+		Lcd_Chr
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+		I2C1_Repeated_Start
+		I2C1_Rd
+		GetOpMode
 	KeypadTest_Begin
 		Lcd_Cmd
 			Delay_1us
@@ -486,6 +484,13 @@ main
 					____DoIFC
 				____DoIFC
 	USB_Mode
+		init_core
+		I2C1_Init
+		Write_Time
+			I2C1_Start
+				I2C1_Is_Idle
+			I2C1_Wr
+			I2C1_Stop
 		HID_Enable
 			USB_Device_Init_Int
 				USB_Init_Desc
@@ -494,18 +499,85 @@ main
 			USB_Attach_Device
 				USB_Configure
 				USB_Enable_Interrupts
+		GetOpMode
+		LCD_1Row_Write
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+			Lcd_Out_CP
+				Lcd_Chr_CP
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
 		HID_Read
 			Gen_Read
 				USB_Handle_Busy
 				USB_Transfer_Packet_Int
-		strstr
-			strlen
-			strncmp
-			strchr
+		USB_Buffer_Time
+			GetTimeStruct
+				Read_Time
+					I2C1_Start
+						I2C1_Is_Idle
+					I2C1_Wr
+					I2C1_Repeated_Start
+					I2C1_Rd
+					I2C1_Stop
+				WordToHex
+				MakeLastTwoChars
+					strcpy
+				atoi
+					isdigit
+					Mul_16x16_U
 		HID_Write
 			Gen_Write
 				USB_Handle_Busy
 				USB_Transfer_Packet_Int
+		I2C_Read_Byte_From_EEPROM
+			I2C1_Init
+			I2C1_Start
+				I2C1_Is_Idle
+			I2C1_Wr
+			I2C1_Repeated_Start
+			I2C1_Rd
+			I2C1_Stop
+		I2C_Write_Byte_To_EEPROM
+			I2C1_Init
+			I2C1_Start
+				I2C1_Is_Idle
+			I2C1_Wr
+			I2C1_Stop
+		TestUSBInput
+			ShortToStr
+				ByteToStr
+					Div_8x8_U
+			strcpy
+			strcat
+		LCD_2Row_Write
+			LCD_1Row_Write
+				Lcd_Cmd
+					Delay_1us
+					Delay_5500us
+					Delay_50us
+				Lcd_Out_CP
+					Lcd_Chr_CP
+						Lcd_Cmd
+							Delay_1us
+							Delay_5500us
+							Delay_50us
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+			Lcd_Out_CP
+				Lcd_Chr_CP
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
+		HID_Disable
+			USB_Disable_Module
 	Lcd_Cmd
 		Delay_1us
 		Delay_5500us
@@ -513,43 +585,60 @@ main
 	TIME_Mode
 		init_core
 		I2C1_Init
-		TestStripeAllPins
-		Read_Time
+		Write_Time
 			I2C1_Start
 				I2C1_Is_Idle
 			I2C1_Wr
-			I2C1_Repeated_Start
-			I2C1_Rd
 			I2C1_Stop
-		Transform_Time
-		Lcd_Cmd
-			Delay_1us
-			Delay_5500us
-			Delay_50us
-		Display_Time
-			Lcd_Init
-				Delay_5500us
-				Delay_1us
-			Lcd_Cmd
-				Delay_1us
-				Delay_5500us
-				Delay_50us
-			Lcd_Out
+		GetOpMode
+		GetTimeStruct
+			Read_Time
+				I2C1_Start
+					I2C1_Is_Idle
+				I2C1_Wr
+				I2C1_Repeated_Start
+				I2C1_Rd
+				I2C1_Stop
+			WordToHex
+			MakeLastTwoChars
+				strcpy
+			atoi
+				isdigit
+				Mul_16x16_U
+		DisplayTimeStruct
+			Display_Time_Core
+				__CC2DW
+				ShortToStr
+					ByteToStr
+						Div_8x8_U
+				MakeLastTwoChars
+					strcpy
+				strcat
 				Lcd_Cmd
 					Delay_1us
 					Delay_5500us
 					Delay_50us
+				Lcd_Out
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
+					Lcd_Chr_CP
+						Lcd_Cmd
+							Delay_1us
+							Delay_5500us
+							Delay_50us
+		LCD_1Row_Write
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+			Lcd_Out_CP
 				Lcd_Chr_CP
 					Lcd_Cmd
 						Delay_1us
 						Delay_5500us
 						Delay_50us
-			Div_8x8_U
-			Lcd_Chr
-				Lcd_Cmd
-					Delay_1us
-					Delay_5500us
-					Delay_50us
 	LCD_Mode
 		Lcd_Cmd
 			Delay_1us

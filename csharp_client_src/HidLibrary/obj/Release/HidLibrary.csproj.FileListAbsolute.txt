@@ -1,0 +1,4 @@
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\bin\Release\HidLibrary.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\bin\Release\HidLibrary.pdb
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\obj\Release\HidLibrary.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\obj\Release\HidLibrary.pdb

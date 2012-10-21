@@ -1,7 +1,7 @@
-#line 1 "D:/ACADS/EE188/time/CoreTime.c"
-#line 1 "d:/acads/ee188/time/coretime.h"
-#line 1 "d:/acads/ee188/time/timelib.h"
-#line 29 "d:/acads/ee188/time/timelib.h"
+#line 1 "D:/Chron/mikroc_src/CoreTime.c"
+#line 1 "d:/chron/mikroc_src/coretime.h"
+#line 1 "d:/chron/mikroc_src/timelib.h"
+#line 29 "d:/chron/mikroc_src/timelib.h"
 typedef struct
  {
  unsigned char ss ;
@@ -12,12 +12,12 @@ typedef struct
  unsigned char mo ;
  unsigned int yy ;
  } TimeStruct ;
-#line 43 "d:/acads/ee188/time/timelib.h"
+#line 43 "d:/chron/mikroc_src/timelib.h"
 extern long Time_jd1970 ;
-#line 48 "d:/acads/ee188/time/timelib.h"
+#line 48 "d:/chron/mikroc_src/timelib.h"
 long Time_dateToEpoch(TimeStruct *ts) ;
 void Time_epochToDate(long e, TimeStruct *ts) ;
-#line 10 "d:/acads/ee188/time/coretime.h"
+#line 10 "d:/chron/mikroc_src/coretime.h"
 void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year);
 void Display_Time(char sec, char min, char hr, char week_day, char day, char mn, char year);
 void Transform_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
@@ -27,7 +27,7 @@ void Write_Time();
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(char *txt);
 void DisplayTimeStruct(TimeStruct *time);
-#line 7 "D:/ACADS/EE188/time/CoreTime.c"
+#line 7 "D:/Chron/mikroc_src/CoreTime.c"
 void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year) {
 
  char txtSec[5] = "";
@@ -39,12 +39,12 @@ void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char
  char txtDisplayRow1[16] = "";
  char txtDisplayRow2[16] = "";
 
- WordToHex(*sec, txtSec);
- WordToHex(*min, txtMin);
- WordToHex(*hr, txtHour);
- WordToHex(*day, txtDay);
- WordToHex(*mn, txtMn);
- WordToHex(*year, txtYear);
+ ShortToStr(*sec, txtSec);
+ ShortToStr(*min, txtMin);
+ ShortToStr(*hr, txtHour);
+ ShortToStr(*day, txtDay);
+ ShortToStr(*mn, txtMn);
+ ShortToStr(*year, txtYear);
 
  MakeLastTwoChars(txtSec);
  MakeLastTwoChars(txtMin);
@@ -135,12 +135,13 @@ void Write_Time() {
  I2C1_Wr(0xD0);
  I2C1_Wr(0);
  I2C1_Wr(0x80);
- I2C1_Wr(0);
- I2C1_Wr(0x17);
- I2C1_Wr(0x02);
+ I2C1_Wr(0x06);
  I2C1_Wr(0x04);
+
  I2C1_Wr(0x05);
- I2C1_Wr(0x01);
+ I2C1_Wr(0x18);
+ I2C1_Wr(0x10);
+ I2C1_Wr(0x12);
  I2C1_Stop();
 
  I2C1_Start();
@@ -152,13 +153,47 @@ void Write_Time() {
 
 void GetTimeStruct(TimeStruct *time) {
  unsigned char local_sec, local_min1, local_hr, local_week_day, local_day, local_mn, local_year;
+ char txtSec[5] = "";
+ char txtMin[5] = "";
+ char txtHour[5] = "";
+ char txtDay[5] = "";
+ char txtMn[5] = "";
+ char txtYear[5] = "";
+ char txtWeekDay[5] = "";
+
  Read_Time(&local_sec,&local_min1,&local_hr,&local_week_day,&local_day,&local_mn,&local_year);
+
+ WordToHex(local_sec, txtSec);
+ WordToHex(local_min1, txtMin);
+ WordToHex(local_hr, txtHour);
+ WordToHex(local_day, txtDay);
+ WordToHex(local_mn, txtMn);
+ WordToHex(local_year, txtYear);
+ WordToHex(local_week_day, txtWeekDay);
+
+ MakeLastTwoChars(txtSec);
+ MakeLastTwoChars(txtMin);
+ MakeLastTwoChars(txtHour);
+ MakeLastTwoChars(txtDay);
+ MakeLastTwoChars(txtMn);
+ MakeLastTwoChars(txtYear);
+ MakeLastTwoChars(txtWeekDay);
+
+ local_sec = atoi(txtSec);
+ local_min1 = atoi(txtMin);
+ local_hr = atoi(txtHour);
+ local_day = atoi(txtDay);
+ local_mn = atoi(txtMn);
+ local_year = atoi(txtYear);
+ local_week_day = atoi(txtWeekDay);
+
  time->ss = local_sec;
  time->mn = local_min1;
  time->hh = local_hr;
  time->md = local_day;
  time->mo = local_mn;
  time->yy = local_year;
+ time->wd = local_week_day;
 }
 
 void MakeLastTwoChars(char *txt){

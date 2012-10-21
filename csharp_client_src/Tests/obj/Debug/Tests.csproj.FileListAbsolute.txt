@@ -1,0 +1,14 @@
+D:\Chron\csharp_client_src\Tests\bin\Debug\Tests.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\Tests.pdb
+D:\Chron\csharp_client_src\Tests\bin\Debug\HidLibrary.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\NSubstitute.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\nunit.framework.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\nunit.mocks.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\pnunit.framework.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\Should.dll
+D:\Chron\csharp_client_src\Tests\bin\Debug\HidLibrary.pdb
+D:\Chron\csharp_client_src\Tests\bin\Debug\NSubstitute.xml
+D:\Chron\csharp_client_src\Tests\bin\Debug\nunit.framework.xml
+D:\Chron\csharp_client_src\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+D:\Chron\csharp_client_src\Tests\obj\Debug\Tests.dll
+D:\Chron\csharp_client_src\Tests\obj\Debug\Tests.pdb

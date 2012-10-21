@@ -58,6 +58,7 @@ abden
 abden_bit
 abdovf
 abdovf_bit
+abs
 access
 ackdt
 ackdt_bit
@@ -130,6 +131,9 @@ an3
 an3_bit
 an4
 an4_bit
+atof
+atoi
+atol
 b0
 b1
 b2
@@ -355,6 +359,7 @@ dir__bit
 display_time
 display_time_core
 displaytimestruct
+div
 div_16x16_s
 div_16x16_s_l
 div_16x16_u
@@ -549,6 +554,7 @@ gen_read
 gen_write
 get_fosc_khz
 getoperationmode
+getopmode
 gettimestruct
 gie
 gie_bit
@@ -594,10 +600,13 @@ i2c_dat
 i2c_dat_bit
 i2c_read
 i2c_read_bit
+i2c_read_byte_from_eeprom
 i2c_start_
 i2c_start__bit
 i2c_stop_
 i2c_stop__bit
+i2c_test_eeprom
+i2c_write_byte_to_eeprom
 i2c1_init
 i2c1_is_idle
 i2c1_rd
@@ -672,6 +681,7 @@ intedg2_bit
 interrupt
 intsrc
 intsrc_bit
+inttochar
 inttohex
 inttostr
 inttostrwithzeros
@@ -711,6 +721,7 @@ keypad_key_press
 keypadport
 keypadtest_begin
 kk
+labs
 lata
 lata0
 lata0_bit
@@ -801,6 +812,7 @@ lcd_rs
 lcd_rs_direction
 lcd_write_heart
 lcd_write_line
+ldiv
 lf
 longint2double
 longinttohex
@@ -852,12 +864,16 @@ m_test_routine
 m_test_verify
 main
 makelasttwochars
+max
 max_files
 memchr
 memcmp
 memcpy
 memmove
+mempages_read
+mempages_write
 memset
+min
 mmc_buffer
 mmc_chip_select
 mmc_chip_select_direction
@@ -1114,6 +1130,7 @@ ra5
 ra5_bit
 ra6
 ra6_bit
+rand
 rb0
 rb0_bit
 rb1
@@ -1204,6 +1221,7 @@ re3_bit
 read_time
 read_write
 read_write_bit
+readbuff
 report
 res
 res032
@@ -1297,6 +1315,7 @@ sppip
 sppip_bit
 sppown
 sppown_bit
+srand
 sren
 sren_bit
 sspadd
@@ -1443,6 +1462,7 @@ tblptrl
 tblptru
 testinitializeallpins
 teststripeallpins
+testusbinput
 time_datetoepoch
 time_epochtodate
 time_jd1970
@@ -1657,6 +1677,7 @@ ufrmh
 ufrml
 uie
 uir
+uldiv
 uoemon
 uoemon_bit
 upuen
@@ -1666,6 +1687,8 @@ urstie_bit
 urstif
 urstif_bit
 usb_break
+usb_buffer_clear
+usb_buffer_time
 usb_config_dsc_ptr
 usb_hid_ep
 usb_hid_rpt_size
@@ -1721,6 +1744,7 @@ wren_bit
 wrerr
 wrerr_bit
 write_time
+writebuff
 wrspp
 wrspp_bit
 ws0
@@ -1733,5 +1757,6 @@ ws3
 ws3_bit
 wue
 wue_bit
+xtoi
 z
 z_bit
