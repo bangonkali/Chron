@@ -1,7 +1,0 @@
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\bin\Debug\ChronUSBData.dll
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\bin\Debug\ChronUSBData.pdb
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\bin\Debug\HidLibrary.dll
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\bin\Debug\HidLibrary.pdb
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\obj\Debug\ChronUSBData.csprojResolveAssemblyReference.cache
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\obj\Debug\ChronUSBData.dll
-D:\Chron\csharp_client_src\Client_CSharp\ChronUSBData\obj\Debug\ChronUSBData.pdb
