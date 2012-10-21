@@ -7,13 +7,40 @@ namespace ChronCore
 {
 	class ChronEntry
 	{
-		public ChronUnit Minute { get; set; }
-		public ChronUnit Hour { get; set; }
-		public ChronUnit DayMonth { get; set; }
-		public ChronUnit DayWeek { get; set; }
-		public ChronUnit Month { get; set; }
-		public ChronUnit Year { get; set; }
-		public ChronUnit Enabled { get; set; }
-		public ChronUnit Sync { get; set; }
+		private byte[] mEntry = new byte[20];
+		public enum EntryAddresing {
+			Enable = 0,
+			DeviceID,
+			DeviceState,
+			MinutesLower,
+			MinutesClassifier,
+			MinutesUpper,
+			HourLower,
+			HourClassifier,
+			HourUpper,
+			MonthDayLower,
+			MonthDayClassifier,
+			MonthDayUpper,
+			WeekdayLower,
+			WeekdayClassifier,
+			WeekdayUpper,
+			MonthLower,
+			MonthClassifier,
+			MonthUpper,
+			YearLower,
+			YearClassifier,
+			YearUpper
+		}
+
+		public bool setMinutes(string l, string c, string h)
+		{
+			byte buffer;
+			
+			if (byte.TryParse(l, out mEntry[(int)EntryAddresing.MinutesLower]))
+			{
+				mEntry[(int)EntryAddresing.MinutesLower] = buffer;
+				return true;
+			} 
+		}
 	}
 }

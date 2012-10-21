@@ -11,8 +11,8 @@ namespace Client_CSharp
 {
 	public partial class frmEntry : Form
 	{
-		public string[] DaysOfWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satruday" };
-		public string[] MonthsOfYear = { "Jan", "Feb" };
+		public byte[] ByteArray = new byte[21];
+
 		public frmEntry()
 		{
 			InitializeComponent();
@@ -40,14 +40,14 @@ namespace Client_CSharp
 			cboMonthClassifier.Items.Add("To");
 			cboMonthClassifier.Items.Add("Every After");
 
-			cboDayLower.Items.Add("Every Day");
+			cboDayLower.Items.Add("*");
 			for (short x = 0; x <= 31; x++)
 			{
 				cboDayLower.Items.Add(x.ToString());
 				cboDayUpper.Items.Add(x.ToString());
 			}
 
-			cboMinuteLower.Items.Add("Every Minute");
+			cboMinuteLower.Items.Add("*");
 			for (short x = 0; x < 60; x++)
 			{
 				cboMinuteLower.Items.Add(x.ToString());
@@ -55,7 +55,7 @@ namespace Client_CSharp
 			}
 
 			now = DateTime.Now;
-			cboYearLower.Items.Add("Every Year");
+			cboYearLower.Items.Add("*");
 			for (short x = 0; x < 10; x++)
 			{
 				cboYearLower.Items.Add(now.ToString("yyyy"));
@@ -64,7 +64,7 @@ namespace Client_CSharp
 			}
 
 			now = DateTime.Now;
-			cboMonthLower.Items.Add("Every Month");
+			cboMonthLower.Items.Add("*");
 			for (int i = 0; i < 12; i++)
 			{
 				cboMonthLower.Items.Add(now.ToString("MMMM"));
@@ -72,22 +72,31 @@ namespace Client_CSharp
 				now = now.AddMonths(1);
 			}
 
-			cboHourLower.Items.Add("Every Hour");
+			cboHourLower.Items.Add("*");
 			for (short x = 0; x < 60; x++)
 			{
 				cboHourLower.Items.Add(x.ToString());
 				cboHourUpper.Items.Add(x.ToString());
 			}
 
-			cboWeekDayLower.Items.Add("Every Day of Week");
+			cboWeekDayLower.Items.Add("*");
 			for (short x = 0; x < 7; x++)
 			{
-				cboWeekDayLower.Items.Add(DaysOfWeek[x]);
-				cboWeekDayUpper.Items.Add(DaysOfWeek[x]);
+				cboWeekDayLower.Items.Add(ChronCore.ChronUnit.mDaysOfWeek[x]);
+				cboWeekDayUpper.Items.Add(ChronCore.ChronUnit.mDaysOfWeek[x]);
 			}
+
+			cboDeviceState.Items.Add("On");
+			cboDeviceState.Items.Add("Off");
+
 		}
 
 		private void frmEntry_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnSave_Click(object sender, EventArgs e)
 		{
 
 		}

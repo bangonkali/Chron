@@ -74,6 +74,7 @@
 			this.btnSave.TabIndex = 0;
 			this.btnSave.Text = "&Save";
 			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// lblMinute
 			// 
@@ -86,6 +87,7 @@
 			// 
 			// cboMinuteLower
 			// 
+			this.cboMinuteLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMinuteLower.FormattingEnabled = true;
 			this.cboMinuteLower.Location = new System.Drawing.Point(102, 66);
 			this.cboMinuteLower.Name = "cboMinuteLower";
@@ -94,6 +96,7 @@
 			// 
 			// cboMinuteClassifier
 			// 
+			this.cboMinuteClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMinuteClassifier.FormattingEnabled = true;
 			this.cboMinuteClassifier.Location = new System.Drawing.Point(237, 66);
 			this.cboMinuteClassifier.Name = "cboMinuteClassifier";
@@ -102,6 +105,7 @@
 			// 
 			// cboMinuteUpper
 			// 
+			this.cboMinuteUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMinuteUpper.FormattingEnabled = true;
 			this.cboMinuteUpper.Location = new System.Drawing.Point(372, 66);
 			this.cboMinuteUpper.Name = "cboMinuteUpper";
@@ -130,6 +134,7 @@
 			// 
 			// cboHourUpper
 			// 
+			this.cboHourUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboHourUpper.FormattingEnabled = true;
 			this.cboHourUpper.Location = new System.Drawing.Point(372, 93);
 			this.cboHourUpper.Name = "cboHourUpper";
@@ -138,6 +143,7 @@
 			// 
 			// cboHourClassifier
 			// 
+			this.cboHourClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboHourClassifier.FormattingEnabled = true;
 			this.cboHourClassifier.Location = new System.Drawing.Point(237, 93);
 			this.cboHourClassifier.Name = "cboHourClassifier";
@@ -146,6 +152,7 @@
 			// 
 			// cboHourLower
 			// 
+			this.cboHourLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboHourLower.FormattingEnabled = true;
 			this.cboHourLower.Location = new System.Drawing.Point(102, 93);
 			this.cboHourLower.Name = "cboHourLower";
@@ -173,6 +180,7 @@
 			// 
 			// cboDayUpper
 			// 
+			this.cboDayUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDayUpper.FormattingEnabled = true;
 			this.cboDayUpper.Location = new System.Drawing.Point(372, 120);
 			this.cboDayUpper.Name = "cboDayUpper";
@@ -181,6 +189,7 @@
 			// 
 			// cboDayClassifier
 			// 
+			this.cboDayClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDayClassifier.FormattingEnabled = true;
 			this.cboDayClassifier.Location = new System.Drawing.Point(237, 120);
 			this.cboDayClassifier.Name = "cboDayClassifier";
@@ -189,6 +198,7 @@
 			// 
 			// cboDayLower
 			// 
+			this.cboDayLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDayLower.FormattingEnabled = true;
 			this.cboDayLower.Location = new System.Drawing.Point(102, 120);
 			this.cboDayLower.Name = "cboDayLower";
@@ -216,6 +226,7 @@
 			// 
 			// cboWeekDayUpper
 			// 
+			this.cboWeekDayUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboWeekDayUpper.FormattingEnabled = true;
 			this.cboWeekDayUpper.Location = new System.Drawing.Point(372, 147);
 			this.cboWeekDayUpper.Name = "cboWeekDayUpper";
@@ -224,6 +235,7 @@
 			// 
 			// cboWeekDayClassifier
 			// 
+			this.cboWeekDayClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboWeekDayClassifier.FormattingEnabled = true;
 			this.cboWeekDayClassifier.Location = new System.Drawing.Point(237, 147);
 			this.cboWeekDayClassifier.Name = "cboWeekDayClassifier";
@@ -232,6 +244,7 @@
 			// 
 			// cboWeekDayLower
 			// 
+			this.cboWeekDayLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboWeekDayLower.FormattingEnabled = true;
 			this.cboWeekDayLower.Location = new System.Drawing.Point(102, 147);
 			this.cboWeekDayLower.Name = "cboWeekDayLower";
@@ -259,6 +272,7 @@
 			// 
 			// cboMonthUpper
 			// 
+			this.cboMonthUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMonthUpper.FormattingEnabled = true;
 			this.cboMonthUpper.Location = new System.Drawing.Point(372, 174);
 			this.cboMonthUpper.Name = "cboMonthUpper";
@@ -267,6 +281,7 @@
 			// 
 			// cboMonthClassifier
 			// 
+			this.cboMonthClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMonthClassifier.FormattingEnabled = true;
 			this.cboMonthClassifier.Location = new System.Drawing.Point(237, 174);
 			this.cboMonthClassifier.Name = "cboMonthClassifier";
@@ -275,6 +290,7 @@
 			// 
 			// cboMonthLower
 			// 
+			this.cboMonthLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMonthLower.FormattingEnabled = true;
 			this.cboMonthLower.Location = new System.Drawing.Point(102, 174);
 			this.cboMonthLower.Name = "cboMonthLower";
@@ -302,6 +318,7 @@
 			// 
 			// cboYearUpper
 			// 
+			this.cboYearUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboYearUpper.FormattingEnabled = true;
 			this.cboYearUpper.Location = new System.Drawing.Point(372, 201);
 			this.cboYearUpper.Name = "cboYearUpper";
@@ -310,6 +327,7 @@
 			// 
 			// cboYearClassifier
 			// 
+			this.cboYearClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboYearClassifier.FormattingEnabled = true;
 			this.cboYearClassifier.Location = new System.Drawing.Point(237, 201);
 			this.cboYearClassifier.Name = "cboYearClassifier";
@@ -318,6 +336,7 @@
 			// 
 			// cboYearLower
 			// 
+			this.cboYearLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboYearLower.FormattingEnabled = true;
 			this.cboYearLower.Location = new System.Drawing.Point(102, 201);
 			this.cboYearLower.Name = "cboYearLower";
@@ -344,6 +363,7 @@
 			// 
 			// cboDeviceID
 			// 
+			this.cboDeviceID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDeviceID.FormattingEnabled = true;
 			this.cboDeviceID.Location = new System.Drawing.Point(102, 24);
 			this.cboDeviceID.Name = "cboDeviceID";
@@ -352,6 +372,7 @@
 			// 
 			// cboDeviceState
 			// 
+			this.cboDeviceState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDeviceState.FormattingEnabled = true;
 			this.cboDeviceState.Location = new System.Drawing.Point(266, 24);
 			this.cboDeviceState.Name = "cboDeviceState";
