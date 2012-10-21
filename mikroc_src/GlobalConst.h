@@ -20,7 +20,6 @@
   void init_main();
   void GetOperationMode();
   void USB_Mode();
-  void LCD_Mode();
   void TIME_Mode();
   void I2C_Test_EEPROM();
   short GetOpMode();

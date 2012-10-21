@@ -22,7 +22,6 @@
  void init_main();
  void GetOperationMode();
  void USB_Mode();
- void LCD_Mode();
  void TIME_Mode();
  void I2C_Test_EEPROM();
  short GetOpMode();
@@ -90,30 +89,6 @@ void Write_Time();
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(char *txt);
 void DisplayTimeStruct(TimeStruct *time);
-#line 1 "d:/chron/mikroc_src/coremultimediacard.h"
-
-
-
-void UART1_Write_Line(char *uart_text);
-void M_Create_New_File();
-void M_Create_Multiple_Files();
-void M_Open_File_Rewrite();
-void M_Open_File_Append();
-void M_Open_File_Read();
-void M_Delete_File();
-void M_Test_File_Exist();
-void M_Create_Swap_File();
-void M_Test_Begin();
-void M_Test_Routine();
-int M_Test_Verify();
-void LCD_Write_Line(char *uart_text);
-#line 1 "d:/chron/mikroc_src/coretestkeypad.h"
-
-
-
-void KeypadTest_Begin();
-unsigned char Keypad_Get_Key();
-void Keypad_Decode(unsigned char *kp);
 #line 1 "d:/chron/mikroc_src/corelcd.h"
 
 
@@ -122,7 +97,7 @@ void LCD_2Row_Write(char *textstring_a, char *textstring_b);
 void LCD_1Row_Write(char *textstring_a);
 void LCD_Write_Heart(char pos_row, char pos_char);
 #line 1 "d:/chron/mikroc_src/timelib.h"
-#line 11 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 9 "D:/Chron/mikroc_src/lcddisplay.c"
 enum OPSTATES {
  LCD_TEST = 49,
  USB_TEST,
@@ -169,13 +144,8 @@ void init_main() {
  Delay_ms(1000);
 }
 
-void GetOperationMode() {
- LCD_2Row_Write("Choose mode of", "Operation:");
- opstate = Keypad_Get_Key();
-}
-
 void USB_Mode() {
-#line 73 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 66 "D:/Chron/mikroc_src/lcddisplay.c"
  unsigned char page=0, address=0, address_count=0, entry_on_page=0;
  unsigned char is_read_broken = 0, is_write_broken = 0;
  unsigned char str_usbDiagnostics[16];
@@ -316,13 +286,6 @@ void USB_Buffer_Time() {
  writebuff[8] = t.yy;
 }
 
-void LCD_Mode() {
- Lcd_Cmd(_LCD_CLEAR);
- LCD_2Row_Write("Johannah Mae", "I   U");
- LCD_Write_Heart(2, 3);
- Lcd_Cmd(_LCD_CURSOR_OFF);
-}
-
 void TIME_Mode() {
  TimeStruct t;
 
@@ -411,26 +374,13 @@ short GetOpMode() {
 }
 
 void main() {
-
  init_main();
- TestInitializeAllPins();
-
  while (1) {
-
  GetOpMode();
-
  switch (opstate) {
  case I2C_EEPROM_TEST:
  LCD_1Row_Write("I2C_EEPROM_TEST");
  I2C_Test_EEPROM();
- break;
- case KEYPAD_TEST:
- LCD_1Row_Write("Keypad Mode");
- KeypadTest_Begin();
- break;
- case MMC_TEST:
- LCD_1Row_Write("SPI MMC Mode");
- M_Test_Begin();
  break;
  case USB_TEST:
  LCD_1Row_Write("USB Mode");
@@ -442,9 +392,6 @@ void main() {
  Delay_ms(200);
  TIME_Mode();
  break;
- case LCD_TEST:
- LCD_Mode();
- Delay_ms(10000);
  default:
  LCD_2Row_Write("Operation Not", "Allowed");
  Delay_ms(1000);

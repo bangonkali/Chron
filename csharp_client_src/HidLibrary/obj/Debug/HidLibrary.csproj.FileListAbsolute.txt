@@ -2,3 +2,8 @@ D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1
 D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\bin\Debug\HidLibrary.pdb
 D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\obj\Debug\HidLibrary.dll
 D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\HidLibrary\obj\Debug\HidLibrary.pdb
+D:\Chron\csharp_client_src\HidLibrary\bin\Debug\HidLibrary.dll
+D:\Chron\csharp_client_src\HidLibrary\bin\Debug\HidLibrary.pdb
+D:\Chron\csharp_client_src\HidLibrary\obj\Debug\HidLibrary.csprojResolveAssemblyReference.cache
+D:\Chron\csharp_client_src\HidLibrary\obj\Debug\HidLibrary.dll
+D:\Chron\csharp_client_src\HidLibrary\obj\Debug\HidLibrary.pdb
