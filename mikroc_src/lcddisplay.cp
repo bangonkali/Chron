@@ -1,5 +1,5 @@
-#line 1 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
-#line 1 "d:/acads/ee188/chron/mikroc_src/globalconst.h"
+#line 1 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 1 "d:/chron/mikroc_src/globalconst.h"
 
 
 
@@ -7,39 +7,40 @@
 
 
 
- char cnt;
- char keypadPort at PORTD;
+char cnt;
+char keypadPort at PORTD;
 
- char kk;
+char kk;
 
- unsigned char mempages_read[] = {0xA1, 0xA3, 0xA5, 0xA7, 0xA9, 0xAB, 0xAD, 0xAF};
- unsigned char mempages_write[] = {0xA0, 0xA2, 0xA4, 0xA6, 0xA8, 0xAA, 0xAC, 0xAE};
+unsigned char mempages_read[] = {0xA1, 0xA3, 0xA5, 0xA7, 0xA9, 0xAB, 0xAD, 0xAF};
+unsigned char mempages_write[] = {0xA0, 0xA2, 0xA4, 0xA6, 0xA8, 0xAA, 0xAC, 0xAE};
+unsigned char numberofentries;
 
- char *res;
- char txt_sub[] = "98";
+char *res;
+char txt_sub[] = "98";
 
- void USB_Buffer_Clear();
- void interrupt();
- void init_core();
- void init_main();
- void GetOperationMode();
- void USB_Mode();
- void TIME_Mode();
- void I2C_Test_EEPROM();
- short GetOpMode();
+void USB_Buffer_Clear();
+void interrupt();
+void init_core();
+void init_main();
+void GetOperationMode();
+void USB_Mode();
+void TIME_Mode();
+void I2C_Test_EEPROM();
+short GetOpMode();
 
- void USB_Buffer_Time();
- unsigned char I2C_Read_Byte_From_EEPROM(unsigned char page_write, unsigned char page_read, unsigned char address);
- void I2C_Write_Byte_To_EEPROM(unsigned char page_write, unsigned char address, unsigned char byte2write);
- void TestUSBInput(char *output_string);
-#line 1 "d:/acads/ee188/chron/mikroc_src/coreusb.h"
+void USB_Buffer_Time();
+unsigned char I2C_Read_Byte_From_EEPROM(unsigned char page_write, unsigned char page_read, unsigned char address);
+void I2C_Write_Byte_To_EEPROM(unsigned char page_write, unsigned char address, unsigned char byte2write);
+void TestUSBInput(char *output_string);
+#line 1 "d:/chron/mikroc_src/coreusb.h"
 
 
 
 
 unsigned char readbuff[64] absolute 0x500;
 unsigned char writebuff[64] absolute 0x540;
-#line 1 "d:/acads/ee188/chron/mikroc_src/configlcd.h"
+#line 1 "d:/chron/mikroc_src/configlcd.h"
 
 
 
@@ -56,16 +57,16 @@ sbit LCD_D4_Direction at TRISB4_bit;
 sbit LCD_D5_Direction at TRISB5_bit;
 sbit LCD_D6_Direction at TRISB6_bit;
 sbit LCD_D7_Direction at TRISB7_bit;
-#line 1 "d:/acads/ee188/chron/mikroc_src/coretest.h"
+#line 1 "d:/chron/mikroc_src/coretest.h"
 
 
 
 void TestInitializeAllPins();
 void TestStripeAllPins();
 void IntToChar(char *dest, char *src);
-#line 1 "d:/acads/ee188/chron/mikroc_src/coretime.h"
-#line 1 "d:/acads/ee188/time/timelib.h"
-#line 29 "d:/acads/ee188/time/timelib.h"
+#line 1 "d:/chron/mikroc_src/coretime.h"
+#line 1 "d:/chron/mikroc_src/libtime.h"
+#line 29 "d:/chron/mikroc_src/libtime.h"
 typedef struct
  {
  unsigned char ss ;
@@ -76,30 +77,34 @@ typedef struct
  unsigned char mo ;
  unsigned int yy ;
  } TimeStruct ;
-#line 43 "d:/acads/ee188/time/timelib.h"
+#line 43 "d:/chron/mikroc_src/libtime.h"
 extern long Time_jd1970 ;
-#line 48 "d:/acads/ee188/time/timelib.h"
+#line 48 "d:/chron/mikroc_src/libtime.h"
 long Time_dateToEpoch(TimeStruct *ts) ;
 void Time_epochToDate(long e, TimeStruct *ts) ;
-#line 10 "d:/acads/ee188/chron/mikroc_src/coretime.h"
-void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year);
-void Display_Time(char sec, char min, char hr, char week_day, char day, char mn, char year);
-void Transform_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
-void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
+#line 10 "d:/chron/mikroc_src/coretime.h"
+void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *day, unsigned char *mn, unsigned char *year);
+void Display_Time(unsigned char sec, unsigned char min, unsigned char hr, unsigned char week_day, unsigned char day, unsigned char mn, unsigned char year);
+void Transform_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
+void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
 void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
-void MakeLastTwoChars(char *txt);
+void MakeLastTwoChars(unsigned char *txt);
 void DisplayTimeStruct(TimeStruct *time);
-#line 1 "d:/acads/ee188/chron/mikroc_src/corelcd.h"
+#line 1 "d:/chron/mikroc_src/corelcd.h"
 
 
 
 void LCD_2Row_Write(char *textstring_a, char *textstring_b);
 void LCD_1Row_Write(char *textstring_a);
 void LCD_Write_Heart(char pos_row, char pos_char);
-#line 1 "d:/acads/ee188/chron/mikroc_src/timelib.h"
-#line 9 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+#line 1 "d:/chron/mikroc_src/libtime.h"
+#line 1 "d:/chron/mikroc_src/libchron.h"
+#line 1 "d:/chron/mikroc_src/libtime.h"
+#line 1 "d:/chron/mikroc_src/libchron.h"
+#line 1 "d:/chron/mikroc_src/coretime.h"
+#line 8 "d:/chron/mikroc_src/libchron.h"
 enum CLASSDATA {
  ASTERISK = 255,
  DASH = 254,
@@ -107,8 +112,39 @@ enum CLASSDATA {
  ON = 252,
  OFF = 251,
  EMPTY = 250
-} classifierdata;
+};
 
+typedef struct
+{
+ unsigned char en;
+ unsigned char id;
+ unsigned char ds;
+ unsigned char mnl ;
+ unsigned char mnc ;
+ unsigned char mnu ;
+ unsigned char hhl ;
+ unsigned char hhc ;
+ unsigned char hhu ;
+ unsigned char mdl ;
+ unsigned char mdc ;
+ unsigned char mdu ;
+ unsigned char wdl ;
+ unsigned char wdc ;
+ unsigned char wdu ;
+ unsigned char mol ;
+ unsigned char moc ;
+ unsigned char mou ;
+ unsigned char yyl ;
+ unsigned char yyc ;
+ unsigned char yyu ;
+} EntryStruct ;
+
+void GetEntry(unsigned char *entry, EntryStruct *entry_s);
+unsigned char ActivateEntry(EntryStruct *entry, TimeStruct *time);
+void GetEntriesStr(unsigned char *out);
+unsigned char ActivateEntry1(EntryStruct *entry, TimeStruct *time);
+unsigned char GetDeviseFinalState(unsigned char deviceCommState);
+#line 10 "D:/Chron/mikroc_src/lcddisplay.c"
 enum OPSTATES {
  LCD_TEST = 49,
  USB_TEST,
@@ -147,11 +183,16 @@ void init_core() {
 }
 
 void init_main() {
+ unsigned char entry[16];
+
  init_core();
  Lcd_Init();
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Cmd(_LCD_CURSOR_OFF);
- Lcd_Out(1, 1, "Hardware Cron");
+
+ GetEntriesStr(entry);
+ LCD_2Row_Write("CHRON", entry);
+ Delay_ms(1500);
 
  LATD = 0xFF;
  Delay_ms(200);
@@ -163,7 +204,7 @@ void init_main() {
 }
 
 void USB_Mode() {
-#line 81 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+#line 79 "D:/Chron/mikroc_src/lcddisplay.c"
  unsigned char end_of_signal = 0;
  unsigned char page=0, address=0, address_count=0, entry_on_page=0;
  unsigned char is_read_broken = 0, is_write_broken = 0;
@@ -197,6 +238,7 @@ void USB_Mode() {
  }
  address=0;
  for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
+ USB_Buffer_Clear();
  writebuff[0] = 0;
  writebuff[1] = 2;
  writebuff[2] = page;
@@ -213,6 +255,8 @@ void USB_Mode() {
  }
  }
  }
+
+ USB_Buffer_Clear();
  writebuff[0] = 0;
  writebuff[1] = 3;
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
@@ -232,11 +276,10 @@ void USB_Mode() {
  address=0;
  for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
 
+ USB_Buffer_Clear();
  writebuff[0] = 0;
  writebuff[1] = 6;
  writebuff[2] = page;
-
-
 
  for (address_count=0; address_count <  21 ; address_count++) {
 
@@ -269,6 +312,8 @@ void USB_Mode() {
  break;
  }
  }
+
+ USB_Buffer_Clear();
  writebuff[0] = 0;
  writebuff[1] = 5;
  writebuff[2] = is_write_broken;
@@ -293,10 +338,7 @@ void USB_Mode() {
  HID_Disable();
  LCD_1Row_Write("USB MODE EXITED");
  Delay_ms(1000);
-
 }
-
-
 
 void USB_Buffer_Clear() {
  int i=0;
@@ -324,11 +366,12 @@ void USB_Buffer_Time() {
 void TIME_Mode() {
 
  TimeStruct t;
- unsigned char numberofentries, page, entry_on_page, address_count, address;
- unsigned char entry[21], number_of_entries_read = 0;
+ EntryStruct ts;
+ unsigned char page, entry_on_page, address_count, address, number_of_entries_read = 0, entry[21];
  unsigned char debug[16] = "", debug_buffer[3];
  unsigned char debug2[16] = "", debug_buffer2[3];
  unsigned char entryflag, entrypointer;
+ unsigned char redisplay_lag = 0;
 
 
  init_core();
@@ -349,60 +392,23 @@ void TIME_Mode() {
  for (address_count=0; address_count <  21 ; address_count++) {
  entry[address_count] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
  address++;
-#line 275 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+#line 274 "D:/Chron/mikroc_src/lcddisplay.c"
  }
 
 
  GetTimeStruct(&t);
- DisplayTimeStruct(&t); Delay_ms(500);
-
- entryflag = 0;
-
- if( entry[3] == t.mn || entry[3] == ASTERISK) {
- entryflag = 1;
- } else {
- break;
+ LATD7_bit = LATD7_bit;
+ if (redisplay_lag > 3) {
+ DisplayTimeStruct(&t);
+ redisplay_lag = 0;
  }
 
- if ( entry[6] == t.hh || entry[6] == ASTERISK) {
- entryflag = 1;
- } else {
- break;
- }
+ redisplay_lag++;
 
 
-
- if (entryflag == 1) {
- switch (entry[1]) {
- case 0:
- LATD0_bit = 1;
- break;
- case 1:
- LATD1_bit = 1;
- break;
- case 2:
- LATD2_bit = 1;
- break;
- case 3:
- LATD3_bit = 1;
- break;
- case 4:
- LATD4_bit = 1;
- break;
- case 5:
- LATD5_bit = 1;
- break;
- case 6:
- LATD6_bit = 1;
- break;
- case 7:
- LATD7_bit = 1;
- break;
- default:
- break;
- }
- }
-#line 333 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+ GetEntry(&entry, &ts);
+ ActivateEntry(&ts, &t);
+#line 296 "D:/Chron/mikroc_src/lcddisplay.c"
  number_of_entries_read++;
  }
  }

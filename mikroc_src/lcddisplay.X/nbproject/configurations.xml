@@ -18,6 +18,7 @@
         <developmentServer>localhost</developmentServer>
         <targetDevice>PIC18F4550</targetDevice>
         <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain></languageToolchain>
         <languageToolchainVersion></languageToolchainVersion>

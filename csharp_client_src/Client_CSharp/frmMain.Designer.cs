@@ -34,9 +34,6 @@
 			this.stripStatus = new System.Windows.Forms.StatusStrip();
 			this.txtStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.txtState = new System.Windows.Forms.ToolStripStatusLabel();
-			this.splitMain = new System.Windows.Forms.SplitContainer();
-			this.splitRight = new System.Windows.Forms.SplitContainer();
-			this.lstEntries = new System.Windows.Forms.ListView();
 			this.mnuEntriesList = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.newEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.editEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +41,6 @@
 			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
 			this.disableEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.enableEntryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.txtBoxDiagnostics = new System.Windows.Forms.TextBox();
 			this.mnMain = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,21 +79,21 @@
 			this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
 			this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
 			this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+			this.splitRight = new System.Windows.Forms.SplitContainer();
+			this.lstEntries = new System.Windows.Forms.ListView();
+			this.txtBoxDiagnostics = new System.Windows.Forms.TextBox();
 			this.stripContainer.BottomToolStripPanel.SuspendLayout();
 			this.stripContainer.ContentPanel.SuspendLayout();
 			this.stripContainer.TopToolStripPanel.SuspendLayout();
 			this.stripContainer.SuspendLayout();
 			this.stripStatus.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
-			this.splitMain.Panel2.SuspendLayout();
-			this.splitMain.SuspendLayout();
+			this.mnuEntriesList.SuspendLayout();
+			this.mnMain.SuspendLayout();
+			this.toolStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitRight)).BeginInit();
 			this.splitRight.Panel1.SuspendLayout();
 			this.splitRight.Panel2.SuspendLayout();
 			this.splitRight.SuspendLayout();
-			this.mnuEntriesList.SuspendLayout();
-			this.mnMain.SuspendLayout();
-			this.toolStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// stripContainer
@@ -109,7 +105,7 @@
 			// 
 			// stripContainer.ContentPanel
 			// 
-			this.stripContainer.ContentPanel.Controls.Add(this.splitMain);
+			this.stripContainer.ContentPanel.Controls.Add(this.splitRight);
 			this.stripContainer.ContentPanel.Size = new System.Drawing.Size(684, 402);
 			this.stripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.stripContainer.Location = new System.Drawing.Point(0, 0);
@@ -147,48 +143,6 @@
 			this.txtState.Name = "txtState";
 			this.txtState.Size = new System.Drawing.Size(46, 17);
 			this.txtState.Text = "txtState";
-			// 
-			// splitMain
-			// 
-			this.splitMain.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitMain.Location = new System.Drawing.Point(0, 0);
-			this.splitMain.Name = "splitMain";
-			// 
-			// splitMain.Panel2
-			// 
-			this.splitMain.Panel2.Controls.Add(this.splitRight);
-			this.splitMain.Size = new System.Drawing.Size(684, 402);
-			this.splitMain.SplitterDistance = 227;
-			this.splitMain.TabIndex = 1;
-			// 
-			// splitRight
-			// 
-			this.splitRight.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitRight.Location = new System.Drawing.Point(0, 0);
-			this.splitRight.Name = "splitRight";
-			this.splitRight.Orientation = System.Windows.Forms.Orientation.Horizontal;
-			// 
-			// splitRight.Panel1
-			// 
-			this.splitRight.Panel1.Controls.Add(this.lstEntries);
-			// 
-			// splitRight.Panel2
-			// 
-			this.splitRight.Panel2.Controls.Add(this.txtBoxDiagnostics);
-			this.splitRight.Size = new System.Drawing.Size(453, 402);
-			this.splitRight.SplitterDistance = 249;
-			this.splitRight.TabIndex = 0;
-			// 
-			// lstEntries
-			// 
-			this.lstEntries.ContextMenuStrip = this.mnuEntriesList;
-			this.lstEntries.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lstEntries.Location = new System.Drawing.Point(0, 0);
-			this.lstEntries.Name = "lstEntries";
-			this.lstEntries.Size = new System.Drawing.Size(453, 249);
-			this.lstEntries.TabIndex = 0;
-			this.lstEntries.UseCompatibleStateImageBehavior = false;
-			this.lstEntries.View = System.Windows.Forms.View.Details;
 			// 
 			// mnuEntriesList
 			// 
@@ -244,20 +198,6 @@
 			this.enableEntryToolStripMenuItem.Text = "&Enable Entry";
 			this.enableEntryToolStripMenuItem.Visible = false;
 			this.enableEntryToolStripMenuItem.Click += new System.EventHandler(this.enableEntryToolStripMenuItem_Click);
-			// 
-			// txtBoxDiagnostics
-			// 
-			this.txtBoxDiagnostics.BackColor = System.Drawing.Color.White;
-			this.txtBoxDiagnostics.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtBoxDiagnostics.Location = new System.Drawing.Point(0, 0);
-			this.txtBoxDiagnostics.Multiline = true;
-			this.txtBoxDiagnostics.Name = "txtBoxDiagnostics";
-			this.txtBoxDiagnostics.ReadOnly = true;
-			this.txtBoxDiagnostics.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.txtBoxDiagnostics.Size = new System.Drawing.Size(453, 149);
-			this.txtBoxDiagnostics.TabIndex = 0;
-			this.txtBoxDiagnostics.WordWrap = false;
-			this.txtBoxDiagnostics.TextChanged += new System.EventHandler(this.txtBoxDiagnostics_TextChanged);
 			// 
 			// mnMain
 			// 
@@ -572,6 +512,46 @@
 			this.helpToolStripButton.Text = "He&lp";
 			this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
 			// 
+			// splitRight
+			// 
+			this.splitRight.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitRight.Location = new System.Drawing.Point(0, 0);
+			this.splitRight.Name = "splitRight";
+			this.splitRight.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitRight.Panel1
+			// 
+			this.splitRight.Panel1.Controls.Add(this.lstEntries);
+			// 
+			// splitRight.Panel2
+			// 
+			this.splitRight.Panel2.Controls.Add(this.txtBoxDiagnostics);
+			this.splitRight.Size = new System.Drawing.Size(684, 402);
+			this.splitRight.SplitterDistance = 248;
+			this.splitRight.TabIndex = 1;
+			// 
+			// lstEntries
+			// 
+			this.lstEntries.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lstEntries.Location = new System.Drawing.Point(0, 0);
+			this.lstEntries.Name = "lstEntries";
+			this.lstEntries.Size = new System.Drawing.Size(684, 248);
+			this.lstEntries.TabIndex = 0;
+			this.lstEntries.UseCompatibleStateImageBehavior = false;
+			// 
+			// txtBoxDiagnostics
+			// 
+			this.txtBoxDiagnostics.BackColor = System.Drawing.Color.White;
+			this.txtBoxDiagnostics.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtBoxDiagnostics.Location = new System.Drawing.Point(0, 0);
+			this.txtBoxDiagnostics.Multiline = true;
+			this.txtBoxDiagnostics.Name = "txtBoxDiagnostics";
+			this.txtBoxDiagnostics.ReadOnly = true;
+			this.txtBoxDiagnostics.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.txtBoxDiagnostics.Size = new System.Drawing.Size(684, 150);
+			this.txtBoxDiagnostics.TabIndex = 0;
+			this.txtBoxDiagnostics.WordWrap = false;
+			// 
 			// frmMain
 			// 
 			this.AccessibleName = "Chron Scheduler C# Client";
@@ -593,19 +573,16 @@
 			this.stripContainer.PerformLayout();
 			this.stripStatus.ResumeLayout(false);
 			this.stripStatus.PerformLayout();
-			this.splitMain.Panel2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.splitMain)).EndInit();
-			this.splitMain.ResumeLayout(false);
-			this.splitRight.Panel1.ResumeLayout(false);
-			this.splitRight.Panel2.ResumeLayout(false);
-			this.splitRight.Panel2.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.splitRight)).EndInit();
-			this.splitRight.ResumeLayout(false);
 			this.mnuEntriesList.ResumeLayout(false);
 			this.mnMain.ResumeLayout(false);
 			this.mnMain.PerformLayout();
 			this.toolStrip1.ResumeLayout(false);
 			this.toolStrip1.PerformLayout();
+			this.splitRight.Panel1.ResumeLayout(false);
+			this.splitRight.Panel2.ResumeLayout(false);
+			this.splitRight.Panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitRight)).EndInit();
+			this.splitRight.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -643,12 +620,8 @@
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem mnuBeginTestUnit;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-		private System.Windows.Forms.SplitContainer splitMain;
-		private System.Windows.Forms.SplitContainer splitRight;
-		private System.Windows.Forms.TextBox txtBoxDiagnostics;
 		private System.Windows.Forms.ToolStripMenuItem mnuSyncTime;
 		private System.Windows.Forms.ToolStripMenuItem writeCron01ToolStripMenuItem;
-		private System.Windows.Forms.ListView lstEntries;
 		private System.Windows.Forms.ToolStrip toolStrip1;
 		private System.Windows.Forms.ToolStripButton newToolStripButton;
 		private System.Windows.Forms.ToolStripButton openToolStripButton;
@@ -665,6 +638,9 @@
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
 		private System.IO.Ports.SerialPort serialPort1;
+		private System.Windows.Forms.SplitContainer splitRight;
+		private System.Windows.Forms.ListView lstEntries;
+		private System.Windows.Forms.TextBox txtBoxDiagnostics;
 	}
 }
 

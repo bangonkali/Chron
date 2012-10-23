@@ -9,16 +9,34 @@ main
 			Delay_1us
 			Delay_5500us
 			Delay_50us
-		Lcd_Out
-			Lcd_Cmd
-				Delay_1us
-				Delay_5500us
-				Delay_50us
-			Lcd_Chr_CP
+		GetEntriesStr
+			EEPROM_Read
+			strcpy
+			WordToStr
+				Div_16x16_U
+			strcat
+		LCD_2Row_Write
+			LCD_1Row_Write
 				Lcd_Cmd
 					Delay_1us
 					Delay_5500us
 					Delay_50us
+				Lcd_Out_CP
+					Lcd_Chr_CP
+						Lcd_Cmd
+							Delay_1us
+							Delay_5500us
+							Delay_50us
+			Lcd_Cmd
+				Delay_1us
+				Delay_5500us
+				Delay_50us
+			Lcd_Out_CP
+				Lcd_Chr_CP
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
 	GetOpMode
 	LCD_1Row_Write
 		Lcd_Cmd
@@ -182,6 +200,9 @@ main
 							Delay_1us
 							Delay_5500us
 							Delay_50us
+		GetEntry
+		ActivateEntry
+			GetDeviseFinalState
 		LCD_1Row_Write
 			Lcd_Cmd
 				Delay_1us

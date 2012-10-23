@@ -5,16 +5,16 @@
 #define DS1307 0xD0
 #endif
 
-#include <timelib.h>
+#include <LibTime.h>
 
-void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year);
-void Display_Time(char sec, char min, char hr, char week_day, char day, char mn, char year);
-void Transform_Time(char  *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
-void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
+void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *day, unsigned char *mn, unsigned char *year);
+void Display_Time(unsigned char sec, unsigned char min, unsigned char hr, unsigned char week_day, unsigned char day, unsigned char mn, unsigned char year);
+void Transform_Time(unsigned char  *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
+void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
 void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
-void MakeLastTwoChars(char *txt);
+void MakeLastTwoChars(unsigned char *txt);
 void DisplayTimeStruct(TimeStruct *time);
 
 #endif  

@@ -72,6 +72,8 @@ acqt1
 acqt1_bit
 acqt2
 acqt2_bit
+activateentry
+activateentry1
 actvie
 actvie_bit
 actvif
@@ -257,7 +259,6 @@ cke
 cke_bit
 ckp
 ckp_bit
-classifierdata
 clk1en
 clk1en_bit
 clkcfg0
@@ -357,7 +358,6 @@ dfn8ef
 dfn8ef_bit
 dir_
 dir__bit
-display_time
 display_time_core
 displaytimestruct
 div
@@ -554,6 +554,9 @@ gen_enable
 gen_read
 gen_write
 get_fosc_khz
+getdevisefinalstate
+getentriesstr
+getentry
 getopmode
 gettimestruct
 gie
@@ -805,7 +808,6 @@ lcd_out
 lcd_out_cp
 lcd_rs
 lcd_rs_direction
-lcd_write_heart
 ldiv
 lf
 longint2double
@@ -933,6 +935,7 @@ not_write
 not_write_bit
 nrm3232
 nrm4032
+numberofentries
 oerr
 oerr_bit
 oespp
@@ -1048,6 +1051,7 @@ pr2
 preinc0
 preinc1
 preinc2
+printentry
 prod
 prodh
 prodl
@@ -1499,7 +1503,6 @@ toutps2
 toutps2_bit
 toutps3
 toutps3_bit
-transform_time
 trisa
 trisa0
 trisa0_bit
