@@ -1,8 +1,9 @@
   #ifndef _GLOBALCONST_H
   #define _GLOBALCONST_H
 
-  #define EEPROM_ENTRY_PER_PAGE 13
-  #define EEPROM_ENTRY_LENGTH 19
+  #define EEPROM_ENTRY_PER_PAGE 12
+  #define EEPROM_ENTRY_LENGTH 21
+  #define EEPROM_MEMORY_BANKS 8
   
   char cnt;
   char keypadPort at PORTD;
@@ -15,6 +16,7 @@
   char *res;
   char txt_sub[]  = "98";
 
+  void USB_Buffer_Clear();
   void interrupt();
   void init_core();
   void init_main();

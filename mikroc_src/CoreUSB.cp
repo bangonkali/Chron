@@ -1,4 +1,4 @@
-#line 1 "D:/Chron/mikroc_src/CoreUSB.c"
+#line 1 "D:/ACADS/EE188/Chron/mikroc_src/CoreUSB.c"
 const unsigned int USB_VENDOR_ID = 0x0001;
 const unsigned int USB_PRODUCT_ID = 0x0001;
 const char USB_SELF_POWER = 0x80;

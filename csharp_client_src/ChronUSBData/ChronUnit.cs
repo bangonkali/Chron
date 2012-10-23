@@ -11,7 +11,7 @@ namespace ChronCore
 		private byte mClassifier = 0;
 		private byte mLimit = 0;
 		private byte mType = 0;
-		private byte mBuffer = 0;
+		//private byte mBuffer = 0;
 
 		public static readonly string[] mDaysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "*"};
 		public static readonly string[] mMonths = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "*"};

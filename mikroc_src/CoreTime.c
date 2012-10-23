@@ -106,18 +106,18 @@ void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *
         I2C1_Stop();
 }
 
-void Write_Time() {
+void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
         I2C1_Start();          // issue start signal
         I2C1_Wr(0xD0);       // address DS1307 which is 0xD0
         I2C1_Wr(0);            // start from word at address (REG0)
         I2C1_Wr(0x80);         // write $80 to REG0. (pause counter + 0 sec)
-        I2C1_Wr(0x06);            // write 0 to minutes word to (REG1)
-        I2C1_Wr(0x04);         // write 17 to hours word (24-hours mode)(REG2)
+        I2C1_Wr(min);            // write 0 to minutes word to (REG1)
+        I2C1_Wr(hours);         // write 17 to hours word (24-hours mode)(REG2)
         
-        I2C1_Wr(0x05);         // write 5 - Tuesday (REG3)
-        I2C1_Wr(0x18);         // write 18 to date word (REG4)
-        I2C1_Wr(0x10);         // write 10 (Oct) to month word (REG5)
-        I2C1_Wr(0x12);         // write 12 to year word (REG6)
+        I2C1_Wr(dayofweek);         // write 5 - Tuesday (REG3)
+        I2C1_Wr(day);         // write 18 to date word (REG4)
+        I2C1_Wr(month);         // write 10 (Oct) to month word (REG5)
+        I2C1_Wr(year);         // write 12 to year word (REG6)
         I2C1_Stop();           // issue stop signal
 
         I2C1_Start();          // issue start signal

@@ -257,6 +257,7 @@ cke
 cke_bit
 ckp
 ckp_bit
+classifierdata
 clk1en
 clk1en_bit
 clkcfg0
@@ -398,6 +399,8 @@ eeip
 eeip_bit
 eepgd
 eepgd_bit
+eeprom_read
+eeprom_write
 endp0
 endp0_bit
 endp1
@@ -602,7 +605,6 @@ i2c_start_
 i2c_start__bit
 i2c_stop_
 i2c_stop__bit
-i2c_test_eeprom
 i2c_write_byte_to_eeprom
 i2c1_init
 i2c1_is_idle

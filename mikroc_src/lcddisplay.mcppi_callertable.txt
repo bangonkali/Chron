@@ -31,41 +31,10 @@ main
 					Delay_1us
 					Delay_5500us
 					Delay_50us
-	I2C_Test_EEPROM
-		init_core
-		I2C1_Init
-		I2C1_Start
-			I2C1_Is_Idle
-		I2C1_Wr
-		I2C1_Stop
-		Delay_100ms
-		LCD_1Row_Write
-			Lcd_Cmd
-				Delay_1us
-				Delay_5500us
-				Delay_50us
-			Lcd_Out_CP
-				Lcd_Chr_CP
-					Lcd_Cmd
-						Delay_1us
-						Delay_5500us
-						Delay_50us
-		Lcd_Chr
-			Lcd_Cmd
-				Delay_1us
-				Delay_5500us
-				Delay_50us
-		I2C1_Repeated_Start
-		I2C1_Rd
-		GetOpMode
 	USB_Mode
 		init_core
 		I2C1_Init
-		Write_Time
-			I2C1_Start
-				I2C1_Is_Idle
-			I2C1_Wr
-			I2C1_Stop
+		USB_Buffer_Clear
 		HID_Enable
 			USB_Device_Init_Int
 				USB_Init_Desc
@@ -91,6 +60,11 @@ main
 				USB_Handle_Busy
 				USB_Transfer_Packet_Int
 		USB_Buffer_Time
+			Write_Time
+				I2C1_Start
+					I2C1_Is_Idle
+				I2C1_Wr
+				I2C1_Stop
 			GetTimeStruct
 				Read_Time
 					I2C1_Start
@@ -117,6 +91,7 @@ main
 			I2C1_Repeated_Start
 			I2C1_Rd
 			I2C1_Stop
+		EEPROM_Write
 		I2C_Write_Byte_To_EEPROM
 			I2C1_Init
 			I2C1_Start
@@ -160,12 +135,16 @@ main
 	TIME_Mode
 		init_core
 		I2C1_Init
-		Write_Time
+		GetOpMode
+		EEPROM_Read
+		I2C_Read_Byte_From_EEPROM
+			I2C1_Init
 			I2C1_Start
 				I2C1_Is_Idle
 			I2C1_Wr
+			I2C1_Repeated_Start
+			I2C1_Rd
 			I2C1_Stop
-		GetOpMode
 		GetTimeStruct
 			Read_Time
 				I2C1_Start

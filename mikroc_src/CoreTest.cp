@@ -1,12 +1,12 @@
-#line 1 "D:/Chron/mikroc_src/CoreTest.c"
-#line 1 "d:/chron/mikroc_src/coretest.h"
+#line 1 "D:/ACADS/EE188/Chron/mikroc_src/CoreTest.c"
+#line 1 "d:/acads/ee188/chron/mikroc_src/coretest.h"
 
 
 
 void TestInitializeAllPins();
 void TestStripeAllPins();
 void IntToChar(char *dest, char *src);
-#line 3 "D:/Chron/mikroc_src/CoreTest.c"
+#line 3 "D:/ACADS/EE188/Chron/mikroc_src/CoreTest.c"
 void TestInitializeAllPins() {
  PORTA = 0x55;
  PORTC = 0xAA;

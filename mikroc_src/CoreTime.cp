@@ -1,7 +1,7 @@
-#line 1 "D:/Chron/mikroc_src/CoreTime.c"
-#line 1 "d:/chron/mikroc_src/coretime.h"
-#line 1 "d:/chron/mikroc_src/timelib.h"
-#line 29 "d:/chron/mikroc_src/timelib.h"
+#line 1 "D:/ACADS/EE188/Chron/mikroc_src/CoreTime.c"
+#line 1 "d:/acads/ee188/chron/mikroc_src/coretime.h"
+#line 1 "d:/acads/ee188/time/timelib.h"
+#line 29 "d:/acads/ee188/time/timelib.h"
 typedef struct
  {
  unsigned char ss ;
@@ -12,22 +12,22 @@ typedef struct
  unsigned char mo ;
  unsigned int yy ;
  } TimeStruct ;
-#line 43 "d:/chron/mikroc_src/timelib.h"
+#line 43 "d:/acads/ee188/time/timelib.h"
 extern long Time_jd1970 ;
-#line 48 "d:/chron/mikroc_src/timelib.h"
+#line 48 "d:/acads/ee188/time/timelib.h"
 long Time_dateToEpoch(TimeStruct *ts) ;
 void Time_epochToDate(long e, TimeStruct *ts) ;
-#line 10 "d:/chron/mikroc_src/coretime.h"
+#line 10 "d:/acads/ee188/chron/mikroc_src/coretime.h"
 void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year);
 void Display_Time(char sec, char min, char hr, char week_day, char day, char mn, char year);
 void Transform_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
 void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
-void Write_Time();
+void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(char *txt);
 void DisplayTimeStruct(TimeStruct *time);
-#line 7 "D:/Chron/mikroc_src/CoreTime.c"
+#line 7 "D:/ACADS/EE188/Chron/mikroc_src/CoreTime.c"
 void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year) {
 
  char txtSec[5] = "";
@@ -130,18 +130,18 @@ void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *
  I2C1_Stop();
 }
 
-void Write_Time() {
+void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
  I2C1_Start();
  I2C1_Wr(0xD0);
  I2C1_Wr(0);
  I2C1_Wr(0x80);
- I2C1_Wr(0x06);
- I2C1_Wr(0x04);
+ I2C1_Wr(min);
+ I2C1_Wr(hours);
 
- I2C1_Wr(0x05);
- I2C1_Wr(0x18);
- I2C1_Wr(0x10);
- I2C1_Wr(0x12);
+ I2C1_Wr(dayofweek);
+ I2C1_Wr(day);
+ I2C1_Wr(month);
+ I2C1_Wr(year);
  I2C1_Stop();
 
  I2C1_Start();

@@ -830,7 +830,7 @@ L_end_Read_Time:
 
 _Write_Time:
 
-;CoreTime.c,109 :: 		void Write_Time() {
+;CoreTime.c,109 :: 		void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
 ;CoreTime.c,110 :: 		I2C1_Start();          // issue start signal
 	CALL        _I2C1_Start+0, 0
 ;CoreTime.c,111 :: 		I2C1_Wr(0xD0);       // address DS1307 which is 0xD0
@@ -844,28 +844,28 @@ _Write_Time:
 	MOVLW       128
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,114 :: 		I2C1_Wr(0x06);            // write 0 to minutes word to (REG1)
-	MOVLW       6
+;CoreTime.c,114 :: 		I2C1_Wr(min);            // write 0 to minutes word to (REG1)
+	MOVF        FARG_Write_Time_min+0, 0 
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,115 :: 		I2C1_Wr(0x04);         // write 17 to hours word (24-hours mode)(REG2)
-	MOVLW       4
+;CoreTime.c,115 :: 		I2C1_Wr(hours);         // write 17 to hours word (24-hours mode)(REG2)
+	MOVF        FARG_Write_Time_hours+0, 0 
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,117 :: 		I2C1_Wr(0x05);         // write 5 - Tuesday (REG3)
-	MOVLW       5
+;CoreTime.c,117 :: 		I2C1_Wr(dayofweek);         // write 5 - Tuesday (REG3)
+	MOVF        FARG_Write_Time_dayofweek+0, 0 
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,118 :: 		I2C1_Wr(0x18);         // write 18 to date word (REG4)
-	MOVLW       24
+;CoreTime.c,118 :: 		I2C1_Wr(day);         // write 18 to date word (REG4)
+	MOVF        FARG_Write_Time_day+0, 0 
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,119 :: 		I2C1_Wr(0x10);         // write 10 (Oct) to month word (REG5)
-	MOVLW       16
+;CoreTime.c,119 :: 		I2C1_Wr(month);         // write 10 (Oct) to month word (REG5)
+	MOVF        FARG_Write_Time_month+0, 0 
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
-;CoreTime.c,120 :: 		I2C1_Wr(0x12);         // write 12 to year word (REG6)
-	MOVLW       18
+;CoreTime.c,120 :: 		I2C1_Wr(year);         // write 12 to year word (REG6)
+	MOVF        FARG_Write_Time_year+0, 0 
 	MOVWF       FARG_I2C1_Wr_data_+0 
 	CALL        _I2C1_Wr+0, 0
 ;CoreTime.c,121 :: 		I2C1_Stop();           // issue stop signal

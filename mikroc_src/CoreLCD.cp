@@ -1,12 +1,12 @@
-#line 1 "D:/Chron/mikroc_src/CoreLCD.c"
-#line 1 "d:/chron/mikroc_src/corelcd.h"
+#line 1 "D:/ACADS/EE188/Chron/mikroc_src/CoreLCD.c"
+#line 1 "d:/acads/ee188/chron/mikroc_src/corelcd.h"
 
 
 
 void LCD_2Row_Write(char *textstring_a, char *textstring_b);
 void LCD_1Row_Write(char *textstring_a);
 void LCD_Write_Heart(char pos_row, char pos_char);
-#line 3 "D:/Chron/mikroc_src/CoreLCD.c"
+#line 3 "D:/ACADS/EE188/Chron/mikroc_src/CoreLCD.c"
 void LCD_2Row_Write(char *textstring_a, char *textstring_b) {
  LCD_1Row_Write(textstring_a);
  Lcd_Cmd(_LCD_SECOND_ROW);

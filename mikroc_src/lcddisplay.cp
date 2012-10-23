@@ -1,5 +1,6 @@
-#line 1 "D:/Chron/mikroc_src/lcddisplay.c"
-#line 1 "d:/chron/mikroc_src/globalconst.h"
+#line 1 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+#line 1 "d:/acads/ee188/chron/mikroc_src/globalconst.h"
+
 
 
 
@@ -17,6 +18,7 @@
  char *res;
  char txt_sub[] = "98";
 
+ void USB_Buffer_Clear();
  void interrupt();
  void init_core();
  void init_main();
@@ -30,14 +32,14 @@
  unsigned char I2C_Read_Byte_From_EEPROM(unsigned char page_write, unsigned char page_read, unsigned char address);
  void I2C_Write_Byte_To_EEPROM(unsigned char page_write, unsigned char address, unsigned char byte2write);
  void TestUSBInput(char *output_string);
-#line 1 "d:/chron/mikroc_src/coreusb.h"
+#line 1 "d:/acads/ee188/chron/mikroc_src/coreusb.h"
 
 
 
 
 unsigned char readbuff[64] absolute 0x500;
 unsigned char writebuff[64] absolute 0x540;
-#line 1 "d:/chron/mikroc_src/configlcd.h"
+#line 1 "d:/acads/ee188/chron/mikroc_src/configlcd.h"
 
 
 
@@ -54,16 +56,16 @@ sbit LCD_D4_Direction at TRISB4_bit;
 sbit LCD_D5_Direction at TRISB5_bit;
 sbit LCD_D6_Direction at TRISB6_bit;
 sbit LCD_D7_Direction at TRISB7_bit;
-#line 1 "d:/chron/mikroc_src/coretest.h"
+#line 1 "d:/acads/ee188/chron/mikroc_src/coretest.h"
 
 
 
 void TestInitializeAllPins();
 void TestStripeAllPins();
 void IntToChar(char *dest, char *src);
-#line 1 "d:/chron/mikroc_src/coretime.h"
-#line 1 "d:/chron/mikroc_src/timelib.h"
-#line 29 "d:/chron/mikroc_src/timelib.h"
+#line 1 "d:/acads/ee188/chron/mikroc_src/coretime.h"
+#line 1 "d:/acads/ee188/time/timelib.h"
+#line 29 "d:/acads/ee188/time/timelib.h"
 typedef struct
  {
  unsigned char ss ;
@@ -74,30 +76,39 @@ typedef struct
  unsigned char mo ;
  unsigned int yy ;
  } TimeStruct ;
-#line 43 "d:/chron/mikroc_src/timelib.h"
+#line 43 "d:/acads/ee188/time/timelib.h"
 extern long Time_jd1970 ;
-#line 48 "d:/chron/mikroc_src/timelib.h"
+#line 48 "d:/acads/ee188/time/timelib.h"
 long Time_dateToEpoch(TimeStruct *ts) ;
 void Time_epochToDate(long e, TimeStruct *ts) ;
-#line 10 "d:/chron/mikroc_src/coretime.h"
+#line 10 "d:/acads/ee188/chron/mikroc_src/coretime.h"
 void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char *year);
 void Display_Time(char sec, char min, char hr, char week_day, char day, char mn, char year);
 void Transform_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
 void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
-void Write_Time();
+void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(char *txt);
 void DisplayTimeStruct(TimeStruct *time);
-#line 1 "d:/chron/mikroc_src/corelcd.h"
+#line 1 "d:/acads/ee188/chron/mikroc_src/corelcd.h"
 
 
 
 void LCD_2Row_Write(char *textstring_a, char *textstring_b);
 void LCD_1Row_Write(char *textstring_a);
 void LCD_Write_Heart(char pos_row, char pos_char);
-#line 1 "d:/chron/mikroc_src/timelib.h"
-#line 9 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 1 "d:/acads/ee188/chron/mikroc_src/timelib.h"
+#line 9 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+enum CLASSDATA {
+ ASTERISK = 255,
+ DASH = 254,
+ SLASH = 253,
+ ON = 252,
+ OFF = 251,
+ EMPTY = 250
+} classifierdata;
+
 enum OPSTATES {
  LCD_TEST = 49,
  USB_TEST,
@@ -141,50 +152,55 @@ void init_main() {
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Cmd(_LCD_CURSOR_OFF);
  Lcd_Out(1, 1, "Hardware Cron");
- Delay_ms(1000);
+
+ LATD = 0xFF;
+ Delay_ms(200);
+ LATD = 0x00;
+ Delay_ms(100);
+ LATD = 0xFF;
+ Delay_ms(100);
+ LATD = 0x00;
 }
 
 void USB_Mode() {
-#line 66 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 81 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+ unsigned char end_of_signal = 0;
  unsigned char page=0, address=0, address_count=0, entry_on_page=0;
  unsigned char is_read_broken = 0, is_write_broken = 0;
- unsigned char str_usbDiagnostics[16];
+ unsigned char str_usbDiagnostics[16], str_usbDiagnostics_a[16];
 
  init_core();
  I2C1_Init(100000);
- Write_Time();
 
 
- for(cnt=0;cnt<64;cnt++) {
- writebuff[cnt] = 0;
- }
+ USB_Buffer_Clear();
 
 
  HID_Enable(&readbuff,&writebuff);
 
  while(GetOpMode() == USB_TEST){
- LCD_1Row_Write("Waiting Command");
+ LCD_1Row_Write("USB MODE");
  while(!HID_Read() && GetOpMode() == USB_TEST);
 
  if ((int)readbuff[0] == 0) {
- LCD_1Row_Write("Sending Time"); Delay_ms(1000);
+ LCD_1Row_Write("Sending Time"); Delay_ms(500);
  USB_Buffer_Time();
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
- LCD_1Row_Write("Time Sent 00"); Delay_ms(1000);
+ LCD_1Row_Write("Time Sent"); Delay_ms(1000);
 
  } else if ((int)readbuff[0] == 1) {
 
- for (page=0; page<8; page++){
+ for (page=0; page< 8 ; page++){
  if (is_read_broken == 1) {
  is_read_broken = 0;
  break;
  }
  address=0;
- for (entry_on_page=0; entry_on_page <  13 ; entry_on_page++) {
+ for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
  writebuff[0] = 0;
  writebuff[1] = 2;
  writebuff[2] = page;
- for (address_count=0; address_count <  19 ; address_count++) {
+ for (address_count=0; address_count <  21 ; address_count++) {
  writebuff[address_count+3] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
  address++;
  }
@@ -207,26 +223,31 @@ void USB_Mode() {
  is_read_broken = 0;
  }
  } else if ((int)readbuff[0] == 7) {
-
- LCD_1Row_Write("Writing..."); Delay_ms(1000);
- for (page=0; page<8; page++){
+ EEPROM_Write(0x00, readbuff[1] + 1);
+ for (page=0; page< 8 ; page++){
  if (is_write_broken == 1) {
  is_write_broken = 0;
  break;
  }
  address=0;
- for (entry_on_page=0; entry_on_page <  13 ; entry_on_page++) {
+ for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
 
  writebuff[0] = 0;
  writebuff[1] = 6;
  writebuff[2] = page;
- for (address_count=0; address_count <  19 ; address_count++) {
 
- I2C_Write_Byte_To_EEPROM(mempages_write[page], address, address_count+3);
+
+
+ for (address_count=0; address_count <  21 ; address_count++) {
+
+ I2C_Write_Byte_To_EEPROM(mempages_write[page], address, readbuff[address_count+2]);
  writebuff[address_count+3] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
  address++;
 
  }
+
+
+ if ((int)readbuff[2] > 0) {
 
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
 
@@ -236,9 +257,16 @@ void USB_Mode() {
  is_write_broken = 1;
  LCD_1Row_Write("Write Error"); Delay_ms(1000);
  break;
- } else {
- LCD_1Row_Write("Write Ok"); Delay_ms(1000);
  }
+ }
+ else
+ {
+ end_of_signal = 1;
+ break;
+ }
+ }
+ if (end_of_signal == 1) {
+ break;
  }
  }
  writebuff[0] = 0;
@@ -251,15 +279,20 @@ void USB_Mode() {
  LCD_1Row_Write("Write Error"); Delay_ms(1000);
  is_write_broken = 0;
  }
+
+ if (end_of_signal == 1) {
+ LCD_1Row_Write("End of Signal"); Delay_ms(1000);
+ is_write_broken = 0;
+ }
  } else {
  TestUSBInput(str_usbDiagnostics);
- LCD_2Row_Write("No Operation", str_usbDiagnostics); Delay_ms(3000);
+ LCD_2Row_Write("No Operation", str_usbDiagnostics); Delay_ms(1000);
  }
  }
 
  HID_Disable();
  LCD_1Row_Write("USB MODE EXITED");
- Delay_ms(2000);
+ Delay_ms(1000);
 
 }
 
@@ -274,6 +307,8 @@ void USB_Buffer_Clear() {
 
 void USB_Buffer_Time() {
  TimeStruct t;
+ Write_Time(readbuff[1], readbuff[2], readbuff[3], readbuff[4], readbuff[5], readbuff[6]);
+
  GetTimeStruct(&t);
  writebuff[0] = 0;
  writebuff[1] = 0;
@@ -287,18 +322,95 @@ void USB_Buffer_Time() {
 }
 
 void TIME_Mode() {
+
  TimeStruct t;
+ unsigned char numberofentries, page, entry_on_page, address_count, address;
+ unsigned char entry[21], number_of_entries_read = 0;
+ unsigned char debug[16] = "", debug_buffer[3];
+ unsigned char debug2[16] = "", debug_buffer2[3];
+ unsigned char entryflag, entrypointer;
+
 
  init_core();
  I2C1_Init(100000);
- Write_Time();
+
+
  while (GetOpMode() == I2C_RTC_TEST) {
- Delay_ms(500);
- GetTimeStruct(&t);
- DisplayTimeStruct(&t);
+
+ numberofentries = EEPROM_Read(0x00); Delay_ms(20);
+
+ for ( page=0; page< 8 ; page++ ){
+ if (number_of_entries_read >= numberofentries) break;
+ address=0;
+ for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
+ if (number_of_entries_read >= numberofentries) break;
+
+
+ for (address_count=0; address_count <  21 ; address_count++) {
+ entry[address_count] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
+ address++;
+#line 275 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
  }
- LCD_1Row_Write("TIME MODE EXITED");
- Delay_ms(2000);
+
+
+ GetTimeStruct(&t);
+ DisplayTimeStruct(&t); Delay_ms(500);
+
+ entryflag = 0;
+
+ if( entry[3] == t.mn || entry[3] == ASTERISK) {
+ entryflag = 1;
+ } else {
+ break;
+ }
+
+ if ( entry[6] == t.hh || entry[6] == ASTERISK) {
+ entryflag = 1;
+ } else {
+ break;
+ }
+
+
+
+ if (entryflag == 1) {
+ switch (entry[1]) {
+ case 0:
+ LATD0_bit = 1;
+ break;
+ case 1:
+ LATD1_bit = 1;
+ break;
+ case 2:
+ LATD2_bit = 1;
+ break;
+ case 3:
+ LATD3_bit = 1;
+ break;
+ case 4:
+ LATD4_bit = 1;
+ break;
+ case 5:
+ LATD5_bit = 1;
+ break;
+ case 6:
+ LATD6_bit = 1;
+ break;
+ case 7:
+ LATD7_bit = 1;
+ break;
+ default:
+ break;
+ }
+ }
+#line 333 "D:/ACADS/EE188/Chron/mikroc_src/lcddisplay.c"
+ number_of_entries_read++;
+ }
+ }
+
+ number_of_entries_read = 0;
+ }
+
+ LCD_1Row_Write("TIME MODE EXITED"); Delay_ms(2000);
 }
 
 unsigned char I2C_Read_Byte_From_EEPROM(unsigned char page_write, unsigned char page_read, unsigned char address) {
@@ -310,7 +422,6 @@ unsigned char I2C_Read_Byte_From_EEPROM(unsigned char page_write, unsigned char 
  I2C1_Repeated_Start();
  I2C1_Wr(page_read);
  x = I2C1_Rd(0);
- Delay_ms(10);
  I2C1_Stop();
  return x;
  Delay_ms(20);
@@ -326,47 +437,10 @@ void I2C_Write_Byte_To_EEPROM(unsigned char page_write, unsigned char address, u
  Delay_ms(20);
 }
 
-void I2C_Test_EEPROM() {
- unsigned char x;
-
- init_core();
- I2C1_Init(100000);
- I2C1_Start();
- I2C1_Wr(0xA2);
- I2C1_Wr(0x02);
- I2C1_Wr(0x41);
- I2C1_Stop();
-
- Delay_100ms();
- LCD_1Row_Write("WRITE FINISHED");
- Lcd_Chr(2, 3, 0x41);
-
- Delay_100ms();
- LCD_1Row_Write("READ STARTED");
- Delay_100ms();
- I2C1_Init(100000);
- I2C1_Start();
- I2C1_Wr(0xA2);
- I2C1_Wr(0x02);
- I2C1_Repeated_Start();
- I2C1_Wr(0xA3);
- x = I2C1_Rd(0);
- I2C1_Stop();
-
- Delay_ms(300);
- LCD_1Row_Write("READ FINISHED");
- Lcd_Chr(2, 3, x);
- Delay_ms(2000);
-
- while (GetOpMode() == I2C_EEPROM_TEST);
-}
-
 short GetOpMode() {
  if (RA0_bit && !RA1_bit) {
  opstate = USB_TEST;
  } else if ( !RA0_bit && RA1_bit) {
- opstate = I2C_EEPROM_TEST;
- } else {
  opstate = I2C_RTC_TEST;
  }
 
@@ -374,14 +448,11 @@ short GetOpMode() {
 }
 
 void main() {
+
  init_main();
  while (1) {
  GetOpMode();
  switch (opstate) {
- case I2C_EEPROM_TEST:
- LCD_1Row_Write("I2C_EEPROM_TEST");
- I2C_Test_EEPROM();
- break;
  case USB_TEST:
  LCD_1Row_Write("USB Mode");
  USB_Mode();

@@ -30,8 +30,8 @@ ActiveImageIndex=-1
 [OPENED_FILES]
 Count=4
 File0=lcddisplay.c
-File1=CoreTest.c
-File2=CoreTest.h
+File1=CoreTime.h
+File2=CoreTime.c
 File3=GlobalConst.h
 [EEPROM]
 Count=0
@@ -43,8 +43,8 @@ Count=0
 Count=9
 Path0=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\defs\
 Path1=C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\
-Path2=D:\Chron\mikroc_src\
-Path3=D:\ACADS\EE188\Chron\mikroc_src\
+Path2=D:\ACADS\EE188\Chron\mikroc_src\
+Path3=D:\Chron\mikroc_src\
 Path4=D:\ACADS\EE188\time\
 Path5=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy - Copy\
 Path6=C:\Users\Bangonkali\Desktop\EE188\LCDDISPLAY - Copy\
@@ -69,7 +69,7 @@ File6=CoreLCD.h
 [PLDS]
 Count=0
 [Useses]
-Count=15
+Count=16
 File0=Lcd
 File1=Lcd_Constants
 File2=I2C
@@ -85,6 +85,7 @@ File11=Mmc_FAT16
 File12=Mmc
 File13=C_Stdlib
 File14=C_String
+File15=EEPROM
 [EXPANDED NODES]
 Node1=Sources
 Node2=Header Files

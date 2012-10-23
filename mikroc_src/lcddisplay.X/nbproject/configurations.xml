@@ -4,7 +4,7 @@
     <logicalFolder name="LoadableFiles"
                    displayName="Loadable Files"
                    projectFiles="true">
-      <itemPath>../lcddisplay.hex</itemPath>
+      <itemPath>D:\ACADS\EE188\Chron\mikroc_src\lcddisplay.hex</itemPath>
     </logicalFolder>
     <logicalFolder name="Important Files"
                    displayName="Important Files"
@@ -18,7 +18,6 @@
         <developmentServer>localhost</developmentServer>
         <targetDevice>PIC18F4550</targetDevice>
         <targetHeader></targetHeader>
-        <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain></languageToolchain>
         <languageToolchainVersion></languageToolchainVersion>

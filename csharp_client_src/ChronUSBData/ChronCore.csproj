@@ -36,6 +36,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChronEntries.cs" />
     <Compile Include="ChronEntry.cs" />
     <Compile Include="ChronEventArgs.cs" />
     <Compile Include="ChronManager.cs" />

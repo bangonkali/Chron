@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 namespace ChronCore
 {
-	class ChronEntry
+	[Serializable()]
+	public class ChronEntry : ISerializable
 	{
-		private byte[] mEntry = new byte[20];
+		public byte[] mEntry = new byte[20];
+		public int mID = 0;
+		public static int mAutoIncrement = 0;
+
+
 		public enum EntryAddresing {
 			Enable = 0,
 			DeviceID,
@@ -32,15 +38,24 @@ namespace ChronCore
 			YearUpper
 		}
 
-		public bool setMinutes(string l, string c, string h)
+		public ChronEntry()
 		{
-			byte buffer;
-			
-			if (byte.TryParse(l, out mEntry[(int)EntryAddresing.MinutesLower]))
-			{
-				mEntry[(int)EntryAddresing.MinutesLower] = buffer;
-				return true;
-			} 
+			mAutoIncrement++;
+			mID = mAutoIncrement;
+		}
+
+		public ChronEntry(SerializationInfo info, StreamingContext ctxt)
+		{
+			this.mEntry = (byte[])info.GetValue("Entry", typeof(byte[]));
+			this.mID = (int)info.GetValue("ID", typeof(int));
+			mAutoIncrement = (int)info.GetValue("AutoIncrement", typeof(int));
+		}
+
+		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		{
+			info.AddValue("Entry", this.mEntry);
+			info.AddValue("ID", this.mID);
+			info.AddValue("AutoIncrement", mAutoIncrement);
 		}
 	}
 }

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.lblMinute = new System.Windows.Forms.Label();
 			this.cboMinuteLower = new System.Windows.Forms.ComboBox();
@@ -64,11 +65,12 @@
 			this.cboDeviceState = new System.Windows.Forms.ComboBox();
 			this.lblDeviceState = new System.Windows.Forms.Label();
 			this.btnClose = new System.Windows.Forms.Button();
+			this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
 			this.SuspendLayout();
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(484, 256);
+			this.btnSave.Location = new System.Drawing.Point(403, 246);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 0;
@@ -87,27 +89,25 @@
 			// 
 			// cboMinuteLower
 			// 
-			this.cboMinuteLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMinuteLower.FormattingEnabled = true;
 			this.cboMinuteLower.Location = new System.Drawing.Point(102, 66);
 			this.cboMinuteLower.Name = "cboMinuteLower";
 			this.cboMinuteLower.Size = new System.Drawing.Size(129, 21);
 			this.cboMinuteLower.TabIndex = 2;
+			this.cboMinuteLower.Text = "*";
 			// 
 			// cboMinuteClassifier
 			// 
-			this.cboMinuteClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMinuteClassifier.FormattingEnabled = true;
 			this.cboMinuteClassifier.Location = new System.Drawing.Point(237, 66);
 			this.cboMinuteClassifier.Name = "cboMinuteClassifier";
-			this.cboMinuteClassifier.Size = new System.Drawing.Size(129, 21);
+			this.cboMinuteClassifier.Size = new System.Drawing.Size(41, 21);
 			this.cboMinuteClassifier.TabIndex = 5;
 			// 
 			// cboMinuteUpper
 			// 
-			this.cboMinuteUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMinuteUpper.FormattingEnabled = true;
-			this.cboMinuteUpper.Location = new System.Drawing.Point(372, 66);
+			this.cboMinuteUpper.Location = new System.Drawing.Point(284, 66);
 			this.cboMinuteUpper.Name = "cboMinuteUpper";
 			this.cboMinuteUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboMinuteUpper.TabIndex = 6;
@@ -115,7 +115,7 @@
 			// cboMinuteEnable
 			// 
 			this.cboMinuteEnable.AutoSize = true;
-			this.cboMinuteEnable.Location = new System.Drawing.Point(507, 68);
+			this.cboMinuteEnable.Location = new System.Drawing.Point(419, 68);
 			this.cboMinuteEnable.Name = "cboMinuteEnable";
 			this.cboMinuteEnable.Size = new System.Drawing.Size(59, 17);
 			this.cboMinuteEnable.TabIndex = 7;
@@ -125,7 +125,7 @@
 			// cboHourEnable
 			// 
 			this.cboHourEnable.AutoSize = true;
-			this.cboHourEnable.Location = new System.Drawing.Point(507, 95);
+			this.cboHourEnable.Location = new System.Drawing.Point(419, 95);
 			this.cboHourEnable.Name = "cboHourEnable";
 			this.cboHourEnable.Size = new System.Drawing.Size(59, 17);
 			this.cboHourEnable.TabIndex = 12;
@@ -134,30 +134,28 @@
 			// 
 			// cboHourUpper
 			// 
-			this.cboHourUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboHourUpper.FormattingEnabled = true;
-			this.cboHourUpper.Location = new System.Drawing.Point(372, 93);
+			this.cboHourUpper.Location = new System.Drawing.Point(284, 93);
 			this.cboHourUpper.Name = "cboHourUpper";
 			this.cboHourUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboHourUpper.TabIndex = 11;
 			// 
 			// cboHourClassifier
 			// 
-			this.cboHourClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboHourClassifier.FormattingEnabled = true;
 			this.cboHourClassifier.Location = new System.Drawing.Point(237, 93);
 			this.cboHourClassifier.Name = "cboHourClassifier";
-			this.cboHourClassifier.Size = new System.Drawing.Size(129, 21);
+			this.cboHourClassifier.Size = new System.Drawing.Size(41, 21);
 			this.cboHourClassifier.TabIndex = 10;
 			// 
 			// cboHourLower
 			// 
-			this.cboHourLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboHourLower.FormattingEnabled = true;
 			this.cboHourLower.Location = new System.Drawing.Point(102, 93);
 			this.cboHourLower.Name = "cboHourLower";
 			this.cboHourLower.Size = new System.Drawing.Size(129, 21);
 			this.cboHourLower.TabIndex = 9;
+			this.cboHourLower.Text = "*";
 			// 
 			// lblHour
 			// 
@@ -171,7 +169,7 @@
 			// cboDayEnable
 			// 
 			this.cboDayEnable.AutoSize = true;
-			this.cboDayEnable.Location = new System.Drawing.Point(507, 122);
+			this.cboDayEnable.Location = new System.Drawing.Point(419, 122);
 			this.cboDayEnable.Name = "cboDayEnable";
 			this.cboDayEnable.Size = new System.Drawing.Size(59, 17);
 			this.cboDayEnable.TabIndex = 17;
@@ -180,30 +178,28 @@
 			// 
 			// cboDayUpper
 			// 
-			this.cboDayUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDayUpper.FormattingEnabled = true;
-			this.cboDayUpper.Location = new System.Drawing.Point(372, 120);
+			this.cboDayUpper.Location = new System.Drawing.Point(284, 120);
 			this.cboDayUpper.Name = "cboDayUpper";
 			this.cboDayUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboDayUpper.TabIndex = 16;
 			// 
 			// cboDayClassifier
 			// 
-			this.cboDayClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDayClassifier.FormattingEnabled = true;
 			this.cboDayClassifier.Location = new System.Drawing.Point(237, 120);
 			this.cboDayClassifier.Name = "cboDayClassifier";
-			this.cboDayClassifier.Size = new System.Drawing.Size(129, 21);
+			this.cboDayClassifier.Size = new System.Drawing.Size(41, 21);
 			this.cboDayClassifier.TabIndex = 15;
 			// 
 			// cboDayLower
 			// 
-			this.cboDayLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboDayLower.FormattingEnabled = true;
 			this.cboDayLower.Location = new System.Drawing.Point(102, 120);
 			this.cboDayLower.Name = "cboDayLower";
 			this.cboDayLower.Size = new System.Drawing.Size(129, 21);
 			this.cboDayLower.TabIndex = 14;
+			this.cboDayLower.Text = "*";
 			// 
 			// lblDay
 			// 
@@ -217,7 +213,7 @@
 			// cboWeekDayEnable
 			// 
 			this.cboWeekDayEnable.AutoSize = true;
-			this.cboWeekDayEnable.Location = new System.Drawing.Point(507, 149);
+			this.cboWeekDayEnable.Location = new System.Drawing.Point(419, 149);
 			this.cboWeekDayEnable.Name = "cboWeekDayEnable";
 			this.cboWeekDayEnable.Size = new System.Drawing.Size(59, 17);
 			this.cboWeekDayEnable.TabIndex = 22;
@@ -226,30 +222,28 @@
 			// 
 			// cboWeekDayUpper
 			// 
-			this.cboWeekDayUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboWeekDayUpper.FormattingEnabled = true;
-			this.cboWeekDayUpper.Location = new System.Drawing.Point(372, 147);
+			this.cboWeekDayUpper.Location = new System.Drawing.Point(284, 147);
 			this.cboWeekDayUpper.Name = "cboWeekDayUpper";
 			this.cboWeekDayUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboWeekDayUpper.TabIndex = 21;
 			// 
 			// cboWeekDayClassifier
 			// 
-			this.cboWeekDayClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboWeekDayClassifier.FormattingEnabled = true;
 			this.cboWeekDayClassifier.Location = new System.Drawing.Point(237, 147);
 			this.cboWeekDayClassifier.Name = "cboWeekDayClassifier";
-			this.cboWeekDayClassifier.Size = new System.Drawing.Size(129, 21);
+			this.cboWeekDayClassifier.Size = new System.Drawing.Size(41, 21);
 			this.cboWeekDayClassifier.TabIndex = 20;
 			// 
 			// cboWeekDayLower
 			// 
-			this.cboWeekDayLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboWeekDayLower.FormattingEnabled = true;
 			this.cboWeekDayLower.Location = new System.Drawing.Point(102, 147);
 			this.cboWeekDayLower.Name = "cboWeekDayLower";
 			this.cboWeekDayLower.Size = new System.Drawing.Size(129, 21);
 			this.cboWeekDayLower.TabIndex = 19;
+			this.cboWeekDayLower.Text = "*";
 			// 
 			// lblWeekDay
 			// 
@@ -263,7 +257,7 @@
 			// cboMonthEnable
 			// 
 			this.cboMonthEnable.AutoSize = true;
-			this.cboMonthEnable.Location = new System.Drawing.Point(507, 176);
+			this.cboMonthEnable.Location = new System.Drawing.Point(419, 176);
 			this.cboMonthEnable.Name = "cboMonthEnable";
 			this.cboMonthEnable.Size = new System.Drawing.Size(59, 17);
 			this.cboMonthEnable.TabIndex = 27;
@@ -272,30 +266,28 @@
 			// 
 			// cboMonthUpper
 			// 
-			this.cboMonthUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMonthUpper.FormattingEnabled = true;
-			this.cboMonthUpper.Location = new System.Drawing.Point(372, 174);
+			this.cboMonthUpper.Location = new System.Drawing.Point(284, 174);
 			this.cboMonthUpper.Name = "cboMonthUpper";
 			this.cboMonthUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboMonthUpper.TabIndex = 26;
 			// 
 			// cboMonthClassifier
 			// 
-			this.cboMonthClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMonthClassifier.FormattingEnabled = true;
 			this.cboMonthClassifier.Location = new System.Drawing.Point(237, 174);
 			this.cboMonthClassifier.Name = "cboMonthClassifier";
-			this.cboMonthClassifier.Size = new System.Drawing.Size(129, 21);
+			this.cboMonthClassifier.Size = new System.Drawing.Size(41, 21);
 			this.cboMonthClassifier.TabIndex = 25;
 			// 
 			// cboMonthLower
 			// 
-			this.cboMonthLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboMonthLower.FormattingEnabled = true;
 			this.cboMonthLower.Location = new System.Drawing.Point(102, 174);
 			this.cboMonthLower.Name = "cboMonthLower";
 			this.cboMonthLower.Size = new System.Drawing.Size(129, 21);
 			this.cboMonthLower.TabIndex = 24;
+			this.cboMonthLower.Text = "*";
 			// 
 			// lblMonth
 			// 
@@ -309,7 +301,7 @@
 			// cboYearEnable
 			// 
 			this.cboYearEnable.AutoSize = true;
-			this.cboYearEnable.Location = new System.Drawing.Point(507, 203);
+			this.cboYearEnable.Location = new System.Drawing.Point(419, 203);
 			this.cboYearEnable.Name = "cboYearEnable";
 			this.cboYearEnable.Size = new System.Drawing.Size(59, 17);
 			this.cboYearEnable.TabIndex = 32;
@@ -318,30 +310,28 @@
 			// 
 			// cboYearUpper
 			// 
-			this.cboYearUpper.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboYearUpper.FormattingEnabled = true;
-			this.cboYearUpper.Location = new System.Drawing.Point(372, 201);
+			this.cboYearUpper.Location = new System.Drawing.Point(284, 201);
 			this.cboYearUpper.Name = "cboYearUpper";
 			this.cboYearUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboYearUpper.TabIndex = 31;
 			// 
 			// cboYearClassifier
 			// 
-			this.cboYearClassifier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboYearClassifier.FormattingEnabled = true;
 			this.cboYearClassifier.Location = new System.Drawing.Point(237, 201);
 			this.cboYearClassifier.Name = "cboYearClassifier";
-			this.cboYearClassifier.Size = new System.Drawing.Size(129, 21);
+			this.cboYearClassifier.Size = new System.Drawing.Size(41, 21);
 			this.cboYearClassifier.TabIndex = 30;
 			// 
 			// cboYearLower
 			// 
-			this.cboYearLower.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cboYearLower.FormattingEnabled = true;
 			this.cboYearLower.Location = new System.Drawing.Point(102, 201);
 			this.cboYearLower.Name = "cboYearLower";
 			this.cboYearLower.Size = new System.Drawing.Size(129, 21);
 			this.cboYearLower.TabIndex = 29;
+			this.cboYearLower.Text = "*";
 			// 
 			// lblYear
 			// 
@@ -390,7 +380,7 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(403, 256);
+			this.btnClose.Location = new System.Drawing.Point(322, 246);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 37;
@@ -401,7 +391,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(583, 302);
+			this.ClientSize = new System.Drawing.Size(504, 302);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.cboDeviceState);
 			this.Controls.Add(this.lblDeviceState);
@@ -488,5 +478,6 @@
 		private System.Windows.Forms.ComboBox cboDeviceState;
 		private System.Windows.Forms.Label lblDeviceState;
 		private System.Windows.Forms.Button btnClose;
+		private System.IO.Ports.SerialPort serialPort1;
 	}
 }

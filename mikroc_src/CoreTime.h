@@ -11,13 +11,10 @@ void Display_Time_Core(char *sec, char *min, char *hr, char *day, char *mn, char
 void Display_Time(char sec, char min, char hr, char week_day, char day, char mn, char year);
 void Transform_Time(char  *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
 void Read_Time(char *sec, char *min, char *hr, char *week_day, char *day, char *mn, char *year);
-void Write_Time();
+void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(char *txt);
 void DisplayTimeStruct(TimeStruct *time);
 
 #endif  
-
-
-
