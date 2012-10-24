@@ -53,8 +53,10 @@ void init_main() {
 	Lcd_Cmd(_LCD_CURSOR_OFF); // Turn cursor off
 	
 	GetEntriesStr(entry);
-	LCD_2Row_Write("CHRON", entry);
-	Delay_ms(1500);
+	LCD_2Row_Write("Chron Scheduler", entry); Delay_ms(1500);
+	LCD_2Row_Write("Abestano", "Johannah Mae"); Delay_ms(500);
+	LCD_2Row_Write("Enanor", "Caryl Keen"); Delay_ms(500);
+	LCD_2Row_Write("Regalado", "Gil Michael"); Delay_ms(500);
 	
 	LATD = 0xFF;
 	Delay_ms(200);
@@ -95,6 +97,7 @@ void USB_Mode() {
 		while(!HID_Read() && GetOpMode() == USB_TEST);
 
 		if ((int)readbuff[0] == 0) {
+			EEPROM_Write(0x00, 0);
 			LCD_1Row_Write("Sending Time"); Delay_ms(500);
 			USB_Buffer_Time();
 			while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
@@ -138,12 +141,18 @@ void USB_Mode() {
 				is_read_broken = 0;
 			}
 		} else if ((int)readbuff[0] == 7) {
+			end_of_signal = 0;
 			EEPROM_Write(0x00, readbuff[1] + 1);
 			for (page=0; page<EEPROM_MEMORY_BANKS; page++){
 				if (is_write_broken == 1) {
 					is_write_broken = 0;
 					break;
 				}
+				
+				if (end_of_signal == 1) {
+					break;
+				}
+				
 				address=0; // re initialize address to 0 because this is a new page.
 				for (entry_on_page=0; entry_on_page < EEPROM_ENTRY_PER_PAGE; entry_on_page++) {
 					//LCD_1Row_Write("Writing Page"); Delay_ms(1000);
@@ -160,27 +169,19 @@ void USB_Mode() {
 						// LCD_1Row_Write("Finished writing Byte"); Delay_ms(500);
 					}
 					
-					// if wala na mo sunod ang gisend sa computer, end na diari :D
-					if ((int)readbuff[2] > 0) {
-						//LCD_1Row_Write("Finished writing Entry"); Delay_ms(500);
-						while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);  // send
-						//LCD_1Row_Write("Read Sent"); Delay_ms(500);
-						//LCD_1Row_Write("Writeing Another");
-						while(!HID_Read() && GetOpMode() == USB_TEST);		// wait for respsonse to continue
-						if (!(readbuff[0] == 4)) {
-							is_write_broken = 1;
-							LCD_1Row_Write("Write Error"); Delay_ms(1000);
-							break;
-						}
+					while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);  // send
+					while(!HID_Read() && GetOpMode() == USB_TEST);		// wait for respsonse to continue
+					if (!(readbuff[0] == 4)) {
+						is_write_broken = 1;
+						LCD_1Row_Write("Write Error"); Delay_ms(1000);
+						break;
 					}
-					else 
-					{
+					
+					// if wala na mo sunod ang gisend sa computer, end na diari :D
+					if ((int)readbuff[2] == 0) {
 						end_of_signal = 1;
 						break;
 					}
-				}
-				if (end_of_signal == 1) {
-					break;
 				}
 			}
 			
@@ -220,7 +221,7 @@ void USB_Buffer_Clear() {
 
 void USB_Buffer_Time() {
 	TimeStruct t;
-	Write_Time(readbuff[1], readbuff[2], readbuff[3], readbuff[4], readbuff[5], readbuff[6]);
+	Write_Time(readbuff[7], readbuff[1], readbuff[2], readbuff[3], readbuff[4], readbuff[5], readbuff[6]);
 
 	GetTimeStruct(&t);
 	writebuff[0] = 0;
@@ -253,6 +254,12 @@ void TIME_Mode() {
 		// Number of entries is recorded on the first byte of the PIC EEPROM.
 		numberofentries = EEPROM_Read(0x00); Delay_ms(20);
 
+		while (numberofentries > 95) {
+			GetTimeStruct(&t);
+			DisplayTimeStruct(&t);
+			Delay_ms(250);
+		}
+		
 		for ( page=0; page<EEPROM_MEMORY_BANKS; page++ ){
 			if (number_of_entries_read >= numberofentries) break;
 			address=0; // re initialize address to 0 because this is a new page.
@@ -354,7 +361,7 @@ void main() {
 				TIME_Mode();
 				break;
 			default: 
-				LCD_2Row_Write("Operation Not", "Allowed");
+				LCD_2Row_Write("Select Mode", "USB or RTC");
 				Delay_ms(1000);
 				break;
 		}

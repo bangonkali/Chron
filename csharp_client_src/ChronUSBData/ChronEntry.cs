@@ -9,7 +9,7 @@ namespace ChronCore
 	[Serializable()]
 	public class ChronEntry : ISerializable
 	{
-		public byte[] mEntry = new byte[20];
+		public byte[] mEntry = new byte[21];
 		public int mID = 0;
 		public static int mAutoIncrement = 0;
 
@@ -37,6 +37,7 @@ namespace ChronCore
 			YearClassifier,
 			YearUpper
 		}
+
 
 		public ChronEntry()
 		{

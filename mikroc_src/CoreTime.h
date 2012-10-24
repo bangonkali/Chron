@@ -11,7 +11,7 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
 void Display_Time(unsigned char sec, unsigned char min, unsigned char hr, unsigned char week_day, unsigned char day, unsigned char mn, unsigned char year);
 void Transform_Time(unsigned char  *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
 void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
-void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
+void Write_Time(unsigned char sec, unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(unsigned char *txt);

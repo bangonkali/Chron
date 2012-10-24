@@ -22,17 +22,18 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
 void Display_Time(unsigned char sec, unsigned char min, unsigned char hr, unsigned char week_day, unsigned char day, unsigned char mn, unsigned char year);
 void Transform_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
 void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
-void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
+void Write_Time(unsigned char sec, unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(unsigned char *txt);
 void DisplayTimeStruct(TimeStruct *time);
 #line 8 "D:/Chron/mikroc_src/CoreTime.c"
-void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *day, unsigned char *mn, unsigned char *year) {
+void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *wd, unsigned char *day, unsigned char *mn, unsigned char *year) {
 
  unsigned char txtSec[5] = "";
  unsigned char txtMin[5] = "";
  unsigned char txtHour[5] = "";
+ unsigned char txtWd[5] = "";
  unsigned char txtDay[5] = "";
  unsigned char txtMn[5] = "";
  unsigned char txtYear[5] = "";
@@ -42,6 +43,7 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
  ShortToStr(*sec, txtSec);
  ShortToStr(*min, txtMin);
  ShortToStr(*hr, txtHour);
+ ShortToStr(*wd, txtWd);
  ShortToStr(*day, txtDay);
  ShortToStr(*mn, txtMn);
  ShortToStr(*year, txtYear);
@@ -49,18 +51,21 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
  MakeLastTwoChars(txtSec);
  MakeLastTwoChars(txtMin);
  MakeLastTwoChars(txtHour);
+ MakeLastTwoChars(txtWd);
  MakeLastTwoChars(txtDay);
  MakeLastTwoChars(txtMn);
  MakeLastTwoChars(txtYear);
 
- strcat(txtDisplayRow1, "DATE: ");
+ strcat(txtDisplayRow1, "DATE:");
  strcat(txtDisplayRow1, txtMn);
  strcat(txtDisplayRow1, "/");
  strcat(txtDisplayRow1, txtDay);
  strcat(txtDisplayRow1, "/");
  strcat(txtDisplayRow1, txtYear);
+ strcat(txtDisplayRow1, ":");
+ strcat(txtDisplayRow1, txtWd);
 
- strcat(txtDisplayRow2, "TIME: ");
+ strcat(txtDisplayRow2, "TIME:");
  strcat(txtDisplayRow2, txtHour);
  strcat(txtDisplayRow2, ":");
  strcat(txtDisplayRow2, txtMin);
@@ -88,11 +93,11 @@ void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsign
  I2C1_Stop();
 }
 
-void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
+void Write_Time(unsigned char sec, unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
  I2C1_Start();
  I2C1_Wr( 0xD0 );
  I2C1_Wr(0);
- I2C1_Wr(0x80);
+ I2C1_Wr(0x80 + sec);
  I2C1_Wr(min);
  I2C1_Wr(hours);
 
@@ -168,5 +173,5 @@ void MakeLastTwoChars(unsigned char *txt){
 }
 
 void DisplayTimeStruct(TimeStruct *time) {
- Display_Time_Core(&(time->ss), &(time->mn), &(time->hh), &(time->md), &(time->mo), &(time->yy));
+ Display_Time_Core(&(time->ss), &(time->mn), &(time->hh), &(time->wd), &(time->md), &(time->mo), &(time->yy));
 }

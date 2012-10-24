@@ -87,7 +87,7 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
 void Display_Time(unsigned char sec, unsigned char min, unsigned char hr, unsigned char week_day, unsigned char day, unsigned char mn, unsigned char year);
 void Transform_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
 void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *week_day, unsigned char *day, unsigned char *mn, unsigned char *year);
-void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
+void Write_Time(unsigned char sec, unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year);
 
 void GetTimeStruct(TimeStruct *time);
 void MakeLastTwoChars(unsigned char *txt);
@@ -191,8 +191,10 @@ void init_main() {
  Lcd_Cmd(_LCD_CURSOR_OFF);
 
  GetEntriesStr(entry);
- LCD_2Row_Write("CHRON", entry);
- Delay_ms(1500);
+ LCD_2Row_Write("Chron Scheduler", entry); Delay_ms(1500);
+ LCD_2Row_Write("Abestano", "Johannah Mae"); Delay_ms(500);
+ LCD_2Row_Write("Enanor", "Caryl Keen"); Delay_ms(500);
+ LCD_2Row_Write("Regalado", "Gil Michael"); Delay_ms(500);
 
  LATD = 0xFF;
  Delay_ms(200);
@@ -204,7 +206,7 @@ void init_main() {
 }
 
 void USB_Mode() {
-#line 79 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 81 "D:/Chron/mikroc_src/lcddisplay.c"
  unsigned char end_of_signal = 0;
  unsigned char page=0, address=0, address_count=0, entry_on_page=0;
  unsigned char is_read_broken = 0, is_write_broken = 0;
@@ -224,6 +226,7 @@ void USB_Mode() {
  while(!HID_Read() && GetOpMode() == USB_TEST);
 
  if ((int)readbuff[0] == 0) {
+ EEPROM_Write(0x00, 0);
  LCD_1Row_Write("Sending Time"); Delay_ms(500);
  USB_Buffer_Time();
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
@@ -267,12 +270,18 @@ void USB_Mode() {
  is_read_broken = 0;
  }
  } else if ((int)readbuff[0] == 7) {
+ end_of_signal = 0;
  EEPROM_Write(0x00, readbuff[1] + 1);
  for (page=0; page< 8 ; page++){
  if (is_write_broken == 1) {
  is_write_broken = 0;
  break;
  }
+
+ if (end_of_signal == 1) {
+ break;
+ }
+
  address=0;
  for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
 
@@ -289,27 +298,19 @@ void USB_Mode() {
 
  }
 
-
- if ((int)readbuff[2] > 0) {
-
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
-
-
  while(!HID_Read() && GetOpMode() == USB_TEST);
  if (!(readbuff[0] == 4)) {
  is_write_broken = 1;
  LCD_1Row_Write("Write Error"); Delay_ms(1000);
  break;
  }
- }
- else
- {
+
+
+ if ((int)readbuff[2] == 0) {
  end_of_signal = 1;
  break;
  }
- }
- if (end_of_signal == 1) {
- break;
  }
  }
 
@@ -349,7 +350,7 @@ void USB_Buffer_Clear() {
 
 void USB_Buffer_Time() {
  TimeStruct t;
- Write_Time(readbuff[1], readbuff[2], readbuff[3], readbuff[4], readbuff[5], readbuff[6]);
+ Write_Time(readbuff[7], readbuff[1], readbuff[2], readbuff[3], readbuff[4], readbuff[5], readbuff[6]);
 
  GetTimeStruct(&t);
  writebuff[0] = 0;
@@ -382,6 +383,12 @@ void TIME_Mode() {
 
  numberofentries = EEPROM_Read(0x00); Delay_ms(20);
 
+ while (numberofentries > 95) {
+ GetTimeStruct(&t);
+ DisplayTimeStruct(&t);
+ Delay_ms(250);
+ }
+
  for ( page=0; page< 8 ; page++ ){
  if (number_of_entries_read >= numberofentries) break;
  address=0;
@@ -392,7 +399,7 @@ void TIME_Mode() {
  for (address_count=0; address_count <  21 ; address_count++) {
  entry[address_count] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
  address++;
-#line 274 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 281 "D:/Chron/mikroc_src/lcddisplay.c"
  }
 
 
@@ -408,7 +415,7 @@ void TIME_Mode() {
 
  GetEntry(&entry, &ts);
  ActivateEntry(&ts, &t);
-#line 296 "D:/Chron/mikroc_src/lcddisplay.c"
+#line 303 "D:/Chron/mikroc_src/lcddisplay.c"
  number_of_entries_read++;
  }
  }
@@ -470,7 +477,7 @@ void main() {
  TIME_Mode();
  break;
  default:
- LCD_2Row_Write("Operation Not", "Allowed");
+ LCD_2Row_Write("Select Mode", "USB or RTC");
  Delay_ms(1000);
  break;
  }

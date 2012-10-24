@@ -34,28 +34,22 @@
 			this.cboMinuteLower = new System.Windows.Forms.ComboBox();
 			this.cboMinuteClassifier = new System.Windows.Forms.ComboBox();
 			this.cboMinuteUpper = new System.Windows.Forms.ComboBox();
-			this.cboMinuteEnable = new System.Windows.Forms.CheckBox();
-			this.cboHourEnable = new System.Windows.Forms.CheckBox();
 			this.cboHourUpper = new System.Windows.Forms.ComboBox();
 			this.cboHourClassifier = new System.Windows.Forms.ComboBox();
 			this.cboHourLower = new System.Windows.Forms.ComboBox();
 			this.lblHour = new System.Windows.Forms.Label();
-			this.cboDayEnable = new System.Windows.Forms.CheckBox();
 			this.cboDayUpper = new System.Windows.Forms.ComboBox();
 			this.cboDayClassifier = new System.Windows.Forms.ComboBox();
 			this.cboDayLower = new System.Windows.Forms.ComboBox();
 			this.lblDay = new System.Windows.Forms.Label();
-			this.cboWeekDayEnable = new System.Windows.Forms.CheckBox();
 			this.cboWeekDayUpper = new System.Windows.Forms.ComboBox();
 			this.cboWeekDayClassifier = new System.Windows.Forms.ComboBox();
 			this.cboWeekDayLower = new System.Windows.Forms.ComboBox();
 			this.lblWeekDay = new System.Windows.Forms.Label();
-			this.cboMonthEnable = new System.Windows.Forms.CheckBox();
 			this.cboMonthUpper = new System.Windows.Forms.ComboBox();
 			this.cboMonthClassifier = new System.Windows.Forms.ComboBox();
 			this.cboMonthLower = new System.Windows.Forms.ComboBox();
 			this.lblMonth = new System.Windows.Forms.Label();
-			this.cboYearEnable = new System.Windows.Forms.CheckBox();
 			this.cboYearUpper = new System.Windows.Forms.ComboBox();
 			this.cboYearClassifier = new System.Windows.Forms.ComboBox();
 			this.cboYearLower = new System.Windows.Forms.ComboBox();
@@ -70,7 +64,7 @@
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(403, 246);
+			this.btnSave.Location = new System.Drawing.Point(338, 242);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 0;
@@ -112,26 +106,6 @@
 			this.cboMinuteUpper.Size = new System.Drawing.Size(129, 21);
 			this.cboMinuteUpper.TabIndex = 6;
 			// 
-			// cboMinuteEnable
-			// 
-			this.cboMinuteEnable.AutoSize = true;
-			this.cboMinuteEnable.Location = new System.Drawing.Point(419, 68);
-			this.cboMinuteEnable.Name = "cboMinuteEnable";
-			this.cboMinuteEnable.Size = new System.Drawing.Size(59, 17);
-			this.cboMinuteEnable.TabIndex = 7;
-			this.cboMinuteEnable.Text = "Enable";
-			this.cboMinuteEnable.UseVisualStyleBackColor = true;
-			// 
-			// cboHourEnable
-			// 
-			this.cboHourEnable.AutoSize = true;
-			this.cboHourEnable.Location = new System.Drawing.Point(419, 95);
-			this.cboHourEnable.Name = "cboHourEnable";
-			this.cboHourEnable.Size = new System.Drawing.Size(59, 17);
-			this.cboHourEnable.TabIndex = 12;
-			this.cboHourEnable.Text = "Enable";
-			this.cboHourEnable.UseVisualStyleBackColor = true;
-			// 
 			// cboHourUpper
 			// 
 			this.cboHourUpper.FormattingEnabled = true;
@@ -165,16 +139,6 @@
 			this.lblHour.Size = new System.Drawing.Size(30, 13);
 			this.lblHour.TabIndex = 8;
 			this.lblHour.Text = "Hour";
-			// 
-			// cboDayEnable
-			// 
-			this.cboDayEnable.AutoSize = true;
-			this.cboDayEnable.Location = new System.Drawing.Point(419, 122);
-			this.cboDayEnable.Name = "cboDayEnable";
-			this.cboDayEnable.Size = new System.Drawing.Size(59, 17);
-			this.cboDayEnable.TabIndex = 17;
-			this.cboDayEnable.Text = "Enable";
-			this.cboDayEnable.UseVisualStyleBackColor = true;
 			// 
 			// cboDayUpper
 			// 
@@ -210,16 +174,6 @@
 			this.lblDay.TabIndex = 13;
 			this.lblDay.Text = "Day";
 			// 
-			// cboWeekDayEnable
-			// 
-			this.cboWeekDayEnable.AutoSize = true;
-			this.cboWeekDayEnable.Location = new System.Drawing.Point(419, 149);
-			this.cboWeekDayEnable.Name = "cboWeekDayEnable";
-			this.cboWeekDayEnable.Size = new System.Drawing.Size(59, 17);
-			this.cboWeekDayEnable.TabIndex = 22;
-			this.cboWeekDayEnable.Text = "Enable";
-			this.cboWeekDayEnable.UseVisualStyleBackColor = true;
-			// 
 			// cboWeekDayUpper
 			// 
 			this.cboWeekDayUpper.FormattingEnabled = true;
@@ -254,16 +208,6 @@
 			this.lblWeekDay.TabIndex = 18;
 			this.lblWeekDay.Text = "Week Day";
 			// 
-			// cboMonthEnable
-			// 
-			this.cboMonthEnable.AutoSize = true;
-			this.cboMonthEnable.Location = new System.Drawing.Point(419, 176);
-			this.cboMonthEnable.Name = "cboMonthEnable";
-			this.cboMonthEnable.Size = new System.Drawing.Size(59, 17);
-			this.cboMonthEnable.TabIndex = 27;
-			this.cboMonthEnable.Text = "Enable";
-			this.cboMonthEnable.UseVisualStyleBackColor = true;
-			// 
 			// cboMonthUpper
 			// 
 			this.cboMonthUpper.FormattingEnabled = true;
@@ -297,16 +241,6 @@
 			this.lblMonth.Size = new System.Drawing.Size(37, 13);
 			this.lblMonth.TabIndex = 23;
 			this.lblMonth.Text = "Month";
-			// 
-			// cboYearEnable
-			// 
-			this.cboYearEnable.AutoSize = true;
-			this.cboYearEnable.Location = new System.Drawing.Point(419, 203);
-			this.cboYearEnable.Name = "cboYearEnable";
-			this.cboYearEnable.Size = new System.Drawing.Size(59, 17);
-			this.cboYearEnable.TabIndex = 32;
-			this.cboYearEnable.Text = "Enable";
-			this.cboYearEnable.UseVisualStyleBackColor = true;
 			// 
 			// cboYearUpper
 			// 
@@ -380,7 +314,7 @@
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(322, 246);
+			this.btnClose.Location = new System.Drawing.Point(257, 242);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 37;
@@ -391,38 +325,32 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(504, 302);
+			this.ClientSize = new System.Drawing.Size(443, 302);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.cboDeviceState);
 			this.Controls.Add(this.lblDeviceState);
 			this.Controls.Add(this.cboDeviceID);
 			this.Controls.Add(this.lblDeviceID);
-			this.Controls.Add(this.cboYearEnable);
 			this.Controls.Add(this.cboYearUpper);
 			this.Controls.Add(this.cboYearClassifier);
 			this.Controls.Add(this.cboYearLower);
 			this.Controls.Add(this.lblYear);
-			this.Controls.Add(this.cboMonthEnable);
 			this.Controls.Add(this.cboMonthUpper);
 			this.Controls.Add(this.cboMonthClassifier);
 			this.Controls.Add(this.cboMonthLower);
 			this.Controls.Add(this.lblMonth);
-			this.Controls.Add(this.cboWeekDayEnable);
 			this.Controls.Add(this.cboWeekDayUpper);
 			this.Controls.Add(this.cboWeekDayClassifier);
 			this.Controls.Add(this.cboWeekDayLower);
 			this.Controls.Add(this.lblWeekDay);
-			this.Controls.Add(this.cboDayEnable);
 			this.Controls.Add(this.cboDayUpper);
 			this.Controls.Add(this.cboDayClassifier);
 			this.Controls.Add(this.cboDayLower);
 			this.Controls.Add(this.lblDay);
-			this.Controls.Add(this.cboHourEnable);
 			this.Controls.Add(this.cboHourUpper);
 			this.Controls.Add(this.cboHourClassifier);
 			this.Controls.Add(this.cboHourLower);
 			this.Controls.Add(this.lblHour);
-			this.Controls.Add(this.cboMinuteEnable);
 			this.Controls.Add(this.cboMinuteUpper);
 			this.Controls.Add(this.cboMinuteClassifier);
 			this.Controls.Add(this.cboMinuteLower);
@@ -447,28 +375,22 @@
 		private System.Windows.Forms.ComboBox cboMinuteLower;
 		private System.Windows.Forms.ComboBox cboMinuteClassifier;
 		private System.Windows.Forms.ComboBox cboMinuteUpper;
-		private System.Windows.Forms.CheckBox cboMinuteEnable;
-		private System.Windows.Forms.CheckBox cboHourEnable;
 		private System.Windows.Forms.ComboBox cboHourUpper;
 		private System.Windows.Forms.ComboBox cboHourClassifier;
 		private System.Windows.Forms.ComboBox cboHourLower;
 		private System.Windows.Forms.Label lblHour;
-		private System.Windows.Forms.CheckBox cboDayEnable;
 		private System.Windows.Forms.ComboBox cboDayUpper;
 		private System.Windows.Forms.ComboBox cboDayClassifier;
 		private System.Windows.Forms.ComboBox cboDayLower;
 		private System.Windows.Forms.Label lblDay;
-		private System.Windows.Forms.CheckBox cboWeekDayEnable;
 		private System.Windows.Forms.ComboBox cboWeekDayUpper;
 		private System.Windows.Forms.ComboBox cboWeekDayClassifier;
 		private System.Windows.Forms.ComboBox cboWeekDayLower;
 		private System.Windows.Forms.Label lblWeekDay;
-		private System.Windows.Forms.CheckBox cboMonthEnable;
 		private System.Windows.Forms.ComboBox cboMonthUpper;
 		private System.Windows.Forms.ComboBox cboMonthClassifier;
 		private System.Windows.Forms.ComboBox cboMonthLower;
 		private System.Windows.Forms.Label lblMonth;
-		private System.Windows.Forms.CheckBox cboYearEnable;
 		private System.Windows.Forms.ComboBox cboYearUpper;
 		private System.Windows.Forms.ComboBox cboYearClassifier;
 		private System.Windows.Forms.ComboBox cboYearLower;

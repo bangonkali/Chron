@@ -52,6 +52,7 @@ namespace Client_CSharp
 			lstEntries.FullRowSelect = true;
 
 			lstEntries.Columns.Add("Device");
+			lstEntries.Columns.Add("ID");
 			lstEntries.Columns.Add("State");
 			lstEntries.Columns.Add("Minute");
 			lstEntries.Columns.Add("Hour");
@@ -126,11 +127,6 @@ namespace Client_CSharp
             System.Diagnostics.Debug.WriteLine("Chron Device attached.");
         }
 
-		private void mnuBeginTestUnit_Click(object sender, EventArgs e)
-		{
-			chronManager.GetCronData();
-		}
-
 		private void mnuGetCronTime_Click(object sender, EventArgs e)
 		{
 			chronManager.GetCronTime();
@@ -185,6 +181,7 @@ namespace Client_CSharp
 		private void addEntryToListView(ChronEntry result)
 		{
 			ListViewItem item = new ListViewItem(new[]{
+					result.mID.ToString(),
 					byte2str(result.mEntry[1]),
 					byte2str(result.mEntry[2]),
 					byte2str(result.mEntry[3]) + byte2str(result.mEntry[4]) + byte2str(result.mEntry[5]),
@@ -200,9 +197,6 @@ namespace Client_CSharp
 
 		private void txtBoxDiagnostics_TextChanged(object sender, EventArgs e)
 		{
-
-			txtBoxDiagnostics.SelectionStart = txtBoxDiagnostics.Text.Length;
-			txtBoxDiagnostics.ScrollToCaret();
 		}
 
 		private string byte2str(byte i) 
@@ -300,11 +294,12 @@ namespace Client_CSharp
 
 		private void deleteEntryToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			int bufferid = 0;
+			int bufferid = 0, index;
 			for (int x = 0; x < lstEntries.SelectedItems.Count; x++)
 			{
 				bufferid = (int)lstEntries.SelectedItems[x].Tag;
-				lstEntries.Items.RemoveAt(x);
+				index = lstEntries.SelectedIndices[x];
+				lstEntries.Items.RemoveAt(index);
 			}
 			for (int y = 0; y < items.entries.Count; y++)
 			{
@@ -360,6 +355,93 @@ namespace Client_CSharp
 		private void saveToolStripButton_Click(object sender, EventArgs e)
 		{
 			saveSequence();
+		}
+
+		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			saveprocedure(previousfilename);
+		}
+
+		private void readToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			chronManager.GetCronData();
+		}
+
+		private void dummiesToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			int entrycount = 0;
+			byte m = (byte)(DateTime.Now.Minute + 2);
+
+			for (int w = 0; w < 6; w++)
+			{
+				if (entrycount == 95) break;
+				for (int i = 0; i < 8; i++)
+				{
+					if (entrycount == 95) break;
+					ChronEntry df = new ChronEntry();
+					df.mEntry[0] = (byte)1;
+					df.mEntry[1] = (byte)i;
+					df.mEntry[2] = (byte)252;
+					df.mEntry[3] = (byte)(m + w);
+					df.mEntry[4] = (byte)250; // emptysk
+					df.mEntry[5] = (byte)250; // empty
+					df.mEntry[6] = (byte)(DateTime.Now.Hour);
+					df.mEntry[7] = (byte)250; // empty
+					df.mEntry[8] = (byte)250; // empty
+					df.mEntry[9] = (byte)(DateTime.Now.Day);
+					df.mEntry[10] = (byte)250; // empty
+					df.mEntry[11] = (byte)250; // empty
+					df.mEntry[12] = (byte)(DateTime.Now.DayOfWeek + 1); // this bug took hours to fix
+					df.mEntry[13] = (byte)250; // empty
+					df.mEntry[14] = (byte)250; // empty
+					df.mEntry[15] = (byte)(DateTime.Now.Month);
+					df.mEntry[16] = (byte)250; // empty
+					df.mEntry[17] = (byte)250; // empty
+					df.mEntry[18] = (byte)(DateTime.Now.Year - 2000);
+					df.mEntry[19] = (byte)250; // empty
+					df.mEntry[20] = (byte)250; // empty
+
+					addEntryToListView(df);
+					items.entries.Add(df);
+					entrycount++;
+
+					if (entrycount == 95) break;
+					df = new ChronEntry();
+					df.mEntry[0] = (byte)1;
+					df.mEntry[1] = (byte)i;
+					df.mEntry[2] = (byte)251; // off
+					df.mEntry[3] = (byte)(m + 1 + w);
+					df.mEntry[4] = (byte)250; // emptysk
+					df.mEntry[5] = (byte)250; // empty
+					df.mEntry[6] = (byte)(DateTime.Now.Hour);
+					df.mEntry[7] = (byte)250; // empty
+					df.mEntry[8] = (byte)250; // empty
+					df.mEntry[9] = (byte)(DateTime.Now.Day);
+					df.mEntry[10] = (byte)250; // empty
+					df.mEntry[11] = (byte)250; // empty
+					df.mEntry[12] = (byte)(DateTime.Now.DayOfWeek + 1); // this bug took hours to fix
+					df.mEntry[13] = (byte)250; // empty
+					df.mEntry[14] = (byte)250; // empty
+					df.mEntry[15] = (byte)(DateTime.Now.Month);
+					df.mEntry[16] = (byte)250; // empty
+					df.mEntry[17] = (byte)250; // empty
+					df.mEntry[18] = (byte)(DateTime.Now.Year - 2000);
+					df.mEntry[19] = (byte)250; // empty
+					df.mEntry[20] = (byte)250; // empty				 
+
+					addEntryToListView(df);
+					items.entries.Add(df);
+					entrycount++;
+				}
+				
+				m++;
+			}
+		}
+
+		private void txtBoxDiagnostics_TextChanged_1(object sender, EventArgs e)
+		{
+			txtBoxDiagnostics.SelectionStart = txtBoxDiagnostics.Text.Length;
+			txtBoxDiagnostics.ScrollToCaret();
 		}
 	}
 }

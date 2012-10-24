@@ -165,6 +165,7 @@ namespace ChronCore
 				data[5] = arrhexint[(byte)DateTime.Now.DayOfWeek+1]; //4 
 				data[6] = arrhexint[DateTime.Now.Month]; // 5
 				data[7] = arrhexint[DateTime.Now.Year - 2000]; //6 
+				data[8] = (byte)(80 + DateTime.Now.Second);
 				HidReport report = new HidReport(63, new HidDeviceData(data, HidDeviceData.ReadStatus.Success)); //7
 				device.WriteReport(report);
 				//ReceiveReport(report);
@@ -285,6 +286,17 @@ namespace ChronCore
 					device.WriteReport(report);
 					//ReceiveReport(report);
 				}
+				else 
+				{
+					// write dummy to end sequence
+					byte[] data = new byte[64];
+					data[0] = (byte)0x00;
+					data[1] = (byte)0x04;
+					data[2] = (byte)0x00;
+					HidReport report = new HidReport(63, new HidDeviceData(data, HidDeviceData.ReadStatus.Success));
+					device.WriteReport(report);
+					//ReceiveReport(report);
+				}
 			}
 		}
 
@@ -296,6 +308,13 @@ namespace ChronCore
 
 			if (report.Data.Length > 2)
 			{
+				if (report.Data[0] == 0 && report.Data[1] == 0)
+				{
+					state.Diagnostics = "Received Time and Data Reset " + cron_entries_received + ": ";
+					state.Read_MoreToParse = true;
+					cron_entries_received++;
+				}
+
 				if (report.Data[0] == 0 && report.Data[1] == 2)
 				{
 					state.Diagnostics = "Received Chron Entry " + cron_entries_received + ": ";

@@ -127,76 +127,38 @@ namespace Client_CSharp
 
 			if (success)
 			{
-				if (checkedcount > 0)
-				{
-					entry.mEntry = ByteArray;
-					btnSave.DialogResult = DialogResult.OK;
-					this.Hide();
-				}
-				else
-				{
-					MessageBox.Show("Must at least check one entry.");
-				}
-
+				entry.mEntry = ByteArray;
+				btnSave.DialogResult = DialogResult.OK;
+				this.Hide();
 			}
 		}
 
-		int checkedcount = 0;
-
 		private void Save()
 		{
-			checkedcount = 0;
-
 			ByteArray[0] = 1;
 			ByteArray[1] = fastParse(cboDeviceID.Text.ToString());
 			ByteArray[2] = fastParse(cboDeviceState.Text.ToString());
-
-			if (cboMinuteEnable.Checked)
-			{
-				checkedcount++;
-			}
 
 			ByteArray[3] = fastParse(cboMinuteLower.Text.ToString());
 			ByteArray[4] = fastParse(cboMinuteClassifier.Text.ToString());
 			ByteArray[5] = fastParse(cboMinuteUpper.Text.ToString());
 
-			if (cboHourEnable.Checked)
-			{
-				checkedcount++;
-			}
-
 			ByteArray[6] = fastParse(cboHourLower.Text.ToString());
 			ByteArray[7] = fastParse(cboHourClassifier.Text.ToString());
 			ByteArray[8] = fastParse(cboHourUpper.Text.ToString());
 
-			if (cboDayEnable.Checked)
-			{
-				checkedcount++;
-			}
 			ByteArray[9] = fastParse(cboDayLower.Text.ToString());
 			ByteArray[10] = fastParse(cboDayClassifier.Text.ToString());
 			ByteArray[11] = fastParse(cboDayUpper.Text.ToString());
 
-			if (cboWeekDayEnable.Checked)
-			{
-				checkedcount++;
-			}
 			ByteArray[12] = fastParse(cboWeekDayLower.Text.ToString());
 			ByteArray[13] = fastParse(cboWeekDayClassifier.Text.ToString());
 			ByteArray[14] = fastParse(cboWeekDayUpper.Text.ToString());
 
-			if (cboMonthEnable.Checked)
-			{
-				checkedcount++;
-			}
 			ByteArray[15] = fastParse(cboMonthLower.Text.ToString());
 			ByteArray[16] = fastParse(cboMonthClassifier.Text.ToString());
 			ByteArray[17] = fastParse(cboMonthUpper.Text.ToString());
 
-			if (cboYearEnable.Checked)
-			{
-				checkedcount++;
-			}
 			ByteArray[18] = fastParse(cboYearLower.Text.ToString());
 			ByteArray[19] = fastParse(cboYearClassifier.Text.ToString());
 			ByteArray[20] = fastParse(cboYearUpper.Text.ToString());

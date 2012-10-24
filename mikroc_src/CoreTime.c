@@ -5,11 +5,12 @@
 	#define DEVICEID_DS1307 0xD0 
 #endif
 
-void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *day, unsigned char *mn, unsigned char *year) {
+void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr, unsigned char *wd, unsigned char *day, unsigned char *mn, unsigned char *year) {
 	// for some other testing
 	unsigned char txtSec[5] = "";
 	unsigned char txtMin[5] = "";
 	unsigned char txtHour[5] = "";
+	unsigned char txtWd[5] = "";
 	unsigned char txtDay[5] = "";
 	unsigned char txtMn[5] = "";
 	unsigned char txtYear[5] = "";
@@ -19,6 +20,7 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
 	ShortToStr(*sec, txtSec);
 	ShortToStr(*min, txtMin);
 	ShortToStr(*hr, txtHour);
+	ShortToStr(*wd, txtWd);
 	ShortToStr(*day, txtDay);
 	ShortToStr(*mn, txtMn);
 	ShortToStr(*year, txtYear);
@@ -26,18 +28,21 @@ void Display_Time_Core(unsigned char *sec, unsigned char *min, unsigned char *hr
 	MakeLastTwoChars(txtSec);
 	MakeLastTwoChars(txtMin);
 	MakeLastTwoChars(txtHour);
+	MakeLastTwoChars(txtWd);
 	MakeLastTwoChars(txtDay);
 	MakeLastTwoChars(txtMn);
 	MakeLastTwoChars(txtYear);
 
-	strcat(txtDisplayRow1, "DATE: ");
+	strcat(txtDisplayRow1, "DATE:");
 	strcat(txtDisplayRow1, txtMn);
 	strcat(txtDisplayRow1, "/");
 	strcat(txtDisplayRow1, txtDay);
 	strcat(txtDisplayRow1, "/");
 	strcat(txtDisplayRow1, txtYear);
+	strcat(txtDisplayRow1, ":");
+	strcat(txtDisplayRow1, txtWd);
 
-	strcat(txtDisplayRow2, "TIME: ");
+	strcat(txtDisplayRow2, "TIME:");
 	strcat(txtDisplayRow2, txtHour);
 	strcat(txtDisplayRow2, ":");
 	strcat(txtDisplayRow2, txtMin);
@@ -65,11 +70,11 @@ void Read_Time(unsigned char *sec, unsigned char *min, unsigned char *hr, unsign
 	I2C1_Stop();
 }
 
-void Write_Time(unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
+void Write_Time(unsigned char sec, unsigned char min, unsigned char hours, unsigned char day, unsigned char dayofweek, unsigned char month, unsigned char year) {
 	I2C1_Start();          // issue start signal
 	I2C1_Wr(DEVICEID_DS1307);       // address DS1307 which is 0xD0
 	I2C1_Wr(0);            // start from word at address (REG0)
-	I2C1_Wr(0x80);         // write $80 to REG0. (pause counter + 0 sec)
+	I2C1_Wr(0x80 + sec);         // write $80 to REG0. (pause counter + 0 sec)
 	I2C1_Wr(min);            // write 0 to minutes word to (REG1)
 	I2C1_Wr(hours);         // write 17 to hours word (24-hours mode)(REG2)
 
@@ -145,5 +150,5 @@ void MakeLastTwoChars(unsigned char *txt){
 }
 
 void DisplayTimeStruct(TimeStruct *time) {
-	Display_Time_Core(&(time->ss), &(time->mn), &(time->hh), &(time->md), &(time->mo), &(time->yy));
+	Display_Time_Core(&(time->ss), &(time->mn), &(time->hh), &(time->wd), &(time->md), &(time->mo), &(time->yy));
 }
