@@ -43,3 +43,4 @@ D:\ACADS\EE188\Chron\csharp_client_src\Client_CSharp\obj\Debug\Client_CSharp.frm
 D:\ACADS\EE188\Chron\csharp_client_src\Client_CSharp\obj\Debug\Client_CSharp.frmMain.resources
 D:\ACADS\EE188\Chron\csharp_client_src\Client_CSharp\obj\Debug\Client_CSharp.Properties.Resources.resources
 D:\ACADS\EE188\Chron\csharp_client_src\Client_CSharp\obj\Debug\ChronClient.csproj.GenerateResource.Cache
+D:\Chron\csharp_client_src\Client_CSharp\obj\Debug\Client_CSharp.frmUSBModeController.resources

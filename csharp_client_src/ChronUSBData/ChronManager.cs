@@ -152,6 +152,21 @@ namespace ChronCore
         }
 
 
+		public void ChronOverride(byte deviceId, byte deviceState)
+		{
+			if (connectedToDriver)
+			{
+				byte[] data = new byte[63];
+				data[0] = (byte)0x00;
+				data[1] = (byte)12; // mao ni ang 0 sa PIC
+				data[2] = deviceId; // 1
+				data[3] = deviceState; // 2
+				HidReport report = new HidReport(63, new HidDeviceData(data, HidDeviceData.ReadStatus.Success)); //7
+				device.WriteReport(report);
+				//ReceiveReport(report);
+			}
+		}
+
 		public void GetCronTime()
 		{
 			if (connectedToDriver)
@@ -162,7 +177,7 @@ namespace ChronCore
 				data[2] = arrhexint[DateTime.Now.Minute]; // 1
 				data[3] = arrhexint[DateTime.Now.Hour]; // 2
 				data[4] = arrhexint[DateTime.Now.Day]; //3 
-				data[5] = arrhexint[(byte)DateTime.Now.DayOfWeek+1]; //4 
+				data[5] = arrhexint[(byte)DateTime.Now.DayOfWeek + 1]; //4 
 				data[6] = arrhexint[DateTime.Now.Month]; // 5
 				data[7] = arrhexint[DateTime.Now.Year - 2000]; //6 
 				data[8] = (byte)(80 + DateTime.Now.Second);
@@ -343,12 +358,26 @@ namespace ChronCore
 					cron_entries_written = 0;
 				}
 
+				// Override Control Reply
+				if (report.Data[0] == 0 && report.Data[1] == 13)
+				{
+					state.Diagnostics = "Override Control Response: ";
+				}
+
 				if (debugPrintRawMessages)
 				{
 					for (int i = 0; i < report.Data.Length; i++)
 					{
 						state.Diagnostics += report.Data[i] + ", ";
 					}
+
+					byte[] data = new byte[9];
+					//for (int i = 4; i < 11; i++) 
+					//{
+					//	data[i] = report.Data[i];
+					//}
+
+					state.SetData(data);
 
 					System.Diagnostics.Debug.WriteLine(state.Diagnostics);
 				}

@@ -29,12 +29,13 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbout));
 			this.logoPictureBox = new System.Windows.Forms.PictureBox();
-			this.labelProductName = new System.Windows.Forms.Label();
-			this.labelVersion = new System.Windows.Forms.Label();
-			this.labelCopyright = new System.Windows.Forms.Label();
-			this.labelCompanyName = new System.Windows.Forms.Label();
-			this.textBoxDescription = new System.Windows.Forms.TextBox();
-			this.okButton = new System.Windows.Forms.Button();
+			this.lblDescription = new System.Windows.Forms.TextBox();
+			this.btnOk = new System.Windows.Forms.Button();
+			this.lblProductName = new System.Windows.Forms.Label();
+			this.lblCopyRight = new System.Windows.Forms.Label();
+			this.lblVersion = new System.Windows.Forms.Label();
+			this.lblCompanyName = new System.Windows.Forms.Label();
+			this.lnkSite = new System.Windows.Forms.LinkLabel();
 			((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -48,85 +49,88 @@
 			this.logoPictureBox.TabIndex = 12;
 			this.logoPictureBox.TabStop = false;
 			// 
-			// labelProductName
+			// lblDescription
 			// 
-			this.labelProductName.Location = new System.Drawing.Point(152, 12);
-			this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-			this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
-			this.labelProductName.Name = "labelProductName";
-			this.labelProductName.Size = new System.Drawing.Size(297, 17);
-			this.labelProductName.TabIndex = 19;
-			this.labelProductName.Text = "Product Name";
-			this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblDescription.Location = new System.Drawing.Point(152, 67);
+			this.lblDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+			this.lblDescription.Multiline = true;
+			this.lblDescription.Name = "lblDescription";
+			this.lblDescription.ReadOnly = true;
+			this.lblDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+			this.lblDescription.Size = new System.Drawing.Size(297, 204);
+			this.lblDescription.TabIndex = 23;
+			this.lblDescription.TabStop = false;
+			this.lblDescription.Text = "Description";
 			// 
-			// labelVersion
+			// btnOk
 			// 
-			this.labelVersion.Location = new System.Drawing.Point(152, 46);
-			this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-			this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
-			this.labelVersion.Name = "labelVersion";
-			this.labelVersion.Size = new System.Drawing.Size(297, 17);
-			this.labelVersion.TabIndex = 0;
-			this.labelVersion.Text = "Version";
-			this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnOk.Location = new System.Drawing.Point(374, 277);
+			this.btnOk.Name = "btnOk";
+			this.btnOk.Size = new System.Drawing.Size(75, 23);
+			this.btnOk.TabIndex = 24;
+			this.btnOk.Text = "&Ok";
+			this.btnOk.UseVisualStyleBackColor = true;
+			this.btnOk.Click += new System.EventHandler(this.okButton_Click);
 			// 
-			// labelCopyright
+			// lblProductName
 			// 
-			this.labelCopyright.Location = new System.Drawing.Point(152, 29);
-			this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-			this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
-			this.labelCopyright.Name = "labelCopyright";
-			this.labelCopyright.Size = new System.Drawing.Size(297, 17);
-			this.labelCopyright.TabIndex = 21;
-			this.labelCopyright.Text = "Copyright";
-			this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblProductName.AutoSize = true;
+			this.lblProductName.Location = new System.Drawing.Point(149, 12);
+			this.lblProductName.Name = "lblProductName";
+			this.lblProductName.Size = new System.Drawing.Size(82, 13);
+			this.lblProductName.TabIndex = 25;
+			this.lblProductName.Text = "lblProductName";
 			// 
-			// labelCompanyName
+			// lblCopyRight
 			// 
-			this.labelCompanyName.Location = new System.Drawing.Point(152, 63);
-			this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
-			this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
-			this.labelCompanyName.Name = "labelCompanyName";
-			this.labelCompanyName.Size = new System.Drawing.Size(297, 17);
-			this.labelCompanyName.TabIndex = 22;
-			this.labelCompanyName.Text = "Company Name";
-			this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.lblCopyRight.AutoSize = true;
+			this.lblCopyRight.Location = new System.Drawing.Point(149, 25);
+			this.lblCopyRight.Name = "lblCopyRight";
+			this.lblCopyRight.Size = new System.Drawing.Size(66, 13);
+			this.lblCopyRight.TabIndex = 26;
+			this.lblCopyRight.Text = "lblCopyRight";
 			// 
-			// textBoxDescription
+			// lblVersion
 			// 
-			this.textBoxDescription.Location = new System.Drawing.Point(152, 83);
-			this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
-			this.textBoxDescription.Multiline = true;
-			this.textBoxDescription.Name = "textBoxDescription";
-			this.textBoxDescription.ReadOnly = true;
-			this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-			this.textBoxDescription.Size = new System.Drawing.Size(297, 188);
-			this.textBoxDescription.TabIndex = 23;
-			this.textBoxDescription.TabStop = false;
-			this.textBoxDescription.Text = "Description";
+			this.lblVersion.AutoSize = true;
+			this.lblVersion.Location = new System.Drawing.Point(149, 38);
+			this.lblVersion.Name = "lblVersion";
+			this.lblVersion.Size = new System.Drawing.Size(52, 13);
+			this.lblVersion.TabIndex = 27;
+			this.lblVersion.Text = "lblVersion";
 			// 
-			// okButton
+			// lblCompanyName
 			// 
-			this.okButton.Location = new System.Drawing.Point(374, 277);
-			this.okButton.Name = "okButton";
-			this.okButton.Size = new System.Drawing.Size(75, 23);
-			this.okButton.TabIndex = 24;
-			this.okButton.Text = "&Ok";
-			this.okButton.UseVisualStyleBackColor = true;
-			this.okButton.Click += new System.EventHandler(this.okButton_Click);
+			this.lblCompanyName.AutoSize = true;
+			this.lblCompanyName.Location = new System.Drawing.Point(149, 51);
+			this.lblCompanyName.Name = "lblCompanyName";
+			this.lblCompanyName.Size = new System.Drawing.Size(89, 13);
+			this.lblCompanyName.TabIndex = 28;
+			this.lblCompanyName.Text = "lblCompanyName";
+			// 
+			// lnkSite
+			// 
+			this.lnkSite.AutoSize = true;
+			this.lnkSite.Location = new System.Drawing.Point(9, 282);
+			this.lnkSite.Name = "lnkSite";
+			this.lnkSite.Size = new System.Drawing.Size(55, 13);
+			this.lnkSite.TabIndex = 29;
+			this.lnkSite.TabStop = true;
+			this.lnkSite.Text = "linkLabel1";
 			// 
 			// frmAbout
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(462, 312);
-			this.Controls.Add(this.okButton);
+			this.Controls.Add(this.lnkSite);
+			this.Controls.Add(this.lblCompanyName);
+			this.Controls.Add(this.lblVersion);
+			this.Controls.Add(this.lblCopyRight);
+			this.Controls.Add(this.lblProductName);
+			this.Controls.Add(this.btnOk);
 			this.Controls.Add(this.logoPictureBox);
-			this.Controls.Add(this.labelProductName);
-			this.Controls.Add(this.labelVersion);
-			this.Controls.Add(this.labelCopyright);
-			this.Controls.Add(this.labelCompanyName);
-			this.Controls.Add(this.textBoxDescription);
+			this.Controls.Add(this.lblDescription);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -146,11 +150,12 @@
 		#endregion
 
 		private System.Windows.Forms.PictureBox logoPictureBox;
-		private System.Windows.Forms.Label labelProductName;
-		private System.Windows.Forms.Label labelVersion;
-		private System.Windows.Forms.Label labelCopyright;
-		private System.Windows.Forms.Label labelCompanyName;
-		private System.Windows.Forms.TextBox textBoxDescription;
-		private System.Windows.Forms.Button okButton;
+		private System.Windows.Forms.TextBox lblDescription;
+		private System.Windows.Forms.Button btnOk;
+		private System.Windows.Forms.Label lblProductName;
+		private System.Windows.Forms.Label lblCopyRight;
+		private System.Windows.Forms.Label lblVersion;
+		private System.Windows.Forms.Label lblCompanyName;
+		private System.Windows.Forms.LinkLabel lnkSite;
 	}
 }

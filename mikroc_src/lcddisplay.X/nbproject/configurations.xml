@@ -4,7 +4,7 @@
     <logicalFolder name="LoadableFiles"
                    displayName="Loadable Files"
                    projectFiles="true">
-      <itemPath>D:\ACADS\EE188\Chron\mikroc_src\lcddisplay.hex</itemPath>
+      <itemPath>../lcddisplay.hex</itemPath>
     </logicalFolder>
     <logicalFolder name="Important Files"
                    displayName="Important Files"

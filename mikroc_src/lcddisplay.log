@@ -16,18 +16,18 @@ diagnostics: 0	122	Compilation Started	__Lib_Delays.c
 diagnostics: 172	123	Compiled Successfully	__Lib_Delays.c
 diagnostics: 0	122	Compilation Started	__lib_mmcfat16.h
 diagnostics: 71	123	Compiled Successfully	__Lib_MmcFat16Constants.c
-diagnostics: 0	126	All files Preprocessed in 312 ms	 
+diagnostics: 0	126	All files Preprocessed in 406 ms	 
 diagnostics: 0	122	Compilation Started	globalconst.h
-hint: 84	1163	Variable 'str_usbDiagnostics_a' has been declared, but not used	lcddisplay.c
-hint: 243	1163	Variable 'debug_buffer' has been declared, but not used	lcddisplay.c
-hint: 244	1163	Variable 'debug_buffer2' has been declared, but not used	lcddisplay.c
-hint: 245	1163	Variable 'entryflag' has been declared, but not used	lcddisplay.c
-hint: 245	1163	Variable 'entrypointer' has been declared, but not used	lcddisplay.c
-hint: 372	1163	Variable 'buff_diag_c' has been declared, but not used	lcddisplay.c
-hint: 372	1163	Variable 'buff_diag_e' has been declared, but not used	lcddisplay.c
-diagnostics: 380	123	Compiled Successfully	lcddisplay.c
-hint: 243	1164	Variable 'debug' has been eliminated by optimizer	lcddisplay.c
-hint: 244	1164	Variable 'debug2' has been eliminated by optimizer	lcddisplay.c
+hint: 65	1163	Variable 'str_usbDiagnostics_a' has been declared, but not used	lcddisplay.c
+hint: 283	1163	Variable 'debug_buffer' has been declared, but not used	lcddisplay.c
+hint: 284	1163	Variable 'debug_buffer2' has been declared, but not used	lcddisplay.c
+hint: 285	1163	Variable 'entryflag' has been declared, but not used	lcddisplay.c
+hint: 285	1163	Variable 'entrypointer' has been declared, but not used	lcddisplay.c
+hint: 398	1163	Variable 'buff_diag_c' has been declared, but not used	lcddisplay.c
+hint: 398	1163	Variable 'buff_diag_e' has been declared, but not used	lcddisplay.c
+diagnostics: 406	123	Compiled Successfully	lcddisplay.c
+hint: 283	1164	Variable 'debug' has been eliminated by optimizer	lcddisplay.c
+hint: 284	1164	Variable 'debug2' has been eliminated by optimizer	lcddisplay.c
 diagnostics: 0	122	Compilation Started	coretest.h
 diagnostics: 24	123	Compiled Successfully	CoreTest.c
 diagnostics: 0	122	Compilation Started	libtime.h
@@ -39,11 +39,11 @@ diagnostics: 0	122	Compilation Started	corelcd.h
 diagnostics: 14	123	Compiled Successfully	CoreLCD.c
 diagnostics: 0	122	Compilation Started	libtime.h
 diagnostics: 152	123	Compiled Successfully	LibChron.c
-diagnostics: 0	127	All files Compiled in 671 ms	 
+diagnostics: 0	127	All files Compiled in 764 ms	 
 hint: 0	1144	Used RAM (bytes): 810 (40%)  Free RAM (bytes): 1217 (60%)	Used RAM (bytes): 810 (40%)  Free RAM (bytes): 1217 (60%)
-hint: 0	1144	Used ROM (bytes): 15390 (47%)  Free ROM (bytes): 17378 (53%)	Used ROM (bytes): 15390 (47%)  Free ROM (bytes): 17378 (53%)
+hint: 0	1144	Used ROM (bytes): 15668 (48%)  Free ROM (bytes): 17100 (52%)	Used ROM (bytes): 15668 (48%)  Free ROM (bytes): 17100 (52%)
 diagnostics: 0	125	Project Linked Successfully	lcddisplay.mcppi
 hint: 0	1004	COFF file successfully generated	COFF file successfully generated
-diagnostics: 0	128	Linked in 2059 ms	 
-diagnostics: 0	129	Project 'lcddisplay.mcppi' completed: 3369 ms	 
-diagnostics: 0	103	Finished successfully: 23 Oct 2012, 19:40:19	lcddisplay.mcppi
+diagnostics: 0	128	Linked in 2559 ms	 
+diagnostics: 0	129	Project 'lcddisplay.mcppi' completed: 4103 ms	 
+diagnostics: 0	103	Finished successfully: 24 Oct 2012, 13:48:35	lcddisplay.mcppi

@@ -168,7 +168,7 @@ void init_core() {
  LATD = 0x00;
  LATE = 0x00;
 
- TRISA = 0x00;
+ TRISA = 0x03;
  TRISC = 0x00;
  TRISD = 0x00;
  TRISE = 0x00;
@@ -178,7 +178,6 @@ void init_core() {
  PORTD = 0x00;
  PORTE = 0x00;
 
- TRISA = 0x03;
  LATA = 0x03;
 }
 
@@ -191,22 +190,13 @@ void init_main() {
  Lcd_Cmd(_LCD_CURSOR_OFF);
 
  GetEntriesStr(entry);
- LCD_2Row_Write("Chron Scheduler", entry); Delay_ms(1500);
- LCD_2Row_Write("Abestano", "Johannah Mae"); Delay_ms(500);
- LCD_2Row_Write("Enanor", "Caryl Keen"); Delay_ms(500);
- LCD_2Row_Write("Regalado", "Gil Michael"); Delay_ms(500);
-
- LATD = 0xFF;
- Delay_ms(200);
- LATD = 0x00;
- Delay_ms(100);
- LATD = 0xFF;
- Delay_ms(100);
- LATD = 0x00;
+ LCD_2Row_Write("Chron Scheduler", entry); Delay_ms(1000);
+ LCD_2Row_Write("Abestano", "Johannah Mae"); Delay_ms(1000);
+ LCD_2Row_Write("Enanor", "Caryl Keen"); Delay_ms(1000);
+ LCD_2Row_Write("Regalado", "Gil Michael"); Delay_ms(1000);
 }
 
 void USB_Mode() {
-#line 81 "D:/Chron/mikroc_src/lcddisplay.c"
  unsigned char end_of_signal = 0;
  unsigned char page=0, address=0, address_count=0, entry_on_page=0;
  unsigned char is_read_broken = 0, is_write_broken = 0;
@@ -232,6 +222,68 @@ void USB_Mode() {
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
  LCD_1Row_Write("Time Sent"); Delay_ms(1000);
 
+ } else if ((int)readbuff[0] == 12) {
+ USB_Buffer_Clear();
+ writebuff[3] = readbuff[1];
+ switch (readbuff[1]) {
+ case ASTERISK:
+ if (readbuff[2]) {
+ LATD = 0xFF;
+ writebuff[2] = 0xFF;
+ } else {
+ LATD = 0x00;
+ writebuff[2] = 0x00;
+ }
+ break;
+ case 0:
+ LATD0_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 1:
+ LATD1_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 2:
+ LATD2_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 3:
+ LATD3_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 4:
+ LATD4_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 5:
+ LATD5_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 6:
+ LATD6_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ case 7:
+ LATD7_bit = readbuff[2];
+ writebuff[2] = readbuff[2];
+ break;
+ default:
+ break;
+ }
+
+ writebuff[0] = 0;
+ writebuff[1] = 13;
+
+ writebuff[4] = RD0_bit;
+ writebuff[5] = RD1_bit;
+ writebuff[6] = RD2_bit;
+ writebuff[7] = RD3_bit;
+ writebuff[8] = RD4_bit;
+ writebuff[9] = RD5_bit;
+ writebuff[10] = RD6_bit;
+ writebuff[11] = RD7_bit;
+
+ while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
  } else if ((int)readbuff[0] == 1) {
 
  for (page=0; page< 8 ; page++){
@@ -284,18 +336,15 @@ void USB_Mode() {
 
  address=0;
  for (entry_on_page=0; entry_on_page <  12 ; entry_on_page++) {
-
  USB_Buffer_Clear();
  writebuff[0] = 0;
  writebuff[1] = 6;
  writebuff[2] = page;
 
  for (address_count=0; address_count <  21 ; address_count++) {
-
  I2C_Write_Byte_To_EEPROM(mempages_write[page], address, readbuff[address_count+2]);
  writebuff[address_count+3] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
  address++;
-
  }
 
  while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
@@ -399,7 +448,6 @@ void TIME_Mode() {
  for (address_count=0; address_count <  21 ; address_count++) {
  entry[address_count] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
  address++;
-#line 281 "D:/Chron/mikroc_src/lcddisplay.c"
  }
 
 
@@ -415,7 +463,7 @@ void TIME_Mode() {
 
  GetEntry(&entry, &ts);
  ActivateEntry(&ts, &t);
-#line 303 "D:/Chron/mikroc_src/lcddisplay.c"
+
  number_of_entries_read++;
  }
  }

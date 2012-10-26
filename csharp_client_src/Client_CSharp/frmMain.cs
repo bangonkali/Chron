@@ -14,8 +14,9 @@ namespace Client_CSharp
 {
 	public partial class frmMain : Form
 	{
+		private frmUSBModeController mOverrideControl = new frmUSBModeController();
 		private string previousfilename = "";
-		private ChronManager chronManager = new ChronManager();
+		public static ChronManager chronManager = new ChronManager();
         private Timer connectionTimer = new Timer();
 
 		public frmMain()
@@ -97,8 +98,33 @@ namespace Client_CSharp
 				return;
 			}
 
+			if (e.State.Overidden)
+			{
+				//mOverrideControl.cboDevice0.Checked = Byte2Bit(e.State.GetData()[0]);
+				//mOverrideControl.cboDevice1.Checked = Byte2Bit(e.State.GetData()[1]);
+				//mOverrideControl.cboDevice2.Checked = Byte2Bit(e.State.GetData()[2]);
+				//mOverrideControl.cboDevice3.Checked = Byte2Bit(e.State.GetData()[3]);
+				//mOverrideControl.cboDevice4.Checked = Byte2Bit(e.State.GetData()[4]);
+				//mOverrideControl.cboDevice5.Checked = Byte2Bit(e.State.GetData()[5]);
+				//mOverrideControl.cboDevice6.Checked = Byte2Bit(e.State.GetData()[6]);
+				//mOverrideControl.cboDevice7.Checked = Byte2Bit(e.State.GetData()[7]);
+
+			}
+
 			txtBoxDiagnostics.Text += e.State.Diagnostics + "\r\n";
 			// System.Diagnostics.Debug.WriteLine("Chron Device removed.");
+		}
+
+		private bool Byte2Bit(byte i)
+		{
+			if (i == 0)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
 		}
 
         private void chronManager_DeviceRemoved(object sender, EventArgs e)
@@ -442,6 +468,11 @@ namespace Client_CSharp
 		{
 			txtBoxDiagnostics.SelectionStart = txtBoxDiagnostics.Text.Length;
 			txtBoxDiagnostics.ScrollToCaret();
+		}
+
+		private void uSBOverrideToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			mOverrideControl.ShowDialog(this);
 		}
 	}
 }

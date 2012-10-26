@@ -30,7 +30,7 @@ void init_core() {
 	LATD = 0x00; // Make all output ports 0
 	LATE = 0x00; // Make all output ports 0
 
-	TRISA = 0x00; // Make all ports output
+	TRISA = 0x03; // Make 00000011 directional ports.
 	TRISC = 0x00; // Make all ports output
 	TRISD = 0x00; // Make all ports output
 	TRISE = 0x00; // Make all ports output
@@ -39,9 +39,8 @@ void init_core() {
 	PORTC = 0x00; // Make all ports 0
 	PORTD = 0x00; // Make all ports 0
 	PORTE = 0x00; // Make all ports 0
-
-	TRISA = 0x03;
-	LATA = 0x03;
+	
+	LATA = 0x03; 
 }
 
 void init_main() {
@@ -53,31 +52,13 @@ void init_main() {
 	Lcd_Cmd(_LCD_CURSOR_OFF); // Turn cursor off
 	
 	GetEntriesStr(entry);
-	LCD_2Row_Write("Chron Scheduler", entry); Delay_ms(1500);
-	LCD_2Row_Write("Abestano", "Johannah Mae"); Delay_ms(500);
-	LCD_2Row_Write("Enanor", "Caryl Keen"); Delay_ms(500);
-	LCD_2Row_Write("Regalado", "Gil Michael"); Delay_ms(500);
-	
-	LATD = 0xFF;
-	Delay_ms(200);
-	LATD = 0x00;
-	Delay_ms(100);
-	LATD = 0xFF;
-	Delay_ms(100);
-	LATD = 0x00;
+	LCD_2Row_Write("Chron Scheduler", entry); Delay_ms(1000);
+	LCD_2Row_Write("Abestano", "Johannah Mae"); Delay_ms(1000);
+	LCD_2Row_Write("Enanor", "Caryl Keen"); Delay_ms(1000);
+	LCD_2Row_Write("Regalado", "Gil Michael"); Delay_ms(1000);
 }
 
 void USB_Mode() {
-	/*  Simple Summary of the TimeStruct used from timelib.h    
-	unsigned char   ss ;    // seconds
-	unsigned char   mn ;    // minutes
-	unsigned char   hh ;    // hours
-	unsigned char   md ;    // day in month, from 1 to 31
-	unsigned char   wd ;    // day in week, monday=0, tuesday=1, .... sunday=6
-	unsigned char   mo ;    // month number, from 1 to 12 (and not from 0 to 11 as with unix C time !)
-	unsigned int    yy ;    // year Y2K compliant, from 1892 to 2038 */
-
-	//unsigned short x = 0;
 	unsigned char end_of_signal = 0;
 	unsigned char page=0, address=0, address_count=0, entry_on_page=0;
 	unsigned char is_read_broken = 0, is_write_broken = 0;
@@ -103,6 +84,68 @@ void USB_Mode() {
 			while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
 			LCD_1Row_Write("Time Sent"); Delay_ms(1000);
 
+		} else if ((int)readbuff[0] == 12) {
+			USB_Buffer_Clear();
+			writebuff[3] = readbuff[1];
+			switch (readbuff[1]) {
+				case ASTERISK:
+					if (readbuff[2]) {
+						LATD = 0xFF;
+						writebuff[2] = 0xFF;
+					} else {
+						LATD = 0x00;
+						writebuff[2] = 0x00;
+					}
+					break;
+				case 0:
+					LATD0_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 1:
+					LATD1_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 2:
+					LATD2_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 3:
+					LATD3_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 4:
+					LATD4_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 5:
+					LATD5_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 6:
+					LATD6_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				case 7:
+					LATD7_bit = readbuff[2];
+					writebuff[2] = readbuff[2];
+					break;
+				default:
+					break;
+			}
+			
+			writebuff[0] = 0;
+			writebuff[1] = 13;
+			
+			writebuff[4] = RD0_bit;
+			writebuff[5] = RD1_bit;
+			writebuff[6] = RD2_bit;
+			writebuff[7] = RD3_bit;
+			writebuff[8] = RD4_bit;
+			writebuff[9] = RD5_bit;
+			writebuff[10] = RD6_bit;
+			writebuff[11] = RD7_bit;
+			
+			while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);
 		} else if ((int)readbuff[0] == 1) {
 			// read entire memory bank - per page
 			for (page=0; page<EEPROM_MEMORY_BANKS; page++){
@@ -155,18 +198,15 @@ void USB_Mode() {
 				
 				address=0; // re initialize address to 0 because this is a new page.
 				for (entry_on_page=0; entry_on_page < EEPROM_ENTRY_PER_PAGE; entry_on_page++) {
-					//LCD_1Row_Write("Writing Page"); Delay_ms(1000);
 					USB_Buffer_Clear();
 					writebuff[0] = 0; // 0 start
 					writebuff[1] = 6; // command code
 					writebuff[2] = page; // page
 					
 					for (address_count=0; address_count < EEPROM_ENTRY_LENGTH; address_count++) {
-						// LCD_1Row_Write("Writing Byte"); Delay_ms(1000);
 						I2C_Write_Byte_To_EEPROM(mempages_write[page], address, readbuff[address_count+2]);
 						writebuff[address_count+3] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
 						address++;
-						// LCD_1Row_Write("Finished writing Byte"); Delay_ms(500);
 					}
 					
 					while(!HID_Write(&writebuff,64) && GetOpMode() == USB_TEST);  // send
@@ -270,14 +310,6 @@ void TIME_Mode() {
 				for (address_count=0; address_count < EEPROM_ENTRY_LENGTH; address_count++) {
 					entry[address_count] = I2C_Read_Byte_From_EEPROM(mempages_write[page], mempages_read[page], address);
 					address++;
-					
-					/*strcpy(debug, "Addr: ");
-					ByteToStr(address_count, debug_buffer);
-					strcat(debug, debug_buffer);
-					strcpy(debug2, "Byte: ");
-					ByteToStr(entry[address_count], debug_buffer2);
-					strcat(debug2, debug_buffer2);
-					LCD_2Row_Write(debug, debug2); Delay_ms(1000);*/
 				}
 
 				// get the current time from RTC Memory
@@ -293,13 +325,7 @@ void TIME_Mode() {
 				// Begin comparison of time and entry data
 				GetEntry(&entry, &ts);
 				ActivateEntry(&ts, &t);
-
-
-				// perform comparison here
-/*strcpy(debug, "Entries: ");
-				ByteToStr(number_of_entries_read, debug_buffer);
-				strcat(debug, debug_buffer);
-				LCD_1Row_Write(debug);*/
+				
 				number_of_entries_read++;
 			}
 		}
