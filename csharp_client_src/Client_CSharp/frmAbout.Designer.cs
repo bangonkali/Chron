@@ -84,7 +84,7 @@
 			// lblCopyRight
 			// 
 			this.lblCopyRight.AutoSize = true;
-			this.lblCopyRight.Location = new System.Drawing.Point(149, 25);
+			this.lblCopyRight.Location = new System.Drawing.Point(149, 38);
 			this.lblCopyRight.Name = "lblCopyRight";
 			this.lblCopyRight.Size = new System.Drawing.Size(66, 13);
 			this.lblCopyRight.TabIndex = 26;
@@ -93,7 +93,7 @@
 			// lblVersion
 			// 
 			this.lblVersion.AutoSize = true;
-			this.lblVersion.Location = new System.Drawing.Point(149, 38);
+			this.lblVersion.Location = new System.Drawing.Point(149, 51);
 			this.lblVersion.Name = "lblVersion";
 			this.lblVersion.Size = new System.Drawing.Size(52, 13);
 			this.lblVersion.TabIndex = 27;
@@ -102,7 +102,7 @@
 			// lblCompanyName
 			// 
 			this.lblCompanyName.AutoSize = true;
-			this.lblCompanyName.Location = new System.Drawing.Point(149, 51);
+			this.lblCompanyName.Location = new System.Drawing.Point(149, 25);
 			this.lblCompanyName.Name = "lblCompanyName";
 			this.lblCompanyName.Size = new System.Drawing.Size(89, 13);
 			this.lblCompanyName.TabIndex = 28;
@@ -113,10 +113,11 @@
 			this.lnkSite.AutoSize = true;
 			this.lnkSite.Location = new System.Drawing.Point(9, 282);
 			this.lnkSite.Name = "lnkSite";
-			this.lnkSite.Size = new System.Drawing.Size(55, 13);
+			this.lnkSite.Size = new System.Drawing.Size(185, 13);
 			this.lnkSite.TabIndex = 29;
 			this.lnkSite.TabStop = true;
-			this.lnkSite.Text = "linkLabel1";
+			this.lnkSite.Text = "https://github.com/bangonkali/Chron";
+			this.lnkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSite_LinkClicked);
 			// 
 			// frmAbout
 			// 

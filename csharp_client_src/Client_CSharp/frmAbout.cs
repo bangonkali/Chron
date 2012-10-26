@@ -98,6 +98,19 @@ namespace Client_CSharp
 		private void frmAbout_Load(object sender, EventArgs e)
 		{
 			this.Text = String.Format("About {0}", AssemblyTitle);
+
+			lblCompanyName.Text = "Mindanao State University";
+			lblCopyRight.Text = "Iligan Institute of Technology";
+			lblDescription.Text = "This is the desktop client for the Hardware Chron Device developed as partial fullfillment of the requirements for EE 188.\r\n\r\n";
+			lblDescription.Text += "Developed by:" + "\r\n";
+			lblDescription.Text += "Abestano, Johannah Mae" + "\r\n"; 
+			lblDescription.Text += "Enanor, Caryl Keen" + "\r\n";
+			lblDescription.Text += "Regalado, Gil Michael" + "\r\n\r\n";
+			lblDescription.Text += "Required by:" + "\r\n";
+			lblDescription.Text += "Jabian, Marven E. - EE Professor" + "\r\n" + "\r\n";
+			lblDescription.Text += "This study focuses on the implementation of the famous Cron software for scheduling automation in UNIX and Linux systems to actual hardware implementation in scheduling on and off switching of actual hardware devices. The use of the Cron specification is the most unique characteristic of this research as it is the first time it is going to be used for hardware application for purposes of automation.";
+			lblProductName.Text = "Chron";
+			lblVersion.Text = "Prototype V.0.1.4.3";
 		}
 
 		private void okButton_Click(object sender, EventArgs e)
@@ -123,6 +136,11 @@ namespace Client_CSharp
 		private void labelCompanyName_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void lnkSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			System.Diagnostics.Process.Start("https://github.com/bangonkali/Chron");
 		}
 	}
 }

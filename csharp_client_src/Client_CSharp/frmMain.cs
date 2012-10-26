@@ -262,21 +262,31 @@ namespace Client_CSharp
 
 		private void saveSequence()
 		{
-			if (previousfilename.Length > 0)
+			if (lstEntries.Items.Count > 0)
 			{
-				saveprocedure(previousfilename);
+				if (previousfilename.Length > 0)
+				{
+					if (System.IO.File.Exists(previousfilename))
+					{
+						saveprocedure(previousfilename);
+					}
+				}
+				else
+				{
+					SaveFileDialog s = new SaveFileDialog();
+					s.DefaultExt = ".joh";
+					s.Filter = "Chron Files (.joh)|*.joh";
+
+					if (DialogResult.OK == s.ShowDialog())
+					{
+						saveprocedure(s.FileName);
+						previousfilename = s.FileName;
+					}
+				}
 			}
 			else
 			{
-				SaveFileDialog s = new SaveFileDialog();
-				s.DefaultExt = ".joh";
-				s.Filter = "Chron Files (.joh)|*.joh";
-
-				if (DialogResult.OK == s.ShowDialog())
-				{
-					saveprocedure(s.FileName);
-					previousfilename = s.FileName;
-				}
+				txtStatus.Text = "Unable to save empty work.";
 			}
 		}
 
@@ -385,7 +395,7 @@ namespace Client_CSharp
 
 		private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			saveprocedure(previousfilename);
+			saveSequence();
 		}
 
 		private void readToolStripMenuItem_Click(object sender, EventArgs e)
