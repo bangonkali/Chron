@@ -1,0 +1,13 @@
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\Client_CSharp.exe
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\Client_CSharp.pdb
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\obj\Debug\Client_CSharp.csprojResolveAssemblyReference.cache
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\obj\Debug\Client_CSharp.frmMain.resources
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\obj\Debug\Client_CSharp.Properties.Resources.resources
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\obj\Debug\Client_CSharp.csproj.GenerateResource.Cache
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\obj\Debug\Client_CSharp.exe
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\obj\Debug\Client_CSharp.pdb
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\Client_CSharp.exe.config
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\HidLibrary.dll
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\HidLibrary.pdb
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\ChronUSBData.dll
+D:\Chron\csharp_client_src\Client_CSharp\Client_CSharp\bin\Debug\ChronUSBData.pdb

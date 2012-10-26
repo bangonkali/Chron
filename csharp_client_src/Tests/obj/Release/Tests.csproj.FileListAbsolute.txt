@@ -1,0 +1,14 @@
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\Tests.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\Tests.pdb
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\HidLibrary.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\NSubstitute.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\nunit.framework.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\nunit.mocks.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\pnunit.framework.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\Should.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\HidLibrary.pdb
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\NSubstitute.xml
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\bin\Release\nunit.framework.xml
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\obj\Release\Tests.csprojResolveAssemblyReference.cache
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\obj\Release\Tests.dll
+D:\Chron\mikeobrien-HidLibrary-v3.2.17.0-1-gbc95b1f\mikeobrien-HidLibrary-bc95b1f\src\Tests\obj\Release\Tests.pdb

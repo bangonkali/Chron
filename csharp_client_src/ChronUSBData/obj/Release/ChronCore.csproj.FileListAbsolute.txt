@@ -1,0 +1,7 @@
+D:\Chron\csharp_client_src\ChronUSBData\bin\Release\ChronUSBData.dll
+D:\Chron\csharp_client_src\ChronUSBData\bin\Release\ChronUSBData.pdb
+D:\Chron\csharp_client_src\ChronUSBData\bin\Release\HidLibrary.dll
+D:\Chron\csharp_client_src\ChronUSBData\bin\Release\HidLibrary.pdb
+D:\Chron\csharp_client_src\ChronUSBData\obj\Release\ChronCore.csprojResolveAssemblyReference.cache
+D:\Chron\csharp_client_src\ChronUSBData\obj\Release\ChronUSBData.dll
+D:\Chron\csharp_client_src\ChronUSBData\obj\Release\ChronUSBData.pdb
